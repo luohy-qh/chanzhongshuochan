@@ -6,7 +6,7 @@ const categories = {
     },
     stock: {
         name: "教你炒股票相关",
-        articles: []
+        articles: ["stock001", "stock002", "stock003", "stock004", "stock005", "stock006", "stock007", "stock008", "stock009", "stock010", "stock011", "stock012", "stock013", "stock014", "stock015", "stock016", "stock017", "stock018", "stock019", "stock020", "stock021", "stock022", "stock023", "stock024", "stock025", "stock026", "stock027", "stock028", "stock029", "stock030", "stock031", "stock032", "stock033", "stock034", "stock035", "stock036", "stock037", "stock038", "stock039", "stock040", "stock041", "stock042", "stock043", "stock044", "stock045", "stock046", "stock047", "stock048", "stock049", "stock050", "stock051", "stock052", "stock053", "stock054", "stock055", "stock056", "stock057", "stock058", "stock059", "stock060", "stock061", "stock062", "stock063", "stock064", "stock065", "stock066", "stock067", "stock068", "stock069", "stock070", "stock071", "stock072", "stock073", "stock074", "stock075", "stock076", "stock077", "stock078", "stock079", "stock080", "stock081", "stock082", "stock083", "stock084", "stock085", "stock086", "stock087", "stock088", "stock089", "stock090", "stock091", "stock092", "stock093", "stock094", "stock095", "stock096", "stock097", "stock098", "stock099", "stock100", "stock101", "stock102", "stock103", "stock104", "stock105", "stock106", "stock107", "stock108"]
     },
     lunyu: {
         name: "文史哲学（《论语》详解）",
@@ -1704,6 +1704,802 @@ const articles = {
             <p>外国人为什么产生不了哲学和哲学家？不为什么，就像可以构造无数的空间使得三角形不再稳定。如果有一种 "中国人为什么产生不了哲学和哲学家？"的脑电波自渎地认为自己是世界上唯一的脑电波，那么当然可以有"外国人为什么产生不了哲学和哲学家？"的脑电波自渎一下。脑电波的唯一特性就是自渎，而自渎是权力，这种权力也可以有一个无聊的名字，例如：话语权。</p>
         `,
         prev: null,
+        next: null
+    },
+    // 教你炒股票系列 001-108
+    stock001: {
+        title: "教你炒股票1：不会赢钱的经济人，只是废人！",
+        date: "2006/6/7 18:08:15",
+        content: `
+            <p>"教你炒股票"这样的题目，全中国不会有第二人比本ID更适合写的。当然，股票是炒出来的，不是写出来的，因此也从未想过写这样的题目。但任何事情都是有缘起的，缘分到了，也不妨写上一写。</p>
+            <p>人，总是很奇怪的就算是很聪明的人，或者在其他行业很成功的人，一旦进入资本市场，就像换了人。虚拟和现实的鸿沟使得干实业的，且不说期货了，就算到风险小多的股市，也很少能干好的。而习惯在虚拟市场玩游戏的，基本很难回头去弄实业，这些例子都太多了。</p>
+            <p>周围朋友和经济有关的，干金融的比较多，也有几个干实业的。去年人民币放开后，有次和他们一起玩，偶然聊起股票。当时给他们的意见是，由于资源的全球化升势及人民币的升值，国内实业将有很大的困难，而虚拟市场由于对资本的吸纳作用将大有改观，会出现一个至少是大X浪级别的行情，劝他们应该分流部分资金到资本市场来。由于前几年资本市场上出事的人一拨接一拨，这帮家伙很犹豫，一晃就把时间过了。</p>
+            <p>今年，过完春节，这帮家伙突然开始不断骚扰本ID，说要入市。本ID当时已经忙得无暇分身，对他们一番数落，然后告诉他们，现在是个人都能挣钱，自己玩去，没空理你们。</p>
+            <p>进入三、四月份，当时有色等行情已经很火暴，这帮家伙想大进又怕风险，一直在小打小闹。有一天，又在一起玩，他们一定要本ID选择一些具体的股票。因为这两年一直有很多外资大基金进来接触要收中国快速消费品的企业，还有就是一些大的周期行业将面临重组，就让他们去关注这两类股票和权证。</p>
+            <p>五月份后，股市大涨，大家都很忙，中旬时又有机会碰头，一问之下，基本都没怎么大买，买了的也没几个站就下车了。他们都显得很烦躁，不断问有什么可买的。既有点可怜又有点烦他们，怎么在市场外弄得好好的，一到市场里都成这样了？就有点敷衍地告诉他们，去买深沪两地3元上下的本地股，而且告诉他们，这样下去肯定要出问题的，最好自己好好学学，别人怎么厉害也不可能整天像照顾小孩一样看着。</p>
+            <p>上周日，又碰在一起。这几位，大概都一肚子股票了，这次个个神采飞扬；大概又都刨了几本书，听了几股评，看了几杂志，更是口水喷喷地这面那面、一线二线地专家了，1800、2000、2500点地牛人了。这市场，还真能改造人！只是这市场的绞肉机，又有新货了。</p>
+            <p>有人说，市场是老人挣新人的钱，而市场中的老人，套个10年8年的一抓一大把。其实，市场从来都是明白人挣糊涂人的钱。在市场经济中，只要你参与到经济中来，就是经济人了，经济人当然就以挣钱为目的，特别在资本市场中，没有慈善家，只有赢家和输家。而不会赢钱的经济人，只是废人！无论你在其他方面如何成功，到了市场里，赢输就是唯一标准，除此之外，都是废话。</p>
+            <p>（待续）</p>
+        `,
+        prev: null,
+        next: "stock002"
+    },
+    stock002: {
+        title: "教你炒股票2：没有庄家，有的只是赢家和输家！",
+        date: "2006/6/7 22:41:27",
+        content: `
+            <p>庄家这种动物对大多数人来说很神秘，对本ID来说就太稀松平常了。庄家和散户这种二元对立，大概比较适合现代中国人的思维模式，因此就变得如此的常识，但常识往往就是共同谬误的同义词，不仅是所谓的散户，而且很多的所谓庄家，也就牺牲其中。</p>
+            <p>一般定义中的所谓庄家，就是那些拿着大量资金，能控制股票走势的人。在有关庄家的神话中，庄家被描述成无所不能的，既能超越技术指标、更能超越基本面，大势大盘就更不在话下了。这里说的还只是个股的庄家，至于国家级的庄家，更成了所谓散户的上帝。关于这些庄家上帝的传闻在市场中一秒钟都不曾消停，构成了常识的谬误流播。</p>
+            <p>但所谓的庄家，前赴后继，尸骨早堆成了山。前几天在一个私人聚会里，还碰到一个50年代的老大哥，说已经准备了二十亿，要坐庄，让本ID去联系一下某某公司的头。那人也是有头有脸的了，不想当众奚落他，暗地里把他嘲笑了一番，简直是脑子锈着了。</p>
+            <p>当然，即使庄家的神话已经如此常识，这种傻人还是一直、也会继续前赴后继的。而正因为这种傻人如此的多，猎人打起猎来才能收获丰富。看到越摆庄家谱的，猎人就越高兴，反正这类型的，基本在市场上混个几年就基本尸骨无存了。</p>
+            <p>市场没有什么庄家，有的只是赢家和输家！有的只是各种类型的动物，还有极少数的高明猎手。市场就是一个围猎的游戏，当你只有一把小弓箭，你可以去打野兔；当你有了屠龙刀，抓几条蛇来玩当然就没劲了，关键你是否有屠龙刀！</p>
+            <p>（待续）</p>
+        `,
+        prev: "stock001",
+        next: "stock003"
+    },
+    stock003: {
+        title: "教你炒股票3：你的喜好，你的死亡陷阱！",
+        date: "2006/6/9 17:03:48",
+        content: `
+            <p>要世界杯了，在世界杯时谈论股票是一件很无趣的事情，而且，全世界的人都知道，世界杯前后，股票市场几乎都要大跌，这个常识，虽然并不比所有有关所谓庄家的常识更值得常识，但至少有趣，并不像所谓庄家一般无聊。还可以增加一句的是，足球至少有帅男，而见过的如此之多的所谓庄家里，连长得不那么歪瓜裂枣的都少，这的确是实际情况，并不是开玩笑。</p>
+            <p>但你的喜好，就是你的死亡陷阱！在市场中要生存，第一条就是在市场中要杜绝一切喜好。市场的诱惑，永远就是通过你的喜好而陷你于死亡。市场中需要的是露水之缘而不是比翼之情，天长地久之类的东西和市场无关。市场中唯一值得天长地久的就是赢钱，任何一个来市场的人，其目的就是赢钱，任何与赢钱无关的都是废话。</p>
+            <p>必须明白，任何让你买入一只股票的理由，并不是因为这股票如何好或被忽悠得如何好，只是你企图通过买入而赢钱，能赢钱的股票就是好的，否则都是废话。因此，市场中的任何喜好，都是把你引入迷途的陷阱，必须逐一看破，进而洗心革面，才能在市场上生存。</p>
+            <p>当然，能看清楚自己周围的市场陷阱，还只是第一步，更进一步，要学会利用市场陷阱来赢钱。当你要买的时候，空头的陷阱就是你的最佳机会，当你要卖的时候，多头的陷阱当然就是你的天堂。这市场，永远不缺卖在最低点，买在最高点的人，这世界上没有什么是可以让所有人赢钱的，连大牛市中都有很多人要亏损累累。而市场中的行为，就如同一个修炼上乘武功的过程，最终能否成功，还是要落实到每个人的智慧、秉性、天赋、勤奋上来！</p>
+            <p>（待续）</p>
+        `,
+        prev: "stock002",
+        next: "stock004"
+    },
+    stock004: {
+        title: "教你炒股票4：什么是理性？今早买N中工就是理性！",
+        date: "2006/6/19 21:41:14",
+        content: `
+            <p>很奇怪，在资本市场中经常有人在教导别人要理性。而所有理性模式后面，都毫无例外地对应着一套价值系统为依据，企图通过这所谓的依据而战胜市场，就是所有这些依据最大的心理依据，而这，就是所有资本谎言和神话的基础。真正的理性就是要去看破各色各样的理性谎言，理性从来都是人YY出来的皇帝新衣，这在哲学层面已不是什么新鲜的事情。</p>
+            <p>更可笑的是，被所谓理性毒害的人们，更经常地把理性当成一种文字游戏，当文字货币化以后，这种文字游戏就以一种更无耻的方式展开了。但真正的理性从来都是当下的，从来都是实践的，而实践，从来都是当下的理性。就像性是干出来的而不是说出来的，理性也一样。</p>
+            <p>站在资本市场的角度，就是所有的介入都是可介入从而被介入地介入着。也就是所有的介入，当你介入时，市场与你就一体了，你创造着市场，从而市场也创造着你，而这种创造都是当下的，从而也是模式化的。真正的理性关心的不是介入的具体模式如何，而是这种模式如何被当下着，最重要的是，这种模式如何死去。</p>
+            <p>生的，总要死去，如果自然真有什么法则，这就是唯一的法则，市场上的法则也一样。所谓法则，就是宿命。在市场中，死亡是常态，也是必然，而生存，必须以生为依据，所谓生生不息，其实就是死死不息，当你被依据所依据时，其实已在死亡之中。而生死，从来都是被当下所模式，资本市场也一样，以为离了生死也就无生死可了，这不过是所谓理性的妄想。</p>
+            <p>对于市场参与者来说，首要且时刻必须清楚自己目前介入模式的当下，而市场中的绝大多数人，是不知道自己在干什么的，狠一点说，就是死都不知道怎么死就死了，市场基本由这种人构成。这种构成与资金实力无关，大资金死起来更快，一夜之间土崩瓦解的事情，本ID见多了。</p>
+            <p>对于市场来说，介入就是介入生死，无所依据地从容于各种模式之间，无所往而生其心，而心实无所生，方可于生死而从容。</p>
+            <p>对于市场的参与者来说，首要且时刻必须清楚自己目前介入模式的当下，而市场中的绝大多数人，是不知道自己在干什么的。如果你一定要很习惯地、理性地追问什么是理性，那么，相对那些光说不干的所谓理性，今早15元多买N中工就是理性！理性是干出来的，今天，你干了吗？</p>
+            <p>（待续）</p>
+        `,
+        prev: "stock003",
+        next: "stock005"
+    },
+    stock005: {
+        title: "教你炒股票5：市场无须分析，只要看和干！",
+        date: "2006/6/21 20:52:02",
+        content: `
+            <p>喜欢吹牛皮的，在市场里最常见，例如一种以分析市场、吹牛皮为生的职业，叫什么股评、专家的。此类人不过是市场上的寄生虫，真正的猎手只会观察、操作，用嘴是打不了豺狼的。</p>
+            <p>市场就是一个狩猎场，首先你要成为一个好猎手，而一个猎手，首先要习惯于无言。如果真有什么真理，那真理也是无言的。可言说的，都不过是人类思想的分泌物，臭气熏天。真不可言说了，就无不可言，言而无言，是乃真言。</p>
+            <p>一个好的猎手，可以没有嘴巴，但一定会有一双不为外物所动的眼睛，在这眼睛下，一切如幻化般透明。要不被外物所动，则首先要不被自我所迷惑，其实无所谓外物、自我，都不过幻化空花，如此，方可从容其中。</p>
+            <p>猎手只关心猎物，猎物不是分析而得的。猎物不是你所想到的，而是你看到的。相信你的眼睛，不要相信你的脑筋，更不要让你的脑筋动了你的眼睛。被脑筋所动的眼睛充满了成见，而所有的成见都不过对应着把你引向那最终陷阱的诱饵。猎手并不畏惧陷阱，猎手只是看着猎物不断地、以不同方式却共同结果地掉入各类陷阱，这里无所谓分析，只是看和干！</p>
+            <p>猎手的好坏不是基于其能说出多少道道来，而是其置于其地的直觉。好的猎手不看而看，心物相通，如果不明白这一点，最简单就是把你一个人扔到深山里，只要你能活着出来，就大概能知道一点了。</p>
+            <p>（待续）</p>
+        `,
+        prev: "stock004",
+        next: "stock006"
+    },
+    stock006: {
+        title: "教你炒股票6：本ID如何在股市中翻倍",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock005",
+        next: "stock007"
+    },
+    stock007: {
+        title: "教你炒股票7",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock006",
+        next: "stock008"
+    },
+    stock008: {
+        title: "教你炒股票8",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock007",
+        next: "stock009"
+    },
+    stock009: {
+        title: "教你炒股票9",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock008",
+        next: "stock010"
+    },
+    stock010: {
+        title: "教你炒股票10",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock009",
+        next: "stock011"
+    },
+    stock011: {
+        title: "教你炒股票11",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock010",
+        next: "stock012"
+    },
+    stock012: {
+        title: "教你炒股票12",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock011",
+        next: "stock013"
+    },
+    stock013: {
+        title: "教你炒股票13",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock012",
+        next: "stock014"
+    },
+    stock014: {
+        title: "教你炒股票14",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock013",
+        next: "stock015"
+    },
+    stock015: {
+        title: "教你炒股票15",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock014",
+        next: "stock016"
+    },
+    stock016: {
+        title: "教你炒股票16",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock015",
+        next: "stock017"
+    },
+    stock017: {
+        title: "教你炒股票17",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock016",
+        next: "stock018"
+    },
+    stock018: {
+        title: "教你炒股票18",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock017",
+        next: "stock019"
+    },
+    stock019: {
+        title: "教你炒股票19",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock018",
+        next: "stock020"
+    },
+    stock020: {
+        title: "教你炒股票20",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock019",
+        next: "stock021"
+    },
+    stock021: {
+        title: "教你炒股票21",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock020",
+        next: "stock022"
+    },
+    stock022: {
+        title: "教你炒股票22",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock021",
+        next: "stock023"
+    },
+    stock023: {
+        title: "教你炒股票23",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock022",
+        next: "stock024"
+    },
+    stock024: {
+        title: "教你炒股票24",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock023",
+        next: "stock025"
+    },
+    stock025: {
+        title: "教你炒股票25",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock024",
+        next: "stock026"
+    },
+    stock026: {
+        title: "教你炒股票26",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock025",
+        next: "stock027"
+    },
+    stock027: {
+        title: "教你炒股票27",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock026",
+        next: "stock028"
+    },
+    stock028: {
+        title: "教你炒股票28",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock027",
+        next: "stock029"
+    },
+    stock029: {
+        title: "教你炒股票29",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock028",
+        next: "stock030"
+    },
+    stock030: {
+        title: "教你炒股票30",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock029",
+        next: "stock031"
+    },
+    stock031: {
+        title: "教你炒股票31",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock030",
+        next: "stock032"
+    },
+    stock032: {
+        title: "教你炒股票32",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock031",
+        next: "stock033"
+    },
+    stock033: {
+        title: "教你炒股票33",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock032",
+        next: "stock034"
+    },
+    stock034: {
+        title: "教你炒股票34",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock033",
+        next: "stock035"
+    },
+    stock035: {
+        title: "教你炒股票35",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock034",
+        next: "stock036"
+    },
+    stock036: {
+        title: "教你炒股票36",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock035",
+        next: "stock037"
+    },
+    stock037: {
+        title: "教你炒股票37",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock036",
+        next: "stock038"
+    },
+    stock038: {
+        title: "教你炒股票38",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock037",
+        next: "stock039"
+    },
+    stock039: {
+        title: "教你炒股票39",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock038",
+        next: "stock040"
+    },
+    stock040: {
+        title: "教你炒股票40",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock039",
+        next: "stock041"
+    },
+    stock041: {
+        title: "教你炒股票41",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock040",
+        next: "stock042"
+    },
+    stock042: {
+        title: "教你炒股票42",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock041",
+        next: "stock043"
+    },
+    stock043: {
+        title: "教你炒股票43",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock042",
+        next: "stock044"
+    },
+    stock044: {
+        title: "教你炒股票44",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock043",
+        next: "stock045"
+    },
+    stock045: {
+        title: "教你炒股票45",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock044",
+        next: "stock046"
+    },
+    stock046: {
+        title: "教你炒股票46",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock045",
+        next: "stock047"
+    },
+    stock047: {
+        title: "教你炒股票47",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock046",
+        next: "stock048"
+    },
+    stock048: {
+        title: "教你炒股票48",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock047",
+        next: "stock049"
+    },
+    stock049: {
+        title: "教你炒股票49",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock048",
+        next: "stock050"
+    },
+    stock050: {
+        title: "教你炒股票50",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock049",
+        next: "stock051"
+    },
+    stock051: {
+        title: "教你炒股票51",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock050",
+        next: "stock052"
+    },
+    stock052: {
+        title: "教你炒股票52",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock051",
+        next: "stock053"
+    },
+    stock053: {
+        title: "教你炒股票53",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock052",
+        next: "stock054"
+    },
+    stock054: {
+        title: "教你炒股票54",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock053",
+        next: "stock055"
+    },
+    stock055: {
+        title: "教你炒股票55",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock054",
+        next: "stock056"
+    },
+    stock056: {
+        title: "教你炒股票56",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock055",
+        next: "stock057"
+    },
+    stock057: {
+        title: "教你炒股票57",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock056",
+        next: "stock058"
+    },
+    stock058: {
+        title: "教你炒股票58",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock057",
+        next: "stock059"
+    },
+    stock059: {
+        title: "教你炒股票59",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock058",
+        next: "stock060"
+    },
+    stock060: {
+        title: "教你炒股票60",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock059",
+        next: "stock061"
+    },
+    stock061: {
+        title: "教你炒股票61",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock060",
+        next: "stock062"
+    },
+    stock062: {
+        title: "教你炒股票62",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock061",
+        next: "stock063"
+    },
+    stock063: {
+        title: "教你炒股票63",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock062",
+        next: "stock064"
+    },
+    stock064: {
+        title: "教你炒股票64",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock063",
+        next: "stock065"
+    },
+    stock065: {
+        title: "教你炒股票65",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock064",
+        next: "stock066"
+    },
+    stock066: {
+        title: "教你炒股票66",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock065",
+        next: "stock067"
+    },
+    stock067: {
+        title: "教你炒股票67",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock066",
+        next: "stock068"
+    },
+    stock068: {
+        title: "教你炒股票68",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock067",
+        next: "stock069"
+    },
+    stock069: {
+        title: "教你炒股票69",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock068",
+        next: "stock070"
+    },
+    stock070: {
+        title: "教你炒股票70",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock069",
+        next: "stock071"
+    },
+    stock071: {
+        title: "教你炒股票71",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock070",
+        next: "stock072"
+    },
+    stock072: {
+        title: "教你炒股票72",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock071",
+        next: "stock073"
+    },
+    stock073: {
+        title: "教你炒股票73",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock072",
+        next: "stock074"
+    },
+    stock074: {
+        title: "教你炒股票74",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock073",
+        next: "stock075"
+    },
+    stock075: {
+        title: "教你炒股票75",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock074",
+        next: "stock076"
+    },
+    stock076: {
+        title: "教你炒股票76",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock075",
+        next: "stock077"
+    },
+    stock077: {
+        title: "教你炒股票77",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock076",
+        next: "stock078"
+    },
+    stock078: {
+        title: "教你炒股票78",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock077",
+        next: "stock079"
+    },
+    stock079: {
+        title: "教你炒股票79",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock078",
+        next: "stock080"
+    },
+    stock080: {
+        title: "教你炒股票80",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock079",
+        next: "stock081"
+    },
+    stock081: {
+        title: "教你炒股票81",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock080",
+        next: "stock082"
+    },
+    stock082: {
+        title: "教你炒股票82",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock081",
+        next: "stock083"
+    },
+    stock083: {
+        title: "教你炒股票83",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock082",
+        next: "stock084"
+    },
+    stock084: {
+        title: "教你炒股票84",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock083",
+        next: "stock085"
+    },
+    stock085: {
+        title: "教你炒股票85",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock084",
+        next: "stock086"
+    },
+    stock086: {
+        title: "教你炒股票86",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock085",
+        next: "stock087"
+    },
+    stock087: {
+        title: "教你炒股票87",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock086",
+        next: "stock088"
+    },
+    stock088: {
+        title: "教你炒股票88",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock087",
+        next: "stock089"
+    },
+    stock089: {
+        title: "教你炒股票89",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock088",
+        next: "stock090"
+    },
+    stock090: {
+        title: "教你炒股票90",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock089",
+        next: "stock091"
+    },
+    stock091: {
+        title: "教你炒股票91",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock090",
+        next: "stock092"
+    },
+    stock092: {
+        title: "教你炒股票92",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock091",
+        next: "stock093"
+    },
+    stock093: {
+        title: "教你炒股票93",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock092",
+        next: "stock094"
+    },
+    stock094: {
+        title: "教你炒股票94",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock093",
+        next: "stock095"
+    },
+    stock095: {
+        title: "教你炒股票95",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock094",
+        next: "stock096"
+    },
+    stock096: {
+        title: "教你炒股票96",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock095",
+        next: "stock097"
+    },
+    stock097: {
+        title: "教你炒股票97",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock096",
+        next: "stock098"
+    },
+    stock098: {
+        title: "教你炒股票98",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock097",
+        next: "stock099"
+    },
+    stock099: {
+        title: "教你炒股票99",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock098",
+        next: "stock100"
+    },
+    stock100: {
+        title: "教你炒股票100",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock099",
+        next: "stock101"
+    },
+    stock101: {
+        title: "教你炒股票101",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock100",
+        next: "stock102"
+    },
+    stock102: {
+        title: "教你炒股票102",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock101",
+        next: "stock103"
+    },
+    stock103: {
+        title: "教你炒股票103",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock102",
+        next: "stock104"
+    },
+    stock104: {
+        title: "教你炒股票104",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock103",
+        next: "stock105"
+    },
+    stock105: {
+        title: "教你炒股票105",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock104",
+        next: "stock106"
+    },
+    stock106: {
+        title: "教你炒股票106",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock105",
+        next: "stock107"
+    },
+    stock107: {
+        title: "教你炒股票107",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock106",
+        next: "stock108"
+    },
+    stock108: {
+        title: "教你炒股票108",
+        date: "",
+        content: "<p>待添加</p>",
+        prev: "stock107",
         next: null
     }
 };
