@@ -88,7 +88,7 @@ function renderArticleList() {
         if (!article) return;
         
         const link = document.createElement('a');
-        link.href = '#' + currentCategory + '/' + articleId;
+        link.href = '?' + currentCategory + '=' + articleId;
         link.className = 'article-item';
         if (articleId === currentArticle) {
             link.classList.add('active');
@@ -2598,15 +2598,16 @@ function getArticleUrl(articleId, categoryId) {
 }
 
 function parseHash() {
-    const hash = window.location.hash.slice(1);
-    if (!hash) return { category: 'chan', article: 'xu' };
-
-    const parts = hash.split('/');
-    if (parts.length >= 2) {
-        return { category: parts[0], article: parts[1] };
-    } else if (parts.length === 1) {
-        return { category: 'chan', article: parts[0] };
+    const params = new URLSearchParams(window.location.search);
+    
+    if (params.has('chan')) {
+        return { category: 'chan', article: params.get('chan') || 'xu' };
+    } else if (params.has('stock')) {
+        return { category: 'stock', article: params.get('stock') || 'stock001' };
+    } else if (params.has('lunyu')) {
+        return { category: 'lunyu', article: params.get('lunyu') || 'philosophy1' };
     }
+    
     return { category: 'chan', article: 'xu' };
 }
 
@@ -2625,7 +2626,8 @@ function loadArticle(articleId, updateHash = true) {
     currentArticle = articleId;
 
     if (updateHash) {
-        window.location.hash = getArticleUrl(articleId, currentCategory);
+        const newUrl = window.location.pathname + '?' + currentCategory + '=' + articleId;
+        history.pushState({article: articleId, category: currentCategory}, '', newUrl);
     }
 
     document.querySelectorAll('.article-item').forEach(item => {
@@ -2667,17 +2669,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // 加载默认文章
     loadArticle('xu');
 
-    // 监听hash变化
-    window.addEventListener('hashchange', function() {
-        const hashData = parseHash();
-        if (categories[hashData.category]) {
-            if (hashData.category !== currentCategory) {
-                currentCategory = hashData.category;
-                switchCategory(hashData.category);
+    // 监听浏览器前进后退
+    window.addEventListener('popstate', function(e) {
+        if (e.state && e.state.article) {
+            if (categories[e.state.category]) {
+                currentCategory = e.state.category;
+                switchCategory(e.state.category);
             }
-        }
-        if (articles[hashData.article]) {
-            loadArticle(hashData.article, false);
+            if (articles[e.state.article]) {
+                loadArticle(e.state.article, false);
+            }
         }
     });
 
