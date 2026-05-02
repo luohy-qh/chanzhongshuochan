@@ -69,8 +69,6 @@ function switchCategory(categoryId) {
     if (category.articles.length > 0) {
         loadArticle(category.articles[0]);
     }
-    
-    console.log('切换到分类：', category.name);
 }
 
 // 渲染侧边栏文章列表
@@ -90,7 +88,7 @@ function renderArticleList() {
         if (!article) return;
         
         const link = document.createElement('a');
-        link.href = '#';
+        link.href = '#' + currentCategory + '/' + articleId;
         link.className = 'article-item';
         if (articleId === currentArticle) {
             link.classList.add('active');
@@ -2595,7 +2593,24 @@ const articles = {
 
 let currentArticle = 'xu';
 
-function loadArticle(articleId) {
+function getArticleUrl(articleId, categoryId) {
+    return '#' + categoryId + '/' + articleId;
+}
+
+function parseHash() {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return { category: 'chan', article: 'xu' };
+
+    const parts = hash.split('/');
+    if (parts.length >= 2) {
+        return { category: parts[0], article: parts[1] };
+    } else if (parts.length === 1) {
+        return { category: 'chan', article: parts[0] };
+    }
+    return { category: 'chan', article: 'xu' };
+}
+
+function loadArticle(articleId, updateHash = true) {
     const article = articles[articleId];
     if (!article) return;
 
@@ -2608,6 +2623,10 @@ function loadArticle(articleId) {
     bodyEl.innerHTML = article.content;
 
     currentArticle = articleId;
+
+    if (updateHash) {
+        window.location.hash = getArticleUrl(articleId, currentCategory);
+    }
 
     document.querySelectorAll('.article-item').forEach(item => {
         item.classList.remove('active');
@@ -2642,10 +2661,25 @@ function updatePagination() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('网站已加载');
-    
-    // 初始渲染文章列表
+    // 初始化渲染文章列表
     renderArticleList();
+    
+    // 加载默认文章
+    loadArticle('xu');
+
+    // 监听hash变化
+    window.addEventListener('hashchange', function() {
+        const hashData = parseHash();
+        if (categories[hashData.category]) {
+            if (hashData.category !== currentCategory) {
+                currentCategory = hashData.category;
+                switchCategory(hashData.category);
+            }
+        }
+        if (articles[hashData.article]) {
+            loadArticle(hashData.article, false);
+        }
+    });
 
     const categoryItems = document.querySelectorAll('.category-item');
     
@@ -2692,6 +2726,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    loadArticle('xu');
 });
