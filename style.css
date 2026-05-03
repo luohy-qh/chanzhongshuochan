@@ -243,6 +243,16 @@ body {
     text-align: justify;
 }
 
+.article-body .poetry {
+    text-align: center;
+    line-height: 2.2;
+}
+
+.article-body .poetry p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .pagination {
     display: flex;
     justify-content: space-between;
