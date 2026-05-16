@@ -53,6 +53,8 @@
             line-height: 2;
             font-size: 17px;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -388,7 +390,7 @@
             color: var(--muted);
             font-size: 14px;
             border-top: 1px solid var(--border-color);
-            margin-top: 60px;
+            margin-top: auto;
         }
 
         .fade-in {
@@ -2240,10 +2242,6 @@
         </div>
     </main>
 
-    <footer>
-        <p>缠中说禅 · 教你打坐系列 · Matrix Agent 整理</p>
-    </footer>
-
     <script>
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
@@ -2303,5 +2301,8 @@
 
         updateActiveSidebar();
     </script>
+    <footer>
+        <p>缠中说禅 · 教你打坐系列 · Matrix Agent 整理</p>
+    </footer>
 </body>
 </html>
