@@ -33332,53 +33332,6 @@ function loadArticle(articleId, updateHash = true) {
     updatePagination();
 
     window.scrollTo(0, 0);
-
-    // 触发 DOM 内容变化事件，通知浏览器扩展（如五彩插件）重新扫描
-    triggerDOMChangedEvent();
-}
-
-// 触发 DOM 变化事件，兼容各种浏览器扩展
-function triggerDOMChangedEvent() {
-    const body = document.getElementById('article-body');
-    if (!body) return;
-
-    // 方法1: 触发标准的 DOMNodeInserted 事件（兼容部分老扩展）
-    try {
-        const event = new Event('DOMNodeInserted', { bubbles: true });
-        body.dispatchEvent(event);
-    } catch (e) {}
-
-    // 方法2: 触发自定义事件（推荐扩展监听）
-    try {
-        const customEvent = new CustomEvent('articleLoaded', {
-            bubbles: true,
-            detail: {
-                articleId: currentArticle,
-                category: currentCategory,
-                timestamp: Date.now()
-            }
-        });
-        document.dispatchEvent(customEvent);
-        body.dispatchEvent(customEvent);
-    } catch (e) {}
-
-    // 方法3: 触发 focus 事件
-    try {
-        window.dispatchEvent(new Event('focus'));
-    } catch (e) {}
-
-    // 方法4: 使用 MutationObserver 触发DOM变化
-    try {
-        const observer = new MutationObserver((mutations) => {
-            observer.disconnect();
-        });
-        observer.observe(body, { childList: true, subtree: true });
-        // 立即添加再移除一个不可见节点，触发一次变化
-        const temp = document.createElement('span');
-        temp.style.display = 'none';
-        body.appendChild(temp);
-        body.removeChild(temp);
-    } catch (e) {}
 }
 
 function updatePagination() {
