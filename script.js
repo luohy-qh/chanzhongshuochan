@@ -301,6 +301,11 @@ function switchCategory(categoryId) {
     const category = categories[categoryId];
     if (!category) return;
     
+    // 切换分类前通知五彩插件
+    if (currentCategory !== categoryId) {
+        notifyWucaiBeforeChange();
+    }
+    
     currentCategory = categoryId;
     
     // 更新分类名称显示
@@ -313,6 +318,9 @@ function switchCategory(categoryId) {
             item.classList.add('active');
         }
     });
+    
+    // 更新body的分类标识
+    document.body.dataset.category = categoryId;
     
     // 重新渲染侧边栏文章列表
     renderArticleList();
@@ -33311,14 +33319,43 @@ function loadArticle(articleId, updateHash = true) {
     const dateEl = document.querySelector('.article-meta');
     const bodyEl = document.getElementById('article-body');
 
+    // 记录当前文章ID，用于五彩插件兼容性
+    const previousArticle = currentArticle;
+    
+    // 清空body内容前，先通知插件准备
+    if (previousArticle && previousArticle !== articleId) {
+        notifyWucaiBeforeChange();
+    }
+
     titleEl.textContent = article.title;
     dateEl.textContent = article.date;
-    bodyEl.innerHTML = article.content;
+    
+    // 使用临时容器进行DOM操作，避免闪烁
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = article.content;
+    
+    // 清空旧内容并插入新内容
+    bodyEl.innerHTML = '';
+    while (tempDiv.firstChild) {
+        bodyEl.appendChild(tempDiv.firstChild);
+    }
 
     currentArticle = articleId;
 
+    // 更新页面标题，帮助五彩插件更好地识别页面
+    document.title = article.title + ' - 缠中说禅';
+
+    // 设置稳定的页面标识，帮助五彩插件识别页面
+    document.body.dataset.pageId = articleId;
+    document.body.dataset.category = currentCategory;
+    document.body.dataset.wucai = 'enabled';
+    bodyEl.dataset.articleId = articleId;
+    bodyEl.dataset.wucaiContent = 'true';
+    bodyEl.setAttribute('data-wucai-page', currentCategory + '_' + articleId);
+
     if (updateHash) {
-        const newUrl = window.location.pathname + '?' + currentCategory + '=' + articleId;
+        // 使用更友好的URL格式，同时支持query参数和hash
+        const newUrl = window.location.pathname + '?' + currentCategory + '=' + articleId + '#' + articleId;
         history.pushState({article: articleId, category: currentCategory}, '', newUrl);
     }
 
@@ -33332,6 +33369,117 @@ function loadArticle(articleId, updateHash = true) {
     updatePagination();
 
     window.scrollTo(0, 0);
+
+    // 使用增强的事件通知五彩插件内容已更新
+    notifyWucaiContentUpdate();
+}
+
+// 五彩插件增强兼容性：内容更新通知
+function notifyWucaiContentUpdate() {
+    const timestamp = Date.now();
+    const pageId = document.body.dataset.pageId;
+    const category = document.body.dataset.category;
+    
+    // 多次延迟触发，确保DOM完全渲染
+    const delays = [0, 50, 150, 300, 500];
+    
+    delays.forEach(delay => {
+        setTimeout(() => {
+            // 1. 触发自定义事件（主要通知方式）
+            const customEvent = new CustomEvent('wucai:content-update', {
+                detail: {
+                    pageId: pageId,
+                    category: category,
+                    article: currentArticle,
+                    timestamp: timestamp,
+                    action: 'content-loaded'
+                },
+                bubbles: true,
+                cancelable: true
+            });
+            document.dispatchEvent(customEvent);
+            
+            // 2. 触发自定义的页面变化事件
+            const pageChangeEvent = new CustomEvent('wucai:page-change', {
+                detail: {
+                    pageId: pageId,
+                    category: category,
+                    article: currentArticle,
+                    timestamp: timestamp
+                },
+                bubbles: true
+            });
+            document.dispatchEvent(pageChangeEvent);
+            
+            // 3. 触发MutationObserver相关的事件，让插件可以检测到
+            const mutationEvent = new CustomEvent('wucai:mutate', {
+                bubbles: true
+            });
+            document.dispatchEvent(mutationEvent);
+            
+            // 4. 尝试使用postMessage与插件通信
+            try {
+                window.postMessage({
+                    type: 'wucai-content-update',
+                    pageId: pageId,
+                    category: category,
+                    article: currentArticle,
+                    timestamp: timestamp
+                }, '*');
+            } catch (e) {
+                // postMessage可能失败，忽略错误
+            }
+        }, delay);
+    });
+}
+
+// 五彩插件增强兼容性：内容变化前通知
+function notifyWucaiBeforeChange() {
+    const beforeEvent = new CustomEvent('wucai:before-change', {
+        detail: {
+            previousArticle: currentArticle,
+            timestamp: Date.now()
+        },
+        bubbles: true
+    });
+    document.dispatchEvent(beforeEvent);
+    
+    try {
+        window.postMessage({
+            type: 'wucai-before-change',
+            previousArticle: currentArticle,
+            timestamp: Date.now()
+        }, '*');
+    } catch (e) {
+        // 忽略错误
+    }
+}
+
+// 初始化五彩插件兼容性增强功能
+function initWucaiCompatibility() {
+    // 监听visibility变化，帮助插件检测页面切换
+    document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'visible') {
+            // 页面重新可见时，通知插件刷新内容
+            setTimeout(() => {
+                notifyWucaiContentUpdate();
+            }, 100);
+        }
+    });
+    
+    // 监听focus事件
+    window.addEventListener('focus', function() {
+        // 窗口获得焦点时通知插件
+        notifyWucaiContentUpdate();
+    });
+    
+    // 监听popstate事件（浏览器前进后退）
+    window.addEventListener('popstate', function(e) {
+        // 延迟触发，确保history state已更新
+        setTimeout(() => {
+            notifyWucaiContentUpdate();
+        }, 100);
+    });
 }
 
 function updatePagination() {
@@ -33355,11 +33503,23 @@ function updatePagination() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 初始化五彩插件兼容性增强功能
+    initWucaiCompatibility();
+    
     // 初始化渲染文章列表
     renderArticleList();
     
-    // 加载默认文章
-    loadArticle('stock001');
+    // 从URL解析要加载的文章
+    const initData = parseUrl();
+    if (initData && initData.article) {
+        if (initData.category) {
+            currentCategory = initData.category;
+            switchCategory(initData.category);
+        }
+        loadArticle(initData.article);
+    } else {
+        loadArticle('stock001');
+    }
 
     // 监听浏览器前进后退
     window.addEventListener('popstate', function(e) {
