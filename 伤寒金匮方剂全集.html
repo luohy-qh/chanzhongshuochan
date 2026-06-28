@@ -1,0 +1,3866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>伤寒论金匮要略 · 药方全集 · 倪海厦精解</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="alternate icon" type="image/x-icon" href="favicon.svg" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+<link rel="mask-icon" href="favicon.svg" color="#8b2c1d" />
+<meta name="theme-color" content="#8b2c1d" />
+<meta name="application-name" content="伤寒金匮方剂全集" />
+<meta name="apple-mobile-web-app-title" content="伤寒金匮" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #f4ede0;
+    color: #2a2418;
+    font-family: "STKaiti", "KaiTi", "楷体", "Songti SC", "STSong", serif;
+    line-height: 1.75;
+    min-height: 100vh;
+}
+.header {
+    background: linear-gradient(180deg, #fdfaf2 0%, #f4ede0 100%);
+    border-bottom: 3px double #8b2c1d;
+    padding: 24px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(60, 40, 10, 0.08);
+}
+.header h1 {
+    color: #6b1f12;
+    font-size: 32px;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+}
+.header p {
+    color: #5b4f3a;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.stats {
+    text-align: center;
+    color: #5b4f3a;
+    font-size: 14px;
+    margin: 16px 0;
+}
+.stats strong { color: #8b2c1d; }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 24px 60px;
+    overflow: hidden;
+}
+.layout {
+    display: flex;
+    align-items: flex-start;
+}
+.main-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.sidebar {
+    position: sticky;
+    top: 82px;
+    width: 360px;
+    flex-shrink: 0;
+    max-height: calc(100vh - 102px);
+    background: #fdfaf2;
+    border: 1px solid #d4c4a0;
+    border-left: 4px solid #8b2c1d;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 2px 10px rgba(60, 40, 10, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    float: left;
+    margin-right: 20px;
+}
+.sidebar-header {
+    padding: 14px 18px;
+    background: linear-gradient(180deg, #f4ede0 0%, #fdfaf2 100%);
+    border-bottom: 1px solid #d4c4a0;
+    color: #6b1f12;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.sidebar-search {
+    padding: 10px 14px;
+    border-bottom: 1px dashed #d4c4a0;
+    flex-shrink: 0;
+}
+.sidebar-search input {
+    width: 100%;
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 1px solid #d4c4a0;
+    background: #f4ede0;
+    color: #2a2418;
+    border-radius: 4px;
+    outline: none;
+}
+.sidebar-search input:focus { border-color: #8b2c1d; }
+.sidebar-body {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    padding: 6px 0;
+}
+.cat-group { border-bottom: 1px dashed #e8dcc0; }
+.cat-group:last-child { border-bottom: none; }
+.cat-title {
+    padding: 12px 16px;
+    background: #f4ede0;
+    color: #6b1f12;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+.cat-title:hover { background: #ece2cb; }
+.cat-title .cat-arrow {
+    font-size: 12px;
+    color: #8b2c1d;
+    transition: transform 0.2s;
+}
+.cat-group.open .cat-title .cat-arrow { transform: rotate(90deg); }
+.cat-count {
+    font-size: 12px;
+    color: #8c7e5e;
+    font-weight: normal;
+    margin-left: 6px;
+    letter-spacing: 0;
+}
+.cat-items {
+    display: none;
+    list-style: none;
+    background: #fdfaf2;
+}
+.cat-group.open .cat-items { display: block; }
+.cat-item {
+    padding: 9px 18px 9px 32px;
+    font-size: 14px;
+    color: #2a2418;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.4;
+}
+.cat-item:hover {
+    background: #f4ede0;
+    color: #6b1f12;
+    border-left-color: #8b2c1d;
+}
+.cat-item.active {
+    background: #f4ede0;
+    color: #8b2c1d;
+    border-left-color: #8b2c1d;
+    font-weight: bold;
+}
+.cat-item .item-id {
+    font-size: 11px;
+    color: #8c7e5e;
+    background: #f4ede0;
+    padding: 1px 6px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+.section-title {
+    font-size: 24px;
+    color: #6b1f12;
+    border-bottom: 2px solid #8b2c1d;
+    padding-bottom: 10px;
+    margin: 40px 0 20px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+.section-subtitle {
+    color: #8c7e5e;
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+.formula-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+}
+.formula-item {
+    background: #fdfaf2;
+    border: 1px solid #d4c4a0;
+    border-left: 4px solid #8b2c1d;
+    padding: 14px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+.formula-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 44, 29, 0.15);
+    border-color: #8b2c1d;
+}
+.formula-num {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 11px;
+    color: #8c7e5e;
+    background: #f4ede0;
+    padding: 2px 8px;
+    border-radius: 2px;
+}
+.formula-name {
+    font-size: 20px;
+    color: #6b1f12;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+.formula-composition {
+    font-size: 13px;
+    color: #5b4f3a;
+    line-height: 1.6;
+}
+.formula-details {
+    background: #fdfaf2;
+    border: 2px solid #8b2c1d;
+    padding: 30px 40px;
+    margin: 20px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(60, 40, 10, 0.1);
+    position: relative;
+}
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #8b2c1d;
+    color: #fdfaf2;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+}
+.close-btn:hover { background: #6b1f12; }
+.detail-header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #d4c4a0;
+}
+.detail-id {
+    color: #8c7e5e;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.detail-title {
+    font-size: 36px;
+    color: #6b1f12;
+    margin: 10px 0;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+.detail-cat {
+    display: inline-block;
+    background: #f4ede0;
+    color: #8b2c1d;
+    border: 1px solid #8b2c1d;
+    padding: 4px 16px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    border-radius: 2px;
+}
+.detail-section {
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+}
+.detail-section-title {
+    font-size: 18px;
+    color: #6b1f12;
+    border-left: 4px solid #8b2c1d;
+    padding-left: 12px;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+.detail-content {
+    font-size: 16px;
+    line-height: 1.9;
+    background: #f4ede0;
+    padding: 14px 18px;
+    border-radius: 4px;
+    border: 1px solid #e8dcc0;
+    white-space: pre-wrap;
+}
+.drug-list {
+    list-style: none;
+    background: #f4ede0;
+    padding: 14px 18px;
+    border-radius: 4px;
+    border: 1px solid #e8dcc0;
+}
+.drug-list li {
+    padding: 6px 0;
+    border-bottom: 1px dashed #d4c4a0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    gap: 16px;
+}
+.drug-list li:last-child { border-bottom: none; }
+.drug-name { color: #2a2418; font-weight: bold; }
+.drug-dose { color: #8b2c1d; text-align: right; }
+.point-item {
+    background: #f4ede0;
+    padding: 12px 16px 12px 32px;
+    margin-bottom: 10px;
+    border-left: 3px solid #b08a3a;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.9;
+}
+.point-item::before {
+    content: "◆";
+    position: absolute;
+    left: 12px;
+    color: #8b2c1d;
+    font-size: 12px;
+    top: 14px;
+}
+.hidden { display: none !important; }
+.no-match {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #8c7e5e;
+}
+@media (max-width: 720px) {
+    .header h1 { font-size: 24px; }
+    .formula-list { grid-template-columns: 1fr; }
+    .formula-details { padding: 20px 16px; }
+    .detail-title { font-size: 28px; }
+    .sidebar {
+        position: static;
+        width: 100%;
+        max-height: 350px;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 20px;
+        border-radius: 0 0 6px 6px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>伤寒论金匮要略 · 药方全集</h1>
+    <p>张仲景 · 伤寒113方 + 金匮131方 · 倪海厦精解</p>
+</div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">方剂分类 · 30篇</div>
+    <div class="sidebar-search">
+        <input id="sidebarSearch" type="search" placeholder="搜索药方..." />
+    </div>
+    <div class="sidebar-body" id="sidebarBody"></div>
+</aside>
+
+<div class="container">
+    <div class="layout">
+        <div class="main-content">
+            <div class="stats" id="statsBar"></div>
+            <div id="detailsContainer"></div>
+            <div id="mainList"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const FORMULAS = [
+  {
+    id: 1, name: "桂枝汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "㕮咀，以水七升，微火煮取三升，去滓，适寒温，服一升。服已须臾，啜热稀粥一升余，以助药力。温覆令一时许，遍身漐漐微似有汗者益佳，不可令如水流漓，病必不除。",
+    original: "太阳中风，阳浮而阴弱，阳浮者热自发，阴弱者汗自出，啬啬恶寒，淅淅恶风，翕翕发热，鼻鸣干呕者，桂枝汤主之。（12）\n太阳病，头痛，发热，汗出，恶风，桂枝汤主之。（13）",
+    keyPoints: [
+      "桂枝汤为群方之首，调和阴阳第一方。",
+      "桂枝解肌发表、芍药敛阴和营，二者一开一合，调和营卫。",
+      "生姜助桂枝散寒、大枣助芍药养阴、甘草调和诸药。",
+      "服后啜热稀粥以助汗，但不可过汗伤正。",
+      "太阳中风证：发热、汗出、恶风、脉浮缓。",
+      "本方是治疗太阳表虚证的主方，亦用于内伤杂病营卫不和者。"
+    ]
+  },
+  {
+    id: 2, name: "桂枝加葛根汤", category: "太阳病",
+    composition: [
+      { drug: "葛根", dose: "四两" },
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗，先煮葛根，减二升，去上沫，内诸药，煮取三升，去滓，温服一升，覆取微似汗，不须啜粥。",
+    original: "太阳病，项背强几几，反汗出恶风者，桂枝加葛根汤主之。（14）",
+    keyPoints: [
+      "桂枝汤证基础上加项背强几几，为风寒袭表、经输不利、津液不布。",
+      "葛根升阳生津、舒筋解肌，能缓解项背强急。",
+      "倪师：葛根用四两量重，取其升提津液以濡养筋脉。",
+      "与葛根汤区别：彼为无汗恶风，此为汗出恶风。"
+    ]
+  },
+  {
+    id: 3, name: "桂枝加附子汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "附子", dose: "一枚（炮，去皮，破八片）" }
+    ],
+    method: "以水七升，煮取三升，去滓，温服一升。",
+    original: "太阳病，发汗，遂漏不止，其人恶风，小便难，四肢微急，难以屈伸者，桂枝加附子汤主之。（20）",
+    keyPoints: [
+      "过汗伤阳，致阳虚不固、汗漏不止。",
+      "附子回阳救逆、固表止汗。",
+      "倪师：此方证病机为阳虚液脱，但以阳虚为本，故加附子扶阳，阳生则阴长。",
+      "小便难、四肢微急，皆为阳虚不化津液所致。",
+      "治疗原则：先扶阳后救阴，阳回则阴自复。"
+    ]
+  },
+  {
+    id: 4, name: "桂枝去芍药汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水七升，煮取三升，去滓，温服一升。",
+    original: "太阳病，下之后，脉促胸满者，桂枝去芍药汤主之。（21）",
+    keyPoints: [
+      "误下后表邪未解，胸阳受挫。",
+      "脉促为阳气尚能抗邪之象，胸满为胸阳不振。",
+      "去芍药之酸敛，避其碍阳、致邪气内陷。",
+      "倪师：芍药酸收阴柔，胸满者忌之。"
+    ]
+  },
+  {
+    id: 5, name: "桂枝去芍药加附子汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "附子", dose: "一枚（炮，去皮，破八片）" }
+    ],
+    method: "以水七升，煮取三升，去滓，温服一升。",
+    original: "若微寒者，桂枝去芍药加附子汤主之。（22）",
+    keyPoints: [
+      "上方证基础上见微恶寒，是阳虚较甚。",
+      "加附子温经扶阳。",
+      "倪师：'微寒'指脉微而恶寒，乃阳气大虚。"
+    ]
+  },
+  {
+    id: 6, name: "桂枝麻黄各半汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "一两十六铢（去皮）" },
+      { drug: "芍药", dose: "一两" },
+      { drug: "生姜", dose: "一两（切）" },
+      { drug: "甘草", dose: "一两（炙）" },
+      { drug: "麻黄", dose: "一两（去节）" },
+      { drug: "大枣", dose: "四枚（擘）" },
+      { drug: "杏仁", dose: "二十四枚（汤浸，去皮尖）" }
+    ],
+    method: "以水五升，先煮麻黄一二沸，去上沫，内诸药，煮取一升八合，去滓，温服六合。",
+    original: "太阳病，得之八九日，如疟状，发热恶寒，热多寒少，其人不呕，清便欲自可，一日二三度发……面色反有热色者，未欲解也，宜桂枝麻黄各半汤。（23）",
+    keyPoints: [
+      "表郁轻证，发热恶寒如疟，一日二三度发。",
+      "病邪微深，正气略虚，单用桂枝则力不够，单用麻黄又嫌过汗。",
+      "二方合用，小汗解表，祛邪不伤正。",
+      "倪师：面有热色、身痒为表邪怫郁、欲汗不得。"
+    ]
+  },
+  {
+    id: 7, name: "桂枝二麻黄一汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "一两十七铢（去皮）" },
+      { drug: "芍药", dose: "一两六铢" },
+      { drug: "麻黄", dose: "十六铢（去节）" },
+      { drug: "生姜", dose: "一两六铢（切）" },
+      { drug: "杏仁", dose: "十六个（去皮尖）" },
+      { drug: "甘草", dose: "一两二铢（炙）" },
+      { drug: "大枣", dose: "五枚（擘）" }
+    ],
+    method: "以水五升，先煮麻黄一二沸，去上沫，内诸药，煮取二升，去滓，温服一升，日再服。",
+    original: "服桂枝汤，大汗出，脉洪大者，与桂枝汤如前法。若形似疟，一日再发者，汗出必解，宜桂枝二麻黄一汤。（25）",
+    keyPoints: [
+      "大汗出后表邪未尽，邪郁肌表。",
+      "较桂枝麻黄各半汤证更轻，发作次数也更少。",
+      "桂枝汤重、麻黄汤轻，取微汗之意。",
+      "倪师：本方重在调和营卫，微开腠理。"
+    ]
+  },
+  {
+    id: 8, name: "桂枝二越婢一汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "十八铢（去皮）" },
+      { drug: "芍药", dose: "十八铢" },
+      { drug: "麻黄", dose: "十八铢（去节）" },
+      { drug: "甘草", dose: "十八铢（炙）" },
+      { drug: "大枣", dose: "四枚（擘）" },
+      { drug: "生姜", dose: "一两二铢（切）" },
+      { drug: "石膏", dose: "二十四铢（碎，绵裹）" }
+    ],
+    method: "以水五升，先煮麻黄一二沸，去上沫，内诸药，煮取二升，去滓，温服一升。",
+    original: "太阳病，发热恶寒，热多寒少。脉微弱者，此无阳也，不可发汗，宜桂枝二越婢一汤。（27）",
+    keyPoints: [
+      "表寒里热轻证，热多寒少。",
+      "加石膏清里热。",
+      "倪师：'无阳'指阳气大虚，'脉微弱'者慎用峻汗。",
+      "本方为表里双解轻剂，介于解表与清里之间。"
+    ]
+  },
+  {
+    id: 9, name: "桂枝去桂加茯苓白术汤", category: "太阳病",
+    composition: [
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "白术", dose: "三两" },
+      { drug: "茯苓", dose: "三两" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水八升，煮取三升，去滓，温服一升。小便利则愈。",
+    original: "服桂枝汤，或下之，仍头项强痛，翕翕发热，无汗，心下满微痛，小便不利者，桂枝去桂加茯苓白术汤主之。（28）",
+    keyPoints: [
+      "水饮内停、太阳经输不利。",
+      "小便不利、心下满微痛为水饮内停之象。",
+      "茯苓、白术健脾利水。",
+      "倪师：此方利水以通阳，气化则表自解。",
+      "历代对'去桂'有争议，倪师主张去桂以专攻水饮。"
+    ]
+  },
+  {
+    id: 10, name: "甘草干姜汤", category: "太阳病",
+    composition: [
+      { drug: "甘草", dose: "四两（炙）" },
+      { drug: "干姜", dose: "二两（炮）" }
+    ],
+    method: "以水三升，煮取一升五合，去滓，分温再服。",
+    original: "伤寒，脉浮，自汗出……反与桂枝，欲攻其表，此误也。得之便厥，咽中干，烦躁吐逆者，作甘草干姜汤与之，以复其阳……（29）",
+    keyPoints: [
+      "误用桂枝汤攻表后阴阳两虚。",
+      "本方先复其阳（甘草、干姜辛甘化阳）。",
+      "倪师：干姜温中、甘草补中，二者合用温复中阳。",
+      "为中医'甘温除大热'、'辛甘化阳'的代表方。",
+      "脚挛急为阴液不足，故先复阳后滋阴。"
+    ]
+  },
+  {
+    id: 11, name: "芍药甘草汤", category: "太阳病",
+    composition: [
+      { drug: "白芍药", dose: "四两" },
+      { drug: "甘草", dose: "四两（炙）" }
+    ],
+    method: "以水三升，煮取一升五合，去滓，分温再服。",
+    original: "……若厥愈足温者，更作芍药甘草汤与之，其脚即伸……（29）",
+    keyPoints: [
+      "酸甘化阴、柔筋缓急。",
+      "主治津液受损、阴虚筋急所致脚挛急。",
+      "倪师：此方为脚挛急的特效方，亦用于胃痉挛、坐骨神经痛等。",
+      "临床应用极广，可加减用于多种痛症。"
+    ]
+  },
+  {
+    id: 12, name: "调胃承气汤", category: "阳明病",
+    composition: [
+      { drug: "大黄", dose: "四两（去皮，清酒洗）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "芒硝", dose: "半升" }
+    ],
+    method: "以水三升，煮取一升，去滓，内芒硝，更上火微煮令沸，少少温服之。",
+    original: "阳明病，不吐不下，心烦者，可与调胃承气汤。（207）\n太阳病三日，发汗不解，蒸蒸发热者，属胃也，调胃承气汤主之。（248）",
+    keyPoints: [
+      "三承气汤之一，泻下热实、和调胃气。",
+      "以甘草缓和大黄、芒硝之峻烈，调和胃气。",
+      "倪师：调胃承气汤是三承气中最轻的，调和胃气为主，泻下为辅。",
+      "主治阳明腑实初起，燥实为主，痞满不显。",
+      "少少温服，取其缓下之意。"
+    ]
+  },
+  {
+    id: 13, name: "四逆汤", category: "少阴病",
+    composition: [
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "干姜", dose: "一两半" },
+      { drug: "附子", dose: "一枚（生用，去皮，破八片）" }
+    ],
+    method: "以水三升，煮取一升二合，去滓，分温再服。强人可大附子一枚、干姜三两。",
+    original: "少阴病，脉沉者，急温之，宜四逆汤。（323）",
+    keyPoints: [
+      "回阳救逆第一方。",
+      "附子温肾回阳、干姜温中散寒、甘草调中补虚。",
+      "倪师：附子强心阳，干姜温脾胃，炙甘草缓峻烈兼补中。",
+      "用于阳气衰微、四肢厥逆、脉微欲绝。",
+      "四逆汤证为少阴寒化证，'急温之'提示阳气欲脱的危重证。"
+    ]
+  },
+  {
+    id: 14, name: "葛根汤", category: "太阳病",
+    composition: [
+      { drug: "葛根", dose: "四两" },
+      { drug: "麻黄", dose: "三两（去节）" },
+      { drug: "桂枝", dose: "二两（去皮）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "芍药", dose: "二两" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗，先煮麻黄、葛根，减二升，去白沫，内诸药，煮取三升，去滓，温服一升，覆取微似汗。",
+    original: "太阳病，项背强几几，无汗恶风，葛根汤主之。（31）\n太阳与阳明合病者，必自下利，葛根汤主之。（32）",
+    keyPoints: [
+      "桂枝汤加葛根、麻黄，主治太阳伤寒兼项背强急。",
+      "与桂枝加葛根汤相对：本方为表实无汗，彼为表虚汗出。",
+      "倪师：葛根为阳明经药，治'肌肉'层次。",
+      "下利而用葛根汤，为逆流挽舟之法。",
+      "葛根用四两为仲景方中葛根最大用量。"
+    ]
+  },
+  {
+    id: 15, name: "葛根加半夏汤", category: "太阳病",
+    composition: [
+      { drug: "葛根", dose: "四两" },
+      { drug: "麻黄", dose: "三两（去节）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "芍药", dose: "二两" },
+      { drug: "桂枝", dose: "二两（去皮）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "半夏", dose: "半升（洗）" }
+    ],
+    method: "以水一斗，先煮葛根、麻黄，减二升，去白沫，内诸药，煮取三升，去滓，温服一升。",
+    original: "太阳与阳明合病，不下利但呕者，葛根加半夏汤主之。（33）",
+    keyPoints: [
+      "葛根汤证基础上见呕吐，为表邪犯胃、胃气上逆。",
+      "加半夏和胃降逆止呕。",
+      "倪师：合病下利用葛根汤，升清阳以止利；呕者加半夏，降逆止呕。",
+      "下利为邪下走、呕吐为邪上逆，治法各异。"
+    ]
+  },
+  {
+    id: 16, name: "葛根黄芩黄连汤", category: "太阳病",
+    composition: [
+      { drug: "葛根", dose: "半斤" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "黄连", dose: "三两" }
+    ],
+    method: "以水八升，先煮葛根，减二升，内诸药，煮取二升，去滓，分温再服。",
+    original: "太阳病，桂枝证，医反下之，利遂不止，脉促者，表未解也；喘而汗出者，葛根黄芩黄连汤主之。（34）",
+    keyPoints: [
+      "表证误下，邪热内陷阳明，致协热下利。",
+      "葛根升清止利，芩连苦寒清热燥湿，甘草调和。",
+      "倪师：葛根用半斤，量大力专，升清阳、止下利、解肌表。",
+      "脉促为表邪未全陷、喘汗为里热上蒸。",
+      "后世治疗热利的重要方剂。"
+    ]
+  },
+  {
+    id: 17, name: "麻黄汤", category: "太阳病",
+    composition: [
+      { drug: "麻黄", dose: "三两（去节）" },
+      { drug: "桂枝", dose: "二两（去皮）" },
+      { drug: "甘草", dose: "一两（炙）" },
+      { drug: "杏仁", dose: "七十个（去皮尖）" }
+    ],
+    method: "以水九升，先煮麻黄，减二升，去上沫，内诸药，煮取二升半，去滓，温服八合，覆取微似汗。",
+    original: "太阳病，头痛，发热，身疼，腰痛，骨节疼痛，恶风，无汗而喘者，麻黄汤主之。（35）",
+    keyPoints: [
+      "太阳伤寒代表方，发汗解表、宣肺平喘。",
+      "麻黄发汗解表、宣肺平喘，桂枝助麻黄发汗、温通，杏仁助麻黄平喘，甘草调和。",
+      "倪师：麻黄为青龙，桂枝为白虎，二者一开一合。",
+      "主治：恶寒发热、无汗而喘、脉浮紧、身疼痛。",
+      "麻黄先煮去沫，免其过烈引起心悸。"
+    ]
+  },
+  {
+    id: 18, name: "大青龙汤", category: "太阳病",
+    composition: [
+      { drug: "麻黄", dose: "六两（去节）" },
+      { drug: "桂枝", dose: "二两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "杏仁", dose: "四十枚（去皮尖）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十枚（擘）" },
+      { drug: "石膏", dose: "如鸡子大（碎）" }
+    ],
+    method: "以水九升，先煮麻黄，减二升，去上沫，内诸药，煮取三升，去滓，温服一升，取微似汗。汗出多者，温粉粉之。",
+    original: "太阳中风，脉浮紧，发热恶寒，身疼痛，不汗出而烦躁者，大青龙汤主之。若脉微弱，汗出恶风者，不可服之。（38）",
+    keyPoints: [
+      "麻黄汤倍麻黄加石膏、姜枣，为表寒里热双解峻剂。",
+      "主治：表实无汗、内有郁热、烦躁。",
+      "倪师：'青龙'喻其能兴云致雨、解除郁热。",
+      "石膏清里热、除烦躁，与麻黄相配表里双解。",
+      "一服汗出即止，过汗则亡阳。",
+      "脉微弱、汗出恶风者忌用，误用可致阳虚筋惕。"
+    ]
+  },
+  {
+    id: 19, name: "小青龙汤", category: "太阳病",
+    composition: [
+      { drug: "麻黄", dose: "三两（去节）" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "细辛", dose: "三两" },
+      { drug: "干姜", dose: "三两" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "五味子", dose: "半升" },
+      { drug: "半夏", dose: "半升（洗）" }
+    ],
+    method: "以水一斗，先煮麻黄，减二升，去上沫，内诸药，煮取三升，去滓，温服一升。",
+    original: "伤寒表不解，心下有水气，干呕发热而咳，或渴，或利，或噎，或小便不利、少腹满，或喘者，小青龙汤主之。（40）",
+    keyPoints: [
+      "外散风寒、内化水饮，表里双解。",
+      "麻桂解表散寒，姜辛夏温化水饮，芍药和营养血，五味子敛肺止咳，甘草调和。",
+      "倪师：'小青龙'喻其能翻江倒海、化水饮为津液。",
+      "散中有收（麻桂配五味），温中有敛（姜辛配芍药）。",
+      "主治外寒内饮证：发热、咳嗽、痰稀白、喘息。"
+    ]
+  },
+  {
+    id: 20, name: "桂枝加厚朴杏子汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "厚朴", dose: "二两（炙，去皮）" },
+      { drug: "杏仁", dose: "五十枚（去皮尖）" }
+    ],
+    method: "以水七升，微火煮取三升，去滓，温服一升，覆取微似汗。",
+    original: "太阳病，下之微喘者，表未解故也，桂枝加厚朴杏子汤主之。（43）\n喘家，作桂枝汤，加厚朴、杏子佳。（18）",
+    keyPoints: [
+      "桂枝汤证兼有喘者。",
+      "厚朴降气、杏仁降肺平喘。",
+      "倪师：本方治'气逆'，厚朴宽胸下气、杏仁润肺定喘。",
+      "治素有喘病又感风寒者，'加厚朴杏子佳'。",
+      "下后微喘是表邪未解、肺气上逆。"
+    ]
+  },
+  {
+    id: 21, name: "干姜附子汤", category: "少阴病",
+    composition: [
+      { drug: "干姜", dose: "一两" },
+      { drug: "附子", dose: "一枚（生用，去皮，破八片）" }
+    ],
+    method: "以水三升，煮取一升，去滓，顿服。",
+    original: "下之后，复发汗，昼日烦躁不得眠，夜而安静，不呕，不渴，无表证，脉沉微，身无大热者，干姜附子汤主之。（61）",
+    keyPoints: [
+      "阳气虚衰、阴寒内盛。",
+      "昼日烦躁为虚阳外越，夜而安静为阳气入阴。",
+      "倪师：本方为四逆汤去甘草，急救回阳，速达病所。",
+      "顿服以取急救之功。",
+      "与茯苓四逆汤证鉴别：彼有悸、烦、欲饮水；此则仅见烦躁。"
+    ]
+  },
+  {
+    id: 22, name: "桂枝加芍药生姜各一两人参三两新加汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "芍药", dose: "四两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "人参", dose: "三两" },
+      { drug: "生姜", dose: "四两" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗二升，煮取三升，去滓，温服一升。",
+    original: "发汗后，身疼痛，脉沉迟者，桂枝加芍药生姜各一两人参三两新加汤主之。（62）",
+    keyPoints: [
+      "发汗后气阴两伤、营血不足。",
+      "脉沉迟为营血不足、不能充盈脉道。",
+      "倪师：加重芍药养血敛阴，加重生姜温通走表，加人参益气生津。",
+      "名'新加'，示非古方，乃仲景新创。",
+      "身疼痛若表证仍在者仍用桂枝汤法治之。"
+    ]
+  },
+  {
+    id: 23, name: "麻黄杏仁甘草石膏汤", category: "太阳病",
+    composition: [
+      { drug: "麻黄", dose: "四两（去节）" },
+      { drug: "杏仁", dose: "五十个（去皮尖）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "石膏", dose: "半斤（碎，绵裹）" }
+    ],
+    method: "以水七升，先煮麻黄，减二升，去上沫，内诸药，煮取二升，去滓，温服一升。",
+    original: "发汗后，不可更行桂枝汤，汗出而喘，无大热者，可与麻黄杏仁甘草石膏汤。（63）",
+    keyPoints: [
+      "汗下后邪热壅肺证。",
+      "麻黄宣肺、石膏清热、杏仁降肺、甘草调和。",
+      "倪师：石膏量倍麻黄，变发汗为清宣肺热。",
+      "汗出而喘用麻黄，是麻黄宣肺平喘非发汗。",
+      "无大热指表无大热而里有热。",
+      "本方为治肺热咳喘的祖方。"
+    ]
+  },
+  {
+    id: 24, name: "桂枝甘草汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "四两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" }
+    ],
+    method: "以水三升，煮取一升，去滓，顿服。",
+    original: "发汗过多，其人叉手自冒心，心下悸，欲得按者，桂枝甘草汤主之。（64）",
+    keyPoints: [
+      "发汗过多损伤心阳。",
+      "心阳虚则心悸，喜按。",
+      "倪师：桂枝入心温阳、甘草补中益气，二者辛甘化阳。",
+      "顿服取急救之意。",
+      "为治心阳虚心悸的基础方。"
+    ]
+  },
+  {
+    id: 25, name: "茯苓桂枝甘草大枣汤", category: "太阳病",
+    composition: [
+      { drug: "茯苓", dose: "半斤" },
+      { drug: "桂枝", dose: "四两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "大枣", dose: "十五枚（擘）" }
+    ],
+    method: "以甘澜水一斗，先煮茯苓，减二升，内诸药，煮取三升，去滓，温服一升，日三服。",
+    original: "发汗后，其人脐下悸者，欲作奔豚，茯苓桂枝甘草大枣汤主之。（65）",
+    keyPoints: [
+      "心阳虚、下焦水气欲上冲，脐下悸动，欲发奔豚。",
+      "茯苓利水宁心，桂枝温通心阳、平冲降逆，甘草、大枣培土制水。",
+      "倪师：茯苓重用半斤以利水、宁心、止悸。",
+      "甘澜水取其轻扬不助水湿。",
+      "治未病（欲作奔豚），为上工之举。"
+    ]
+  },
+  {
+    id: 26, name: "厚朴生姜半夏甘草人参汤", category: "太阳病",
+    composition: [
+      { drug: "厚朴", dose: "半斤（炙，去皮）" },
+      { drug: "生姜", dose: "半斤（切）" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "人参", dose: "一两" }
+    ],
+    method: "以水一斗，煮取三升，去滓，温服一升，日三服。",
+    original: "发汗后，腹胀满者，厚朴生姜半夏甘草人参汤主之。（66）",
+    keyPoints: [
+      "脾虚气滞腹胀。",
+      "厚朴行气除满、生姜和胃散水、半夏降逆化痰、人参甘草补脾益气。",
+      "倪师：朴姜夏量大人参量小，为补消兼施、以消为主。",
+      "治虚三补七消之法。",
+      "主治脾虚不运、气机壅滞的腹胀满。"
+    ]
+  },
+  {
+    id: 27, name: "茯苓桂枝白术甘草汤", category: "太阳病",
+    composition: [
+      { drug: "茯苓", dose: "四两" },
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "白术", dose: "二两" },
+      { drug: "甘草", dose: "二两（炙）" }
+    ],
+    method: "以水六升，煮取三升，去滓，分温三服。",
+    original: "伤寒，若吐若下后，心下逆满，气上冲胸，起则头眩，脉沉紧，发汗则动经，身为振振摇者，茯苓桂枝白术甘草汤主之。（67）",
+    keyPoints: [
+      "中焦阳虚、水饮上逆。",
+      "茯苓利水、桂枝温阳化气、白术健脾燥湿、甘草和中。",
+      "倪师：此方为温阳化饮的代表方，治水气上冲。",
+      "脉沉紧为里有水饮。",
+      "误汗可致'身为振振摇'，阳气更虚。",
+      "苓桂术甘汤是'病痰饮者，当以温药和之'的代表方。"
+    ]
+  },
+  {
+    id: 28, name: "芍药甘草附子汤", category: "太阳病",
+    composition: [
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "附子", dose: "一枚（炮，去皮，破八片）" }
+    ],
+    method: "以水五升，煮取一升五合，去滓，分温三服。",
+    original: "发汗，病不解，反恶寒者，虚故也，芍药甘草附子汤主之。（68）",
+    keyPoints: [
+      "汗后阴阳两虚。",
+      "芍药甘草酸甘化阴、附子温经扶阳。",
+      "倪师：阴阳双补，刚柔相济。",
+      "反恶寒为阳虚不固。",
+      "为治汗后阴阳两虚之名方。"
+    ]
+  },
+  {
+    id: 29, name: "茯苓四逆汤", category: "少阴病",
+    composition: [
+      { drug: "茯苓", dose: "四两" },
+      { drug: "人参", dose: "一两" },
+      { drug: "附子", dose: "一枚（生用，去皮，破八片）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "干姜", dose: "一两半" }
+    ],
+    method: "以水五升，煮取三升，去滓，温服七合，日三服。",
+    original: "发汗，若下之，病仍不解，烦躁者，茯苓四逆汤主之。（69）",
+    keyPoints: [
+      "四逆汤加茯苓、人参。",
+      "回阳益阴、宁心除烦。",
+      "倪师：四逆汤回阳救逆，加人参益气生津、茯苓宁心安神。",
+      "汗下后阴阳俱虚、烦躁不宁。",
+      "与干姜附子汤证鉴别：彼为顿服、仅阳虚；此为频服、阴阳两虚。"
+    ]
+  },
+  {
+    id: 30, name: "五苓散", category: "太阳病",
+    composition: [
+      { drug: "猪苓", dose: "十八铢（去皮）" },
+      { drug: "泽泻", dose: "一两六铢" },
+      { drug: "白术", dose: "十八铢" },
+      { drug: "茯苓", dose: "十八铢" },
+      { drug: "桂枝", dose: "半两（去皮）" }
+    ],
+    method: "捣为散，以白饮和服方寸匕，日三服。多饮暖水，汗出愈。",
+    original: "太阳病，发汗后，大汗出……若脉浮，小便不利，微热消渴者，五苓散主之。（71）",
+    keyPoints: [
+      "化气利水、解表散邪。",
+      "二苓泽泻利水、白术健脾、桂枝通阳化气解表。",
+      "倪师：桂枝用半两量轻，取其化气行水而非发表。",
+      "主治太阳蓄水证：小便不利、口渴欲饮、水入即吐。",
+      "白饮和服、多饮暖水以助气化。",
+      "为治水湿内停的基础方。"
+    ]
+  },
+  {
+    id: 31, name: "茯苓甘草汤", category: "太阳病",
+    composition: [
+      { drug: "茯苓", dose: "二两" },
+      { drug: "桂枝", dose: "二两（去皮）" },
+      { drug: "甘草", dose: "一两（炙）" },
+      { drug: "生姜", dose: "三两（切）" }
+    ],
+    method: "以水四升，煮取二升，去滓，分温三服。",
+    original: "伤寒厥而心下悸，宜先治水，当服茯苓甘草汤，却治其厥，不尔，水渍入胃，必作利也。（356）",
+    keyPoints: [
+      "水停心下、胃阳不布致厥而心下悸。",
+      "茯苓利水宁心、桂枝通阳、生姜温胃散水、甘草和中。",
+      "倪师：'治水'为治本，先去水饮则阳气得布、厥自愈。",
+      "不治水则水渍大肠为利。",
+      "与五苓散鉴别：彼治蓄水在下，此治水停在胃。"
+    ]
+  },
+  {
+    id: 32, name: "栀子豉汤", category: "阳明病",
+    composition: [
+      { drug: "栀子", dose: "十四个（擘）" },
+      { drug: "香豉", dose: "四合（绵裹）" }
+    ],
+    method: "以水四升，先煮栀子，得二升半，内豉，煮取一升半，去滓，分为二服，温进一服。得吐者，止后服。",
+    original: "发汗吐下后，虚烦不得眠，若剧者，必反复颠倒，心中懊憹，栀子豉汤主之。（76）",
+    keyPoints: [
+      "清热除烦、轻宣郁热。",
+      "栀子清心除烦、淡豆豉宣透郁热。",
+      "倪师：栀子清三焦之热，豆豉宣上焦之郁。",
+      "主治热扰胸膈证：虚烦不得眠、心中懊憹。",
+      "为'火郁发之'的代表方。"
+    ]
+  },
+  {
+    id: 33, name: "栀子甘草豉汤", category: "阳明病",
+    composition: [
+      { drug: "栀子", dose: "十四个（擘）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "香豉", dose: "四合（绵裹）" }
+    ],
+    method: "以水四升，先煮栀子、甘草，取二升半，内豉，煮取一升半，去滓，分二服。",
+    original: "……若少气者，栀子甘草豉汤主之……（76）",
+    keyPoints: [
+      "栀子豉汤证兼少气（气短乏力）。",
+      "加甘草益气补中。",
+      "倪师：少气为中气不足，加甘草以补之。",
+      "为扶正祛邪兼施之法。"
+    ]
+  },
+  {
+    id: 34, name: "栀子生姜豉汤", category: "阳明病",
+    composition: [
+      { drug: "栀子", dose: "十四个（擘）" },
+      { drug: "生姜", dose: "五两" },
+      { drug: "香豉", dose: "四合（绵裹）" }
+    ],
+    method: "以水四升，先煮栀子、生姜，取二升半，内豉，煮取一升半，去滓，分二服。",
+    original: "……若呕者，栀子生姜豉汤主之……（76）",
+    keyPoints: [
+      "栀子豉汤证兼呕吐。",
+      "重用生姜和胃止呕。",
+      "倪师：生姜用五两量大，取其和胃降逆。"
+    ]
+  },
+  {
+    id: 35, name: "栀子厚朴汤", category: "阳明病",
+    composition: [
+      { drug: "栀子", dose: "十四个（擘）" },
+      { drug: "厚朴", dose: "四两（炙，去皮）" },
+      { drug: "枳实", dose: "四枚（水浸，炙令黄）" }
+    ],
+    method: "以水三升半，煮取一升半，去滓，分二服。",
+    original: "伤寒下后，心烦腹满，卧起不安者，栀子厚朴汤主之。（79）",
+    keyPoints: [
+      "热扰胸膈兼腹满。",
+      "栀子清热除烦、枳实厚朴行气除满。",
+      "倪师：去豆豉之宣散，加枳朴之降泄。",
+      "栀子治上、厚朴治中、枳实治下，三焦并调。",
+      "为热壅气滞的良方。"
+    ]
+  },
+  {
+    id: 36, name: "栀子干姜汤", category: "阳明病",
+    composition: [
+      { drug: "栀子", dose: "十四个（擘）" },
+      { drug: "干姜", dose: "二两" }
+    ],
+    method: "以水三升半，煮取一升半，去滓，分二服。",
+    original: "伤寒，医以丸药大下之，身热不去，微烦者，栀子干姜汤主之。（80）",
+    keyPoints: [
+      "大下后中焦虚寒、上焦余热。",
+      "栀子清上热、干姜温中寒。",
+      "倪师：寒热并用，清上温中。",
+      "为上热中寒错杂证治法。"
+    ]
+  },
+  {
+    id: 37, name: "真武汤", category: "少阴病",
+    composition: [
+      { drug: "茯苓", dose: "三两" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "白术", dose: "二两" },
+      { drug: "附子", dose: "一枚（炮，去皮，破八片）" }
+    ],
+    method: "以水八升，煮取三升，去滓，温服七合，日三服。",
+    original: "太阳病发汗，汗出不解，其人仍发热，心下悸，头眩，身瞤动，振振欲擗地者，真武汤主之。（82）",
+    keyPoints: [
+      "温阳利水。",
+      "附子温肾阳、白术茯苓健脾利水、生姜温散水气、芍药和营利水。",
+      "倪师：附子强心肾之阳，茯苓白术利水，生姜散水，芍药和阴。",
+      "主治脾肾阳虚、水湿泛溢。",
+      "为治水气上冲、阳虚水泛的代表方。",
+      "与苓桂术甘汤鉴别：彼为水停中焦，此为水停下焦。"
+    ]
+  },
+  {
+    id: 38, name: "小柴胡汤", category: "少阳病",
+    composition: [
+      { drug: "柴胡", dose: "半斤" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "人参", dose: "三两" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗二升，煮取六升，去滓，再煎取三升，温服一升，日三服。",
+    original: "伤寒五六日中风，往来寒热，胸胁苦满，嘿嘿不欲饮食，心烦喜呕……小柴胡汤主之。（96）",
+    keyPoints: [
+      "和解少阳的代表方。",
+      "柴胡透散少阳、黄芩清少阳热、半夏和胃降逆、人参甘草大枣扶正、生姜和胃。",
+      "倪师：柴胡用半斤量大，为少阳专药；黄芩清半表半里之热。",
+      "主治少阳病：寒热往来、胸胁苦满、口苦咽干目眩。",
+      "'但见一证便是，不必悉具'为应用关键。",
+      "为少阳枢机之方，亦治妇人热入血室。"
+    ]
+  },
+  {
+    id: 39, name: "小建中汤", category: "少阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "芍药", dose: "六两" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "胶饴", dose: "一升" }
+    ],
+    method: "以水七升，煮取三升，去滓，内饴，更上微火消解，温服一升，日三服。",
+    original: "伤寒二三日，心中悸而烦者，小建中汤主之。（102）",
+    keyPoints: [
+      "温中补虚、和里缓急。",
+      "桂枝汤倍芍药加饴糖。",
+      "倪师：饴糖为君，温中补虚、缓急止痛；重用芍药缓急止痛。",
+      "主治中焦虚寒、腹中急痛、心悸虚烦。",
+      "为治虚劳里急、腹中痛的良方。"
+    ]
+  },
+  {
+    id: 40, name: "大柴胡汤", category: "少阳病",
+    composition: [
+      { drug: "柴胡", dose: "半斤" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "生姜", dose: "五两（切）" },
+      { drug: "枳实", dose: "四枚（炙）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗二升，煮取六升，去滓再煎，温服一升，日三服。",
+    original: "太阳病，过经十余日，反二三下之……呕不止，心下急，郁郁微烦者，为未解也，与大柴胡汤下之则愈。（103）",
+    keyPoints: [
+      "和解少阳、内泻热结。",
+      "柴胡黄芩和解少阳、大黄枳实泻下热结、半夏生姜和胃止呕、芍药大枣缓急。",
+      "倪师：少阳兼阳明里实，故小柴胡汤去人参甘草加大黄枳实。",
+      "主治少阳阳明合病：往来寒热、胸胁苦满、心下满痛、便秘。",
+      "为少阳阳明双解之方。"
+    ]
+  },
+  {
+    id: 41, name: "柴胡加芒硝汤", category: "少阳病",
+    composition: [
+      { drug: "柴胡", dose: "二两十六铢" },
+      { drug: "黄芩", dose: "一两" },
+      { drug: "人参", dose: "一两" },
+      { drug: "甘草", dose: "一两（炙）" },
+      { drug: "生姜", dose: "一两（切）" },
+      { drug: "半夏", dose: "二十铢（本云五枚，洗）" },
+      { drug: "大枣", dose: "四枚（擘）" },
+      { drug: "芒硝", dose: "二两" }
+    ],
+    method: "以水四升，煮取二升，去滓，内芒硝，更煮微沸，分温再服。不解，更作。",
+    original: "伤寒十三日不解……潮热者，实也，先宜服小柴胡汤以解外，后以柴胡加芒硝汤主之。（104）",
+    keyPoints: [
+      "小柴胡汤证兼阳明燥热内结。",
+      "小柴胡汤原方用量三分之一加芒硝。",
+      "倪师：误用丸药下后，正气已伤，故用小柴胡汤原方量小以轻解，加芒硝软坚泻热。",
+      "为和解攻里、扶正达邪之法。"
+    ]
+  },
+  {
+    id: 42, name: "桃核承气汤", category: "太阳病",
+    composition: [
+      { drug: "桃仁", dose: "五十个（去皮尖）" },
+      { drug: "大黄", dose: "四两" },
+      { drug: "桂枝", dose: "二两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "芒硝", dose: "二两" }
+    ],
+    method: "以水七升，煮取二升半，去滓，内芒硝，更上火微沸，下火，先食温服五合，日三服，当微利。",
+    original: "太阳病不解，热结膀胱，其人如狂……外解已，但少腹急结者，乃可攻之，宜桃核承气汤。（106）",
+    keyPoints: [
+      "破血下瘀。",
+      "桃仁活血化瘀、大黄芒硝泻热软坚、桂枝温通、甘草调和。",
+      "倪师：桃仁为破瘀血之要药，桂枝温通血脉以行瘀。",
+      "主治瘀热互结下焦：少腹急结、其人如狂。",
+      "先食温服，使药力下行。",
+      "为治蓄血轻证的代表方。"
+    ]
+  },
+  {
+    id: 43, name: "柴胡加龙骨牡蛎汤", category: "少阳病",
+    composition: [
+      { drug: "柴胡", dose: "四两" },
+      { drug: "龙骨", dose: "一两半" },
+      { drug: "黄芩", dose: "一两半" },
+      { drug: "生姜", dose: "一两半（切）" },
+      { drug: "铅丹", dose: "一两半" },
+      { drug: "人参", dose: "一两半" },
+      { drug: "桂枝", dose: "一两半（去皮）" },
+      { drug: "茯苓", dose: "一两半" },
+      { drug: "半夏", dose: "二合半（洗）" },
+      { drug: "大黄", dose: "二两" },
+      { drug: "牡蛎", dose: "一两半（熬）" },
+      { drug: "大枣", dose: "六枚（擘）" }
+    ],
+    method: "以水八升，煮取四升，内大黄，切如棋子，更煮一两沸，去滓，温服一升。",
+    original: "伤寒八九日，下之，胸满烦惊，小便不利，谵语，一身尽重，不可转侧者，柴胡加龙骨牡蛎汤主之。（107）",
+    keyPoints: [
+      "和解少阳、通阳泻热、重镇安神。",
+      "小柴胡汤去甘草加龙牡铅丹大黄桂枝茯苓。",
+      "倪师：龙骨牡蛎铅丹重镇安神定惊，茯苓宁心安神，大黄泻热。",
+      "主治少阳烦惊、谵语、神志不安。",
+      "为治情志病、神经症的重要方。",
+      "现代用于抑郁症、焦虑症、癫痫等。"
+    ]
+  },
+  {
+    id: 44, name: "桂枝去芍药加蜀漆牡蛎龙骨救逆汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "牡蛎", dose: "五两（熬）" },
+      { drug: "蜀漆", dose: "三两（洗去腥）" },
+      { drug: "龙骨", dose: "四两" }
+    ],
+    method: "以水一斗二升，先煮蜀漆，减二升，内诸药，煮取三升，去滓，温服一升。",
+    original: "伤寒脉浮，医以火迫劫之，亡阳，必惊狂，卧起不安者，桂枝去芍药加蜀漆牡蛎龙骨救逆汤主之。（112）",
+    keyPoints: [
+      "温通心阳、镇惊安神、涤痰开窍。",
+      "桂枝汤去芍药加蜀漆龙骨牡蛎。",
+      "倪师：火劫亡阳、心神浮越，龙骨牡蛎重镇安神，蜀漆涤痰开窍。",
+      "以'救逆'命名，示病情急重。",
+      "为治心阳虚惊狂的名方。"
+    ]
+  },
+  {
+    id: 45, name: "桂枝加桂汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "五两（去皮）" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水七升，煮取三升，去滓，温服一升。",
+    original: "烧针令其汗，针处被寒，核起而赤者，必发奔豚，气从少腹上冲心者，灸其核上各一壮，与桂枝加桂汤，更加桂二两也。（117）",
+    keyPoints: [
+      "温通心阳、平冲降逆。",
+      "桂枝汤加桂枝二两（共五两）。",
+      "倪师：加桂以加强平冲降逆之力。",
+      "主治心阳虚、肾水上凌之奔豚。",
+      "'泄奔豚气'为加桂之意。",
+      "为治奔豚的代表方。"
+    ]
+  },
+  {
+    id: 46, name: "抵当汤", category: "太阳病",
+    composition: [
+      { drug: "水蛭", dose: "三十个（熬）" },
+      { drug: "虻虫", dose: "三十个（去翅足，熬）" },
+      { drug: "桃仁", dose: "二十个（去皮尖）" },
+      { drug: "大黄", dose: "三两（酒洗）" }
+    ],
+    method: "以水五升，煮取三升，去滓，温服一升，不下更服。",
+    original: "太阳病六七日……其人发狂者，以热在下焦，少腹当硬满，小便自利者，下血乃愈……抵当汤主之。（124）",
+    keyPoints: [
+      "破血逐瘀、攻下瘀热。",
+      "水蛭虻虫破血逐瘀、桃仁活血、大黄泻热导瘀。",
+      "倪师：水蛭虻虫为虫类搜剔、破血力猛。",
+      "主治蓄血重证：少腹硬满、其人发狂、小便自利。",
+      "为破血逐瘀峻剂，体虚慎用。"
+    ]
+  },
+  {
+    id: 47, name: "抵当丸", category: "太阳病",
+    composition: [
+      { drug: "水蛭", dose: "二十个（熬）" },
+      { drug: "虻虫", dose: "二十个（去翅足，熬）" },
+      { drug: "桃仁", dose: "二十五个（去皮尖）" },
+      { drug: "大黄", dose: "三两" }
+    ],
+    method: "捣分四丸，以水一升煮一丸，取七合服之。晬时当下血，若不下者更服。",
+    original: "伤寒有热，少腹满，应小便不利，今反利者，为有血也，当下之，不可余药，宜抵当丸。（126）",
+    keyPoints: [
+      "破血逐瘀、峻药缓攻。",
+      "抵当汤减量改丸剂。",
+      "倪师：丸者缓也，治蓄血之缓证。",
+      "主治蓄血证势较缓者。",
+      "与汤剂之别：汤治急重、丸治缓轻。"
+    ]
+  },
+  {
+    id: 48, name: "大陷胸丸", category: "太阳病",
+    composition: [
+      { drug: "大黄", dose: "半斤" },
+      { drug: "葶苈子", dose: "半升（熬）" },
+      { drug: "芒硝", dose: "半升" },
+      { drug: "杏仁", dose: "半升（去皮尖，熬黑）" }
+    ],
+    method: "捣筛二味，内杏仁、芒硝，合研如脂，和散，取如弹丸一枚，别捣甘遂末一钱匕，白蜜二合，水二升，煮取一升，温顿服之。",
+    original: "结胸者，项亦强，如柔痉状，下之则和，宜大陷胸丸。（131）",
+    keyPoints: [
+      "泻热逐水、峻药缓攻。",
+      "大黄芒硝泻热、甘遂逐水、葶苈杏仁泻肺。",
+      "倪师：白蜜二合缓和峻烈、护胃气。",
+      "主治结胸证，证势较缓、病位偏上。",
+      "为丸煮服，峻药缓用。"
+    ]
+  },
+  {
+    id: 49, name: "大陷胸汤", category: "太阳病",
+    composition: [
+      { drug: "大黄", dose: "六两（去皮）" },
+      { drug: "芒硝", dose: "一升" },
+      { drug: "甘遂", dose: "一钱匕" }
+    ],
+    method: "以水六升，先煮大黄，取二升，去滓，内芒硝，煮一两沸，内甘遂末，温服一升。得快利，止后服。",
+    original: "伤寒六七日，结胸热实，脉沉而紧，心下痛，按之石硬者，大陷胸汤主之。（135）",
+    keyPoints: [
+      "泻热逐水、破结通便。",
+      "大黄泻热、芒硝软坚、甘遂逐水。",
+      "倪师：甘遂为逐水峻药，三药合用，泻热逐水破结。",
+      "主治水热结胸证：心下硬满痛、按之石硬、脉沉紧。",
+      "得快利止后服，免伤正气。",
+      "为泻下逐水峻剂。"
+    ]
+  },
+  {
+    id: 50, name: "小陷胸汤", category: "太阳病",
+    composition: [
+      { drug: "黄连", dose: "一两" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "瓜蒌", dose: "大者一枚" }
+    ],
+    method: "以水六升，先煮瓜蒌，取三升，去滓，内诸药，煮取二升，去滓，分温三服。",
+    original: "小结胸病，正在心下，按之则痛，脉浮滑者，小陷胸汤主之。（138）",
+    keyPoints: [
+      "清热化痰、宽胸散结。",
+      "黄连清热、半夏化痰、瓜蒌宽胸散结。",
+      "倪师：瓜蒌实为君药，宽胸散结、润燥滑肠。",
+      "主治小结胸病：心下痞硬、按之则痛。",
+      "与大陷胸汤鉴别：彼为水热结胸，此为痰热结胸。"
+    ]
+  },
+  {
+    id: 51, name: "文蛤散", category: "太阳病",
+    composition: [{ drug: "文蛤", dose: "五两" }],
+    method: "为散，以沸汤和一方寸匕服，汤用五合。",
+    original: "病在阳，应以汗解之，反以冷水潠之……其热被劫不得去，弥更益烦，肉上粟起，意欲饮水，反不渴者，服文蛤散；若不差者，与五苓散。（141）",
+    keyPoints: [
+      "清热利湿、止烦渴。",
+      "文蛤一味，清热生津、利水止渴。",
+      "倪师：文蛤为咸寒之品，清热利湿。",
+      "主治表邪被冷水所遏、热郁于表。",
+      "不效者用五苓散通阳利水。"
+    ]
+  },
+  {
+    id: 52, name: "三物白散", category: "太阳病",
+    composition: [
+      { drug: "桔梗", dose: "三分" },
+      { drug: "巴豆", dose: "一分（去皮心，熬黑，研如脂）" },
+      { drug: "贝母", dose: "三分" }
+    ],
+    method: "上三味为散，内巴豆，更于臼中杵之，以白饮和服，强人半钱匕，羸者减之。病在膈上必吐，在膈下必利。不利，进热粥一杯；利过不止，进冷粥一杯。",
+    original: "寒实结胸，无热证者，与三物小陷胸汤，白散亦可服。（141）",
+    keyPoints: [
+      "温下寒实、涤痰破结。",
+      "巴豆峻下寒积、桔梗开肺、贝母化痰。",
+      "倪师：巴豆大热大毒、峻下寒积，桔梗载药上行，贝母化痰散结。",
+      "主治寒实结胸：胸膈满闷、无热证者。",
+      "热粥助泻、冷粥止泻，为药食互济。"
+    ]
+  },
+  {
+    id: 53, name: "柴胡桂枝汤", category: "少阳病",
+    composition: [
+      { drug: "桂枝", dose: "一两半（去皮）" },
+      { drug: "黄芩", dose: "一两半" },
+      { drug: "人参", dose: "一两半" },
+      { drug: "甘草", dose: "一两（炙）" },
+      { drug: "半夏", dose: "二合半（洗）" },
+      { drug: "芍药", dose: "一两半" },
+      { drug: "大枣", dose: "六枚（擘）" },
+      { drug: "生姜", dose: "一两半（切）" },
+      { drug: "柴胡", dose: "四两" }
+    ],
+    method: "以水七升，煮取三升，去滓，温服一升。",
+    original: "伤寒六七日，发热微恶寒，支节烦疼，微呕，心下支结，外证未去者，柴胡桂枝汤主之。（146）",
+    keyPoints: [
+      "和解少阳、兼解表邪。",
+      "小柴胡汤与桂枝汤各半量合方。",
+      "倪师：太少两感证治法，表里同治。",
+      "主治太阳少阳合病：发热微恶寒、肢节烦疼、微呕、心下支结。",
+      "为太少双解之轻剂。"
+    ]
+  },
+  {
+    id: 54, name: "柴胡桂枝干姜汤", category: "少阳病",
+    composition: [
+      { drug: "柴胡", dose: "半斤" },
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "干姜", dose: "二两" },
+      { drug: "瓜蒌根", dose: "四两" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "牡蛎", dose: "二两（熬）" },
+      { drug: "甘草", dose: "二两（炙）" }
+    ],
+    method: "以水一斗二升，煮取六升，去滓，再煎取三升，温服一升，日三服。初服微烦，复服汗出便愈。",
+    original: "伤寒五六日，已发汗而复下之，胸胁满微结，小便不利，渴而不呕，但头汗出，往来寒热，心烦者，此为未解也，柴胡桂枝干姜汤主之。（147）",
+    keyPoints: [
+      "和解少阳、温阳化饮。",
+      "柴胡黄芩和解少阳、桂枝干姜温阳化饮、瓜蒌根牡蛎止渴散结、甘草调和。",
+      "倪师：少阳兼水饮内结，本方寒热并用、表里同治。",
+      "主治少阳病兼水饮内结：胸胁满微结、渴而不呕、小便不利。",
+      "初服微烦为药力未及，复服汗出便愈。"
+    ]
+  },
+  {
+    id: 55, name: "半夏泻心汤", category: "少阳病",
+    composition: [
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "干姜", dose: "三两" },
+      { drug: "人参", dose: "三两" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "黄连", dose: "一两" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗，煮取六升，去滓，再煎取三升，温服一升，日三服。",
+    original: "……但满而不痛者，此为痞，柴胡不中与之，宜半夏泻心汤。（149）",
+    keyPoints: [
+      "辛开苦降、和胃降逆、消痞散结。",
+      "半夏干姜辛开、黄连黄芩苦降、人参甘草大枣补中。",
+      "倪师：痞为气机痞塞、寒热错杂。",
+      "主治心下痞满、呕利肠鸣。",
+      "为治痞证的主方。"
+    ]
+  },
+  {
+    id: 56, name: "生姜泻心汤", category: "少阳病",
+    composition: [
+      { drug: "生姜", dose: "四两（切）" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "人参", dose: "三两" },
+      { drug: "干姜", dose: "一两" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "黄连", dose: "一两" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗，煮取六升，去滓，再煎取三升，温服一升，日三服。",
+    original: "伤寒汗出，解之后，胃中不和，心下痞硬，干噫食臭，胁下有水气，腹中雷鸣，下利者，生姜泻心汤主之。（157）",
+    keyPoints: [
+      "和胃降逆、散水消痞。",
+      "半夏泻心汤减干姜量加生姜四两。",
+      "倪师：重用生姜和胃散水，干噫食臭为食滞、水气。",
+      "主治胃虚水热互结：心下痞硬、干噫食臭、腹中雷鸣、下利。",
+      "生姜散水之功尤著。"
+    ]
+  },
+  {
+    id: 57, name: "甘草泻心汤", category: "少阳病",
+    composition: [
+      { drug: "甘草", dose: "四两（炙）" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "黄连", dose: "一两" },
+      { drug: "干姜", dose: "三两" }
+    ],
+    method: "以水一斗，煮取六升，去滓，再煎取三升，温服一升，日三服。",
+    original: "伤寒中风，医反下之……此非结热，但以胃中虚，客气上逆，故使硬也，甘草泻心汤主之。（158）",
+    keyPoints: [
+      "补中益气、和胃消痞。",
+      "半夏泻心汤加重甘草用量。",
+      "倪师：重用甘草以补中气之虚，治客气上逆。",
+      "主治胃气大虚、客气上逆之下利、痞满。",
+      "亦治狐惑病（现代用治白塞氏病）。"
+    ]
+  },
+  {
+    id: 58, name: "大黄黄连泻心汤", category: "少阳病",
+    composition: [
+      { drug: "大黄", dose: "二两" },
+      { drug: "黄连", dose: "一两" }
+    ],
+    method: "以麻沸汤二升渍之，须臾绞去滓，分温再服。",
+    original: "心下痞，按之濡，其脉关上浮者，大黄黄连泻心汤主之。（154）",
+    keyPoints: [
+      "泻热消痞。",
+      "大黄黄连二味，麻沸汤渍服。",
+      "倪师：麻沸汤渍服取其气、薄其味、轻清泻热。",
+      "主治热痞：心下痞、按之濡、脉关上浮。",
+      "为治热痞的轻剂。",
+      "不用煎煮取其轻扬、专清上焦之热。"
+    ]
+  },
+  {
+    id: 59, name: "附子泻心汤", category: "少阳病",
+    composition: [
+      { drug: "大黄", dose: "二两" },
+      { drug: "黄连", dose: "一两" },
+      { drug: "黄芩", dose: "一两" },
+      { drug: "附子", dose: "一枚（炮，去皮，破，别煮取汁）" }
+    ],
+    method: "以麻沸汤二升渍之，须臾绞去滓，内附子汁，分温再服。",
+    original: "心下痞，而复恶寒汗出者，附子泻心汤主之。（155）",
+    keyPoints: [
+      "泻热消痞、扶阳固表。",
+      "大黄黄连黄芩泻热消痞、附子温阳固表。",
+      "倪师：三黄渍服、附子煎汁，热药冷服、寒热并用。",
+      "主治热痞兼阳虚：心下痞、恶寒汗出。",
+      "为寒热并用、攻补兼施之方。"
+    ]
+  },
+  {
+    id: 60, name: "黄连汤", category: "少阳病",
+    composition: [
+      { drug: "黄连", dose: "三两" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "干姜", dose: "三两" },
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "人参", dose: "二两" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗，煮取六升，去滓，温服一升，日三服，夜二服。",
+    original: "伤寒，胸中有热，胃中有邪气，腹中痛，欲呕吐者，黄连汤主之。（173）",
+    keyPoints: [
+      "清上温下、和胃降逆。",
+      "黄连清上热、干姜温下寒、桂枝通阳、半夏和胃、人参甘草大枣和中。",
+      "倪师：上热下寒、腹痛欲呕。",
+      "主治上热下寒证：胸中烦热、腹中痛、欲呕吐。",
+      "为半夏泻心汤去黄芩加桂枝。"
+    ]
+  },
+  {
+    id: 61, name: "黄芩汤", category: "少阳病",
+    composition: [
+      { drug: "黄芩", dose: "三两" },
+      { drug: "芍药", dose: "二两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水一斗，煮取三升，去滓，温服一升，日再夜一服。",
+    original: "太阳与少阳合病，自下利者，与黄芩汤；若呕者，黄芩加半夏生姜汤主之。（172）",
+    keyPoints: [
+      "清热止利、和中止痛。",
+      "黄芩清热燥湿、芍药和营止痛、甘草大枣和中。",
+      "倪师：治热利腹痛之要方，芍药甘草为痛泻要方。",
+      "主治太阳少阳合病下利。",
+      "为后世治热利祖方。"
+    ]
+  },
+  {
+    id: 62, name: "黄芩加半夏生姜汤", category: "少阳病",
+    composition: [
+      { drug: "黄芩", dose: "三两" },
+      { drug: "芍药", dose: "二两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "生姜", dose: "一两半（一方三两，切）" }
+    ],
+    method: "以水一斗，煮取三升，去滓，温服一升，日再夜一服。",
+    original: "太阳与少阳合病，自下利者，与黄芩汤；若呕者，黄芩加半夏生姜汤主之。（172）",
+    keyPoints: [
+      "黄芩汤加半夏生姜。",
+      "清热止利、和胃止呕。",
+      "倪师：黄芩汤治下利、半夏生姜治呕吐。",
+      "主治太阳少阳合病下利兼呕吐。",
+      "半夏生姜为小半夏汤，化饮止呕。"
+    ]
+  },
+  {
+    id: 63, name: "干姜黄芩黄连人参汤", category: "厥阴病",
+    composition: [
+      { drug: "干姜", dose: "三两" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "黄连", dose: "三两" },
+      { drug: "人参", dose: "三两" }
+    ],
+    method: "以水六升，煮取二升，去滓，分温再服。",
+    original: "伤寒本自寒下，医复吐下之，寒格，更逆吐下，若食入口即吐，干姜黄芩黄连人参汤主之。（359）",
+    keyPoints: [
+      "苦寒泄降、辛热通阳、益气扶正。",
+      "干姜温中、黄芩黄连清热、人参扶正。",
+      "倪师：寒格为上热下寒拒格，食入即吐为热在上。",
+      "主治上热下寒、寒热格拒证。",
+      "为寒热并用、补泻兼施之方。"
+    ]
+  },
+  {
+    id: 64, name: "白虎汤", category: "阳明病",
+    composition: [
+      { drug: "知母", dose: "六两" },
+      { drug: "石膏", dose: "一斤（碎）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "粳米", dose: "六合" }
+    ],
+    method: "以水一斗，煮米熟汤成，去滓，温服一升，日三服。",
+    original: "伤寒，脉浮滑，此以表有热，里有寒，白虎汤主之。（176）\n三阳合病，腹满身重……若自汗出者，白虎汤主之。（219）",
+    keyPoints: [
+      "清热生津。",
+      "石膏清气分大热、知母滋阴清热、甘草粳米和中养胃。",
+      "倪师：白虎为西方金神，主治阳明气分大热。",
+      "主治阳明气分热盛：壮热、烦渴、汗出、脉洪大。",
+      "'四大'证：大热大汗大渴脉洪大。",
+      "为清气分热盛的代表方。"
+    ]
+  },
+  {
+    id: 65, name: "白虎加人参汤", category: "阳明病",
+    composition: [
+      { drug: "知母", dose: "六两" },
+      { drug: "石膏", dose: "一斤（碎）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "粳米", dose: "六合" },
+      { drug: "人参", dose: "三两" }
+    ],
+    method: "以水一斗，煮米熟汤成，去滓，温服一升，日三服。",
+    original: "服桂枝汤，大汗出后，大烦渴不解，脉洪大者，白虎加人参汤主之。（26）",
+    keyPoints: [
+      "清热生津、益气养阴。",
+      "白虎汤加人参。",
+      "倪师：白虎证汗吐下后伤津耗气，加人参益气生津。",
+      "主治阳明热盛、气津两伤：大烦渴、汗出、背微恶寒。",
+      "舌上干燥欲饮水数升为津液大伤。",
+      "为清补兼施之方。"
+    ]
+  },
+  {
+    id: 66, name: "猪苓汤", category: "阳明病",
+    composition: [
+      { drug: "猪苓", dose: "一两（去皮）" },
+      { drug: "茯苓", dose: "一两" },
+      { drug: "泽泻", dose: "一两" },
+      { drug: "滑石", dose: "一两" },
+      { drug: "阿胶", dose: "一两" }
+    ],
+    method: "以水四升，先煮四味，取二升，去滓，内阿胶烊消，温服七合，日三服。",
+    original: "若脉浮发热，渴欲饮水，小便不利者，猪苓汤主之。（223）\n少阴病，下利六七日，咳而呕渴，心烦不得眠者，猪苓汤主之。（319）",
+    keyPoints: [
+      "利水清热养阴。",
+      "二苓泽泻利水、滑石清热、阿胶养阴。",
+      "倪师：利水不伤阴、养阴不助湿。",
+      "主治水热互结伤阴：小便不利、发热、口渴欲饮。",
+      "与五苓散鉴别：彼偏化气行水，此偏清热养阴。",
+      "为滋阴利水的代表方。"
+    ]
+  },
+  {
+    id: 67, name: "大承气汤", category: "阳明病",
+    composition: [
+      { drug: "大黄", dose: "四两（酒洗）" },
+      { drug: "厚朴", dose: "半斤（炙，去皮）" },
+      { drug: "枳实", dose: "五枚（炙）" },
+      { drug: "芒硝", dose: "三合" }
+    ],
+    method: "以水一斗，先煮二物，取五升，去滓，内大黄，更煮取二升，去滓，内芒硝，更上微火一两沸，分温再服。得下，余勿服。",
+    original: "阳明病，脉迟，虽汗出，不恶寒者……手足濈然汗出者，此大便已硬也，大承气汤主之。（208）",
+    keyPoints: [
+      "峻下热结。",
+      "大黄芒硝泻热软坚、枳实厚朴行气除满。",
+      "倪师：阳明腑实重证，痞满燥实俱备。",
+      "主治阳明腑实证：潮热谵语、大便不通、腹满硬痛、脉沉实。",
+      "为三承气汤中最峻者。",
+      "先煎枳朴、后纳大黄、芒硝烊化，煎法讲究。"
+    ]
+  },
+  {
+    id: 68, name: "小承气汤", category: "阳明病",
+    composition: [
+      { drug: "大黄", dose: "四两（酒洗）" },
+      { drug: "厚朴", dose: "二两（炙，去皮）" },
+      { drug: "枳实", dose: "三枚（大者，炙）" }
+    ],
+    method: "以水四升，煮取一升二合，去滓，分温二服。初服汤当更衣，不尔者尽饮之，若更衣者，勿服之。",
+    original: "阳明病，其人多汗，以津液外出，胃中燥，大便必硬，硬则谵语，小承气汤主之。（213）",
+    keyPoints: [
+      "轻下热结。",
+      "大黄泻热、枳实厚朴行气除满。",
+      "倪师：轻下剂，痞满实而不燥。",
+      "主治阳明热结轻证：腹满便秘、潮热谵语。",
+      "较大承气汤轻、不用芒硝。",
+      "试探阳明腑实与否亦用此方。"
+    ]
+  },
+  {
+    id: 69, name: "蜜煎导方", category: "阳明病",
+    composition: [{ drug: "食蜜", dose: "七合" }],
+    method: "于铜器内，微火煎，当须凝如饴状，搅之勿令焦著，欲可丸，并手捻作挺，令头锐，大如指，长二寸许，当热时急作，冷则硬。以内谷道中，以手急抱，欲大便时乃去之。",
+    original: "阳明病，自汗出，若发汗，小便自利者，此为津液内竭，虽硬不可攻之，当须自欲大便，宜蜜煎导而通之。（233）",
+    keyPoints: [
+      "润肠通便。",
+      "食蜜一味，熬如饴状，捻作挺。",
+      "倪师：外导法，治津液枯竭之便秘。",
+      "主治阳明病、津液内竭、大便硬结难下。",
+      "为中医外治法的先河。",
+      "体虚不任攻下者宜此法。"
+    ]
+  },
+  {
+    id: 70, name: "猪胆汁导方", category: "阳明病",
+    composition: [{ drug: "大猪胆", dose: "一枚" }],
+    method: "泻汁，和少许法醋，以灌谷道内，如一食顷，当大便出宿食恶物，甚效。",
+    original: "……若土瓜根及大猪胆汁，皆可为导。（233）",
+    keyPoints: [
+      "清热润燥、通便导下。",
+      "猪胆汁苦寒、清热润燥，加醋以助泻下。",
+      "倪师：猪胆汁苦寒清热、润肠通便。",
+      "主治阳明热结、津液枯竭、便秘。",
+      "为寒下外导之法。",
+      "现代可用灌肠法施用。"
+    ]
+  },
+  {
+    id: 71, name: "茵陈蒿汤", category: "阳明病",
+    composition: [
+      { drug: "茵陈蒿", dose: "六两" },
+      { drug: "栀子", dose: "十四枚（擘）" },
+      { drug: "大黄", dose: "二两（去皮）" }
+    ],
+    method: "以水一斗二升，先煮茵陈，减六升，内二味，煮取三升，去滓，分三服。小便当利，尿如皂荚汁状，色正赤，一宿腹减，黄从小便去也。",
+    original: "阳明病，发热汗出者，此为热越……身必发黄，茵陈蒿汤主之。（236）\n伤寒七八日，身黄如橘子色，小便不利，腹微满者，茵陈蒿汤主之。（260）",
+    keyPoints: [
+      "清热利湿退黄。",
+      "茵陈清热利湿退黄、栀子清利三焦、大黄泻热导瘀。",
+      "倪师：茵陈为治黄疸专药，三药合用使湿热从二便出。",
+      "主治湿热黄疸：身目俱黄、色鲜明、小便不利。",
+      "为治阳黄代表方。",
+      "先煮茵陈者，取其轻清之气上行。"
+    ]
+  },
+  {
+    id: 72, name: "麻子仁丸", category: "阳明病",
+    composition: [
+      { drug: "麻子仁", dose: "二升" },
+      { drug: "芍药", dose: "半斤" },
+      { drug: "枳实", dose: "半斤（炙）" },
+      { drug: "大黄", dose: "一斤（去皮）" },
+      { drug: "厚朴", dose: "一尺（炙，去皮）" },
+      { drug: "杏仁", dose: "一升（去皮尖，熬，别作脂）" }
+    ],
+    method: "上六味，蜜和丸如梧桐子大，饮服十丸，日三服，渐加，以知为度。",
+    original: "趺阳脉浮而涩，浮则胃气强，涩则小便数，浮涩相搏，大便则硬，其脾为约，麻子仁丸主之。（247）",
+    keyPoints: [
+      "润肠通便、泻热行气。",
+      "麻子仁润肠、杏仁润降、芍药养阴、大黄枳朴行气泻热。",
+      "倪师：脾约证，脾不能为胃行津液。",
+      "主治脾约便秘：小便数、大便硬。",
+      "为润下剂的代表方。",
+      "蜜丸缓下、和中养胃。"
+    ]
+  },
+  {
+    id: 73, name: "栀子柏皮汤", category: "阳明病",
+    composition: [
+      { drug: "肥栀子", dose: "十五个（擘）" },
+      { drug: "甘草", dose: "一两（炙）" },
+      { drug: "黄柏", dose: "二两" }
+    ],
+    method: "以水四升，煮取一升半，去滓，分温再服。",
+    original: "伤寒身黄，发热，桅子柏皮汤主之。（261）",
+    keyPoints: [
+      "清热利湿退黄。",
+      "栀子清利三焦、黄柏清热燥湿、甘草和中。",
+      "倪师：热重于湿、无腑实者宜之。",
+      "主治阳黄热重于湿：身黄发热、无腹满。",
+      "为治黄疸的辅佐方。"
+    ]
+  },
+  {
+    id: 74, name: "麻黄连轺赤小豆汤", category: "阳明病",
+    composition: [
+      { drug: "麻黄", dose: "二两（去节）" },
+      { drug: "连轺", dose: "二两（连翘根是）" },
+      { drug: "杏仁", dose: "四十个（去皮尖）" },
+      { drug: "赤小豆", dose: "一升" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "生梓白皮", dose: "一升（切）" },
+      { drug: "生姜", dose: "二两（切）" },
+      { drug: "甘草", dose: "二两（炙）" }
+    ],
+    method: "以潦水一斗，先煮麻黄再沸，去上沫，内诸药，煮取三升，去滓，分温三服，半日服尽。",
+    original: "伤寒瘀热在里，身必黄，麻黄连轺赤小豆汤主之。（262）",
+    keyPoints: [
+      "解表散邪、清热利湿。",
+      "麻黄杏仁生姜解表散邪、连轺赤小豆梓皮清热利湿、大枣甘草和中。",
+      "倪师：表里双解、散湿热之黄。",
+      "主治阳黄兼表证：身黄、无汗、恶寒。",
+      "潦水为雨后地面之水，取其味薄不助湿。",
+      "为阳黄兼表的良方。"
+    ]
+  },
+  {
+    id: 75, name: "桂枝加芍药汤", category: "太阴病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "芍药", dose: "六两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水七升，煮取三升，去滓，温分三服。",
+    original: "本太阳病，医反下之，因尔腹满时痛者，属太阴也，桂枝加芍药汤主之。（279）",
+    keyPoints: [
+      "调和营卫、缓急止痛。",
+      "桂枝汤倍芍药。",
+      "倪师：重用芍药缓急止痛、柔肝理脾。",
+      "主治太阳病误下、邪陷太阴、腹满时痛。",
+      "为治脾家气血不和腹痛的方剂。"
+    ]
+  },
+  {
+    id: 76, name: "桂枝加大黄汤", category: "太阴病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "芍药", dose: "六两" },
+      { drug: "大黄", dose: "二两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "大枣", dose: "十二枚（擘）" }
+    ],
+    method: "以水七升，煮取三升，去滓，温服一升，日三服。",
+    original: "……大实痛者，桂枝加大黄汤主之。（279）",
+    keyPoints: [
+      "调和营卫、泻实导滞。",
+      "桂枝加芍药汤再加大黄。",
+      "倪师：太阴病兼有阳明腑实、大实痛者。",
+      "主治腹满痛、便秘。",
+      "为太阴病兼阳明之方。"
+    ]
+  },
+  {
+    id: 77, name: "麻黄附子细辛汤", category: "少阴病",
+    composition: [
+      { drug: "麻黄", dose: "二两（去节）" },
+      { drug: "细辛", dose: "二两" },
+      { drug: "附子", dose: "一枚（炮，去皮，破八片）" }
+    ],
+    method: "以水一斗，先煮麻黄，减二升，去上沫，内诸药，煮取三升，去滓，温服一升，日三服。",
+    original: "少阴病，始得之，反发热，脉沉者，麻黄附子细辛汤主之。（301）",
+    keyPoints: [
+      "温经解表。",
+      "麻黄解表、附子温阳、细辛通彻表里。",
+      "倪师：太少两感、阳虚外寒。",
+      "主治少阴病始得之、反发热、脉沉。",
+      "细辛通彻表里、协麻黄解表、协附子温里。",
+      "为阳虚外感的代表方。"
+    ]
+  },
+  {
+    id: 78, name: "麻黄附子甘草汤", category: "少阴病",
+    composition: [
+      { drug: "麻黄", dose: "二两（去节）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "附子", dose: "一枚（炮，去皮，破八片）" }
+    ],
+    method: "以水七升，先煮麻黄一两沸，去上沫，内诸药，煮取三升，去滓，温服一升，日三服。",
+    original: "少阴病，得之二三日，麻黄附子甘草汤微发汗。以二三日无证，故微发汗也。（302）",
+    keyPoints: [
+      "温经解表、微发其汗。",
+      "麻黄附子细辛汤去细辛加甘草。",
+      "倪师：少阴病得之二三日、病势较缓、用甘草缓峻。",
+      "主治少阴病、得之二三日、无里证。",
+      "为阳虚外感轻证。",
+      "微发汗、不伤正气。"
+    ]
+  },
+  {
+    id: 79, name: "黄连阿胶汤", category: "少阴病",
+    composition: [
+      { drug: "黄连", dose: "四两" },
+      { drug: "黄芩", dose: "二两" },
+      { drug: "芍药", dose: "二两" },
+      { drug: "鸡子黄", dose: "二枚" },
+      { drug: "阿胶", dose: "三两" }
+    ],
+    method: "以水六升，先煮三物，取二升，去滓，内胶烊尽，小冷，内鸡子黄，搅令相得，温服七合，日三服。",
+    original: "少阴病，得之二三日以上，心中烦，不得卧，黄连阿胶汤主之。（303）",
+    keyPoints: [
+      "滋阴降火、交通心肾。",
+      "黄连黄芩清热、芍药阿胶滋阴、鸡子黄养心安神。",
+      "倪师：少阴热化证、心肾不交。",
+      "主治少阴热化证：心烦不眠、口燥咽干。",
+      "为治阴虚火旺、心肾不交之方。",
+      "现代用于失眠症效佳。"
+    ]
+  },
+  {
+    id: 80, name: "附子汤", category: "少阴病",
+    composition: [
+      { drug: "附子", dose: "二枚（炮，去皮，破八片）" },
+      { drug: "茯苓", dose: "三两" },
+      { drug: "人参", dose: "二两" },
+      { drug: "白术", dose: "四两" },
+      { drug: "芍药", dose: "三两" }
+    ],
+    method: "以水八升，煮取三升，去滓，温服一升，日三服。",
+    original: "少阴病，得之一二日，口中和，其背恶寒者，当灸之，附子汤主之。（304）\n少阴病，身体痛，手足寒，骨节痛，脉沉者，附子汤主之。（305）",
+    keyPoints: [
+      "温经散寒、祛湿止痛。",
+      "附子温阳、人参补气、苓术健脾祛湿、芍药和营。",
+      "倪师：少阴寒化证、阳虚寒湿。",
+      "主治阳虚寒湿：身体痛、骨节痛、背恶寒、手足寒。",
+      "为治少阴寒湿身痛之方。",
+      "附子用二枚、量大力宏。"
+    ]
+  },
+  {
+    id: 81, name: "桃花汤", category: "少阴病",
+    composition: [
+      { drug: "赤石脂", dose: "一斤（一半全用，一半筛末）" },
+      { drug: "干姜", dose: "一两" },
+      { drug: "粳米", dose: "一升" }
+    ],
+    method: "以水七升，煮米令熟，去滓，温服七合，内赤石脂末方寸匕，日三服。若一服愈，余勿服。",
+    original: "少阴病，下利便脓血者，桃花汤主之。（306）\n少阴病，二三日至四五日，腹痛，小便不利，下利不止，便脓血者，桃花汤主之。（307）",
+    keyPoints: [
+      "温中涩肠止痢。",
+      "赤石脂涩肠固脱、干姜温中散寒、粳米和中。",
+      "倪师：少阴虚寒下利、滑脱不禁。",
+      "主治少阴病、脾肾阳虚、下利脓血。",
+      "赤石脂一半煎、一半冲服、取其收涩之性。",
+      "为涩肠固脱之方。"
+    ]
+  },
+  {
+    id: 82, name: "猪肤汤", category: "少阴病",
+    composition: [{ drug: "猪肤", dose: "一斤" }],
+    method: "以水一斗，煮取五升，去滓，加白蜜一升，白粉五合，熬香，和令相得，温分六服。",
+    original: "少阴病，下利咽痛，胸满心烦，猪肤汤主之。（310）",
+    keyPoints: [
+      "滋阴润燥、清热利咽。",
+      "猪肤滋阴润燥、白蜜润肺止咳、白粉即米粉、健脾止利。",
+      "倪师：滋肾水、润肺燥、补脾止利。",
+      "主治少阴病阴虚、虚火上炎之咽痛。",
+      "为甘平养阴之方。"
+    ]
+  },
+  {
+    id: 83, name: "甘草汤", category: "少阴病",
+    composition: [{ drug: "甘草", dose: "二两" }],
+    method: "以水三升，煮取一升半，去滓，温服七合，日二服。",
+    original: "少阴病，二三日，咽痛者，可与甘草汤；不差者，与桔梗汤。（311）",
+    keyPoints: [
+      "清热解毒、利咽止痛。",
+      "生甘草一味、清热解毒。",
+      "倪师：单方一味、火热之邪。",
+      "主治少阴病初起、咽痛轻证。",
+      "为单方小剂、治轻证。",
+      "不差者加桔梗开肺利咽。"
+    ]
+  },
+  {
+    id: 84, name: "桔梗汤", category: "少阴病",
+    composition: [
+      { drug: "桔梗", dose: "一两" },
+      { drug: "甘草", dose: "二两" }
+    ],
+    method: "以水三升，煮取一升，去滓，温分再服。",
+    original: "少阴病，二三日，咽痛者，可与甘草汤；不差者，与桔梗汤。（311）",
+    keyPoints: [
+      "清热解毒、宣肺利咽。",
+      "甘草清热、桔梗开肺利咽。",
+      "倪师：桔梗为'舟楫之剂'、载药上行。",
+      "主治少阴病咽痛较甚者。",
+      "为后世治咽痛的基础方。"
+    ]
+  },
+  {
+    id: 85, name: "苦酒汤", category: "少阴病",
+    composition: [
+      { drug: "半夏", dose: "十四枚（洗，破如枣核）" },
+      { drug: "鸡子", dose: "一枚（去黄，内上苦酒，着鸡子壳中）" }
+    ],
+    method: "上二味，内半夏着苦酒中，以鸡子壳置刀环中，安火上，令三沸，去滓，少少含咽之。不差，更作三剂。",
+    original: "少阴病，咽中伤，生疮，不能语言，声不出者，苦酒汤主之。（312）",
+    keyPoints: [
+      "清热涤痰、敛疮消肿。",
+      "半夏涤痰开结、苦酒（米醋）消肿敛疮、鸡子白润喉。",
+      "倪师：苦酒酸涩、消肿敛疮；半夏去痰散结。",
+      "主治少阴病咽中伤、生疮、声嘶。",
+      "含咽法使药力持续作用于咽部。"
+    ]
+  },
+  {
+    id: 86, name: "半夏散及汤", category: "少阴病",
+    composition: [
+      { drug: "半夏", dose: "（洗）" },
+      { drug: "桂枝", dose: "（去皮）" },
+      { drug: "甘草", dose: "（炙）" }
+    ],
+    method: "上三味，等分，各别捣筛已，合治之，白饮和服方寸匕，日三服。若不能服散者，以水一升，煎七沸，内散两方寸匕，更煮三沸，下火令小冷，少少咽之。",
+    original: "少阴病，咽中痛，半夏散及汤主之。（313）",
+    keyPoints: [
+      "通阳散寒、涤痰开结。",
+      "半夏涤痰开结、桂枝通阳散寒、甘草和中利咽。",
+      "倪师：少阴客寒咽痛、非虚火者宜之。",
+      "主治少阴病、咽中痛、客寒咽痛。",
+      "散与汤并备、灵活运用。"
+    ]
+  },
+  {
+    id: 87, name: "白通汤", category: "少阴病",
+    composition: [
+      { drug: "葱白", dose: "四茎" },
+      { drug: "干姜", dose: "一两" },
+      { drug: "附子", dose: "一枚（生，去皮，破八片）" }
+    ],
+    method: "以水三升，煮取一升，去滓，分温再服。",
+    original: "少阴病，下利脉微者，与白通汤。利不止，厥逆无脉，干呕烦者，白通加猪胆汁汤主之。（315、314）",
+    keyPoints: [
+      "破阴回阳、宣通上下。",
+      "葱白通阳、干姜温中、附子回阳。",
+      "倪师：葱白为'通阳要药'、宣通上下。",
+      "主治少阴病、下利脉微、阴盛戴阳。",
+      "为四逆汤去甘草加葱白。",
+      "取其急通阳气之意。"
+    ]
+  },
+  {
+    id: 88, name: "白通加猪胆汁汤", category: "少阴病",
+    composition: [
+      { drug: "葱白", dose: "四茎" },
+      { drug: "干姜", dose: "一两" },
+      { drug: "附子", dose: "一枚（生，去皮，破八片）" },
+      { drug: "人尿", dose: "五合" },
+      { drug: "猪胆汁", dose: "一合" }
+    ],
+    method: "以水三升，煮取一升，去滓，内胆汁、人尿，和令相得，分温再服。无胆汁亦可用。",
+    original: "少阴病，下利脉微者，与白通汤。利不止，厥逆无脉，干呕烦者，白通加猪胆汁汤主之。服汤脉暴出者死，微续者生。（315）",
+    keyPoints: [
+      "破阴回阳、宣通上下、兼反佐。",
+      "白通汤加猪胆汁、人尿。",
+      "倪师：热药寒用、反佐之法、引阳入阴。",
+      "主治少阴病、下利不止、厥逆无脉、干呕烦。",
+      "为治阴盛格阳的重症。",
+      "脉暴出者死、微续者生。"
+    ]
+  },
+  {
+    id: 89, name: "通脉四逆汤", category: "少阴病",
+    composition: [
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "干姜", dose: "三两（强人可四两）" },
+      { drug: "附子", dose: "大者一枚（生用，去皮，破八片）" }
+    ],
+    method: "以水三升，煮取一升二合，去滓，分温再服。其脉即出者愈。面色赤者，加葱九茎；腹中痛者，去葱，加芍药二两；呕者，加生姜二两；咽痛者，去芍药，加桔梗一两；利止脉不出者，去桔梗，加人参二两。",
+    original: "少阴病，下利清谷，里寒外热，手足厥逆，脉微欲绝，身反不恶寒，其人面色赤……通脉四逆汤主之。（317）",
+    keyPoints: [
+      "破阴回阳、通达内外。",
+      "四逆汤倍干姜、附子重用。",
+      "倪师：阴盛格阳、里真寒外假热。",
+      "主治少阴病、阴盛格阳：下利清谷、手足厥逆、脉微欲绝、身反不恶寒。",
+      "为四逆汤之重者。",
+      "加减法多、对症灵活。"
+    ]
+  },
+  {
+    id: 90, name: "四逆散", category: "少阴病",
+    composition: [
+      { drug: "甘草", dose: "十分（炙）" },
+      { drug: "枳实", dose: "十分（破，水渍，炙干）" },
+      { drug: "柴胡", dose: "十分" },
+      { drug: "芍药", dose: "十分" }
+    ],
+    method: "捣筛，白饮和服方寸匕，日三服。咳者，加五味子、干姜各五分，并主下利；悸者，加桂枝五分；小便不利者，加茯苓五分；腹中痛者，加附子一枚，炮令坼；泄利下重者，先以水五升，煮薤白三升，煮取三升，去滓，以散三方寸匕内汤中，煮取一升半，分温再服。",
+    original: "少阴病，四逆，其人或咳，或悸，或小便不利，或腹中痛，或泄利下重者，四逆散主之。（318）",
+    keyPoints: [
+      "透邪解郁、疏肝理脾。",
+      "柴胡疏肝解郁、枳实行气散结、芍药和营、甘草调和。",
+      "倪师：少阴病四逆、气机郁滞所致。",
+      "主治阳气内郁、手足不温、胁肋胀闷。",
+      "为治肝脾不和、气机郁滞之名方。",
+      "后世发展为'逍遥散'底方。"
+    ]
+  },
+  {
+    id: 91, name: "乌梅丸", category: "厥阴病",
+    composition: [
+      { drug: "乌梅", dose: "三百枚" },
+      { drug: "细辛", dose: "六两" },
+      { drug: "干姜", dose: "十两" },
+      { drug: "黄连", dose: "十六两" },
+      { drug: "附子", dose: "六两（炮，去皮）" },
+      { drug: "蜀椒", dose: "四两（出汗）" },
+      { drug: "桂枝", dose: "六两（去皮）" },
+      { drug: "人参", dose: "六两" },
+      { drug: "黄柏", dose: "六两" }
+    ],
+    method: "上十味，异捣筛，合治之，以苦酒渍乌梅一宿，去核，蒸之五斗米下，饭熟捣成泥，和药令相得，内臼中，与蜜杵二千下，丸如梧桐子大，先食饮服十丸，日三服，稍加至二十丸。禁生冷、滑物、臭食等。",
+    original: "伤寒脉微而厥，至七八日肤冷……蛔厥者，乌梅丸主之。又主久利。（338）",
+    keyPoints: [
+      "清热燥湿、温脏补虚、安蛔止痛。",
+      "乌梅酸能安蛔、连柏苦能下蛔、姜附椒桂辛能伏蛔。",
+      "倪师：蛔得酸则静、得苦则下、得辛则伏。",
+      "主治蛔厥、久利、厥阴病寒热错杂。",
+      "为治蛔厥祖方，亦治寒热错杂的久利。",
+      "为厥阴病主方。"
+    ]
+  },
+  {
+    id: 92, name: "当归四逆汤", category: "厥阴病",
+    composition: [
+      { drug: "当归", dose: "三两" },
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "细辛", dose: "三两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "通草", dose: "二两" },
+      { drug: "大枣", dose: "二十五枚（擘）" }
+    ],
+    method: "以水八升，煮取三升，去滓，温服一升，日三服。",
+    original: "手足厥寒，脉细欲绝者，当归四逆汤主之。（351）",
+    keyPoints: [
+      "养血通脉、温经散寒。",
+      "当归芍药养血和营、桂枝细辛温经散寒、通草通经、甘草大枣和中。",
+      "倪师：血虚寒厥、脉细欲绝。",
+      "主治血虚寒厥：手足厥寒、脉细欲绝。",
+      "为桂枝汤去生姜加当归细辛通草。",
+      "大枣用二十五枚、量重、养血补中。"
+    ]
+  },
+  {
+    id: 93, name: "当归四逆加吴茱萸生姜汤", category: "厥阴病",
+    composition: [
+      { drug: "当归", dose: "三两" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "通草", dose: "二两" },
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "细辛", dose: "三两" },
+      { drug: "生姜", dose: "半斤（切）" },
+      { drug: "吴茱萸", dose: "二升" },
+      { drug: "大枣", dose: "二十五枚（擘）" }
+    ],
+    method: "以水六升、清酒六升和，煮取五升，去滓，温分五服。",
+    original: "若其人内有久寒者，宜当归四逆加吴茱萸生姜汤。（352）",
+    keyPoints: [
+      "养血通脉、温经散寒、降逆止呕。",
+      "当归四逆汤加吴茱萸生姜。",
+      "倪师：内有久寒、加吴茱萸生姜温中散寒。",
+      "主治血虚寒厥兼内有久寒。",
+      "为当归四逆汤证之重者。",
+      "清酒煎药、温通血脉。"
+    ]
+  },
+  {
+    id: 94, name: "麻黄升麻汤", category: "厥阴病",
+    composition: [
+      { drug: "麻黄", dose: "二两半（去节）" },
+      { drug: "升麻", dose: "一两一分" },
+      { drug: "当归", dose: "一两一分" },
+      { drug: "知母", dose: "十八铢" },
+      { drug: "黄芩", dose: "十八铢" },
+      { drug: "萎蕤", dose: "十八铢（一作菖蒲）" },
+      { drug: "芍药", dose: "六铢" },
+      { drug: "天门冬", dose: "六铢（去心）" },
+      { drug: "桂枝", dose: "六铢（去皮）" },
+      { drug: "茯苓", dose: "六铢" },
+      { drug: "甘草", dose: "六铢（炙）" },
+      { drug: "石膏", dose: "六铢（碎，绵裹）" },
+      { drug: "白术", dose: "六铢" },
+      { drug: "干姜", dose: "六铢" }
+    ],
+    method: "以水一斗，先煮麻黄一两沸，去上沫，内诸药，煮取三升，去滓，分温三服。相去如炊三斗米顷，令尽，汗出愈。",
+    original: "伤寒六七日，大下后，寸脉沉而迟，手足厥逆，下部脉不至，咽喉不利，唾脓血，泄利不止者，为难治，麻黄升麻汤主之。（357）",
+    keyPoints: [
+      "发越郁阳、清上温下、扶正益阴。",
+      "麻黄升麻发越郁阳、苓术干姜温下寒、知母黄芩石膏清上热、归芍葳蕤天冬养阴润肺。",
+      "倪师：寒热错杂、上热下寒、正气大虚。",
+      "主治大下后阴阳错杂、咽喉不利、泄利不止。",
+      "药味最多、为伤寒论最复杂方剂之一。",
+      "为治上热下寒、虚实错杂的权变之法。"
+    ]
+  },
+  {
+    id: 95, name: "干姜黄芩黄连人参汤", category: "厥阴病",
+    composition: [
+      { drug: "干姜", dose: "三两" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "黄连", dose: "三两" },
+      { drug: "人参", dose: "三两" }
+    ],
+    method: "以水六升，煮取二升，去滓，分温再服。",
+    original: "伤寒本自寒下，医复吐下之，寒格，更逆吐下，若食入口即吐，干姜黄芩黄连人参汤主之。（359）",
+    keyPoints: [
+      "苦寒泄降、辛热通阳、益气扶正。",
+      "干姜温中、黄芩黄连清热、人参扶正。",
+      "倪师：上热下寒、寒热格拒。",
+      "主治上热下寒、寒热格拒：食入即吐。",
+      "为治寒格证主方。"
+    ]
+  },
+  {
+    id: 96, name: "白头翁汤", category: "厥阴病",
+    composition: [
+      { drug: "白头翁", dose: "二两" },
+      { drug: "黄柏", dose: "三两" },
+      { drug: "黄连", dose: "三两" },
+      { drug: "秦皮", dose: "三两" }
+    ],
+    method: "以水七升，煮取二升，去滓，温服一升，不愈，更服一升。",
+    original: "热利下重者，白头翁汤主之。（371）\n下利欲饮水者，以有热故也，白头翁汤主之。（373）",
+    keyPoints: [
+      "清热燥湿、凉肝止利。",
+      "白头翁清热凉肝、黄连黄柏清热燥湿、秦皮清热涩肠。",
+      "倪师：白头翁为治热利下重之专药。",
+      "主治厥阴热利：下利脓血、肛门灼热、渴欲饮水。",
+      "为治热毒血痢的代表方。",
+      "现代用于细菌性痢疾、阿米巴痢疾。"
+    ]
+  },
+  {
+    id: 97, name: "四逆加人参汤", category: "霍乱",
+    composition: [
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "干姜", dose: "一两半" },
+      { drug: "附子", dose: "一枚（生，去皮，破八片）" },
+      { drug: "人参", dose: "一两" }
+    ],
+    method: "以水三升，煮取一升二合，去滓，分温再服。",
+    original: "恶寒脉微而复利，利止，亡血也，四逆加人参汤主之。（385）",
+    keyPoints: [
+      "回阳救逆、益气生津。",
+      "四逆汤加人参。",
+      "倪师：阳虚兼血脱、加人参益气生津。",
+      "主治霍乱吐利后、阳虚液脱。",
+      "利止为津液已脱、亡血也。",
+      "为急救回阳、益气生津之方。"
+    ]
+  },
+  {
+    id: 98, name: "理中丸（汤）", category: "霍乱",
+    composition: [
+      { drug: "人参", dose: "三两" },
+      { drug: "干姜", dose: "三两" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "白术", dose: "三两" }
+    ],
+    method: "上四味，捣筛，蜜和为丸如鸡子黄许大，以沸汤数合和一丸，研碎，温服之，日三四、夜二服。腹中未热，益至三四丸，然不及汤。汤法：以四物依两数切，用水八升，煮取三升，去滓，温服一升，日三服。",
+    original: "霍乱，头痛发热，身疼痛，热多欲饮水者，五苓散主之；寒多不用水者，理中丸主之。（386）\n大病差后，喜唾，久不了了，胸上有寒，当以丸药温之，宜理中丸。（396）",
+    keyPoints: [
+      "温中散寒、补气健脾。",
+      "人参益气、白术健脾、干姜温中、甘草和中。",
+      "倪师：理中者、理中焦也、温中阳。",
+      "主治中焦虚寒：腹痛、吐利、喜唾涎沫。",
+      "为治太阴病主方。",
+      "丸汤两用、灵活方便。"
+    ]
+  },
+  {
+    id: 99, name: "通脉四逆加猪胆汁汤", category: "霍乱",
+    composition: [
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "干姜", dose: "三两" },
+      { drug: "附子", dose: "大者一枚（生，去皮，破八片）" },
+      { drug: "猪胆汁", dose: "半合" }
+    ],
+    method: "以水三升，煮取一升二合，去滓，内猪胆汁，分温再服，其脉即来。无猪胆，以羊胆代之。",
+    original: "吐已下断，汗出而厥，四肢拘急不解，脉微欲绝者，通脉四逆加猪胆汁汤主之。（390）",
+    keyPoints: [
+      "回阳救逆、益阴和阳。",
+      "通脉四逆汤加猪胆汁。",
+      "倪师：阳亡阴竭、加猪胆汁反佐、引阳入阴。",
+      "主治霍乱吐下后、阳亡阴竭、四肢拘急。",
+      "为通脉四逆汤证之重者。",
+      "脉即来者生、不来者死。"
+    ]
+  },
+  {
+    id: 100, name: "烧裈散", category: "阴阳易",
+    composition: [{ drug: "妇人中裈", dose: "近隐处（取烧作灰）" }],
+    method: "以水服方寸匕，日三服，小便即利，阴头微肿，此为愈矣。妇人病，取男子裈当烧灰。",
+    original: "伤寒，阴阳易之为病，其人身体重，少气，少腹里急，或引阴中拘挛，热上冲胸，头重不欲举，眼中生花，膝胫拘急者，烧裈散主之。（392）",
+    keyPoints: [
+      "导引邪气、流通气血。",
+      "近阴处裈裈烧灰。",
+      "倪师：阴阳易为病后交合而传染之病。",
+      "主治阴阳易、身体重、少气、阴中拘挛。",
+      "为古老方剂，临床少用。",
+      "小便利、阴头微肿为愈。"
+    ]
+  },
+  {
+    id: 101, name: "枳实栀子豉汤", category: "劳复",
+    composition: [
+      { drug: "枳实", dose: "三枚（炙）" },
+      { drug: "栀子", dose: "十四个（擘）" },
+      { drug: "香豉", dose: "一升（绵裹）" }
+    ],
+    method: "以清浆水七升，空煮取四升，内枳实、栀子，煮取二升，下豉，更煮五六沸，去滓，温分再服，覆令微似汗。",
+    original: "大病差后，劳复者，枳实栀子豉汤主之。（393）",
+    keyPoints: [
+      "清热除烦、宽中下气。",
+      "栀子豉汤加枳实。",
+      "倪师：病后劳复、热郁胸膈、气机不畅。",
+      "主治大病差后、劳复发热、心烦懊憹。",
+      "清浆水煮药、取其酸寒清热。",
+      "覆取微似汗、使邪从汗解。"
+    ]
+  },
+  {
+    id: 102, name: "牡蛎泽泻散", category: "劳复",
+    composition: [
+      { drug: "牡蛎", dose: "（熬）" },
+      { drug: "泽泻", dose: "" },
+      { drug: "蜀漆", dose: "（暖水洗去腥）" },
+      { drug: "葶苈子", dose: "（熬）" },
+      { drug: "商陆根", dose: "（熬）" },
+      { drug: "海藻", dose: "（洗去咸）" },
+      { drug: "瓜蒌根", dose: "" }
+    ],
+    method: "上七味，异捣，下筛为散，更于臼中治之，白饮和服方寸匕，日三服。小便利，止后服。",
+    original: "大病差后，从腰以下有水气者，牡蛎泽泻散主之。（395）",
+    keyPoints: [
+      "逐水清热、软坚散结。",
+      "牡蛎泽泻利水、蜀漆葶苈商陆海藻逐水、瓜蒌根生津。",
+      "倪师：腰以下水气、峻逐水饮。",
+      "主治大病差后、水肿、二便不利。",
+      "为治水气下注的方剂。",
+      "小便利止后服、防伤正气。"
+    ]
+  },
+  {
+    id: 103, name: "竹叶石膏汤", category: "劳复",
+    composition: [
+      { drug: "竹叶", dose: "二把" },
+      { drug: "石膏", dose: "一斤" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "麦门冬", dose: "一升（去心）" },
+      { drug: "人参", dose: "二两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "粳米", dose: "半升" }
+    ],
+    method: "以水一斗，煮取六升，去滓，内粳米，煮米熟汤成，去米，温服一升，日三服。",
+    original: "伤寒解后，虚羸少气，气逆欲吐，竹叶石膏汤主之。（397）",
+    keyPoints: [
+      "清热生津、益气和胃。",
+      "竹叶石膏清热、麦冬人参粳米甘草益气养阴、半夏和胃降逆。",
+      "倪师：白虎加人参汤去知母加竹叶麦冬半夏。",
+      "主治伤寒解后、气津两伤、余热未清。",
+      "为清补并行之方。",
+      "现代用于热病后期、肿瘤化疗后等。"
+    ]
+  },
+  {
+    id: 104, name: "小建中汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "大枣", dose: "十二枚（擘）" },
+      { drug: "芍药", dose: "六两" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "胶饴", dose: "一升" }
+    ],
+    method: "以水七升，煮取三升，去滓，内饴，更上微火消解，温服一升，日三服。",
+    original: "伤寒，阳脉涩，阴脉弦，法当腹中急痛，先与小建中汤……（100）",
+    keyPoints: [
+      "温中补虚、和里缓急。",
+      "桂枝汤倍芍药加饴糖。",
+      "倪师：饴糖为君，温中补虚、缓急止痛。",
+      "主治中焦虚寒、腹中急痛。",
+      "亦治虚劳里急。"
+    ]
+  },
+  {
+    id: 105, name: "桂枝甘草龙骨牡蛎汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "一两（去皮）" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "牡蛎", dose: "二两（熬）" },
+      { drug: "龙骨", dose: "二两" }
+    ],
+    method: "以水五升，煮取二升半，去滓，温服八合，日三服。",
+    original: "火逆下之，因烧针烦躁者，桂枝甘草龙骨牡蛎汤主之。（118）",
+    keyPoints: [
+      "温通心阳、安神定志。",
+      "桂枝甘草温通心阳、龙骨牡蛎重镇安神。",
+      "倪师：桂枝甘草辛甘化阳、龙骨牡蛎重镇安神。",
+      "主治心阳虚、烦躁不宁。",
+      "为治火逆伤心阳的方剂。"
+    ]
+  },
+  {
+    id: 106, name: "桂枝去芍药加麻黄附子细辛汤", category: "太阳病",
+    composition: [
+      { drug: "桂枝", dose: "三两" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "大枣", dose: "十二枚" },
+      { drug: "麻黄", dose: "二两" },
+      { drug: "细辛", dose: "二两" },
+      { drug: "附子", dose: "一枚（炮）" }
+    ],
+    method: "以水七升，煮麻黄，去上沫，内诸药，煮取二升，分温三服。当汗出，如虫行皮中，即愈。",
+    original: "气分，心下坚，大如盘，边如旋杯，水饮所作，桂枝去芍药加麻黄附子细辛汤主之。（《金匮要略》引此方）",
+    keyPoints: [
+      "温阳散寒、通阳化气。",
+      "桂枝汤去芍药加麻黄附子细辛。",
+      "倪师：阳虚寒凝、气机不运、水饮停聚。",
+      "主治心下痞坚如盘、水饮内结。",
+      "为治气分病之名方。",
+      "汗出如虫行皮中为阳通之象。"
+    ]
+  },
+  {
+    id: 107, name: "桂枝加葛根半夏汤", category: "太阳病",
+    composition: [
+      { drug: "葛根", dose: "四两" },
+      { drug: "桂枝", dose: "三两" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "大枣", dose: "十二枚" },
+      { drug: "半夏", dose: "半升" }
+    ],
+    method: "以水一斗，先煮葛根，减二升，去上沫，内诸药，煮取三升，去滓，温服一升。",
+    original: "太阳阳明合病，不下利但呕者，本方主之。（常见加减方）",
+    keyPoints: [
+      "解肌舒筋、和胃降逆。",
+      "桂枝加葛根汤加半夏。",
+      "倪师：项背强几几兼胃气不和、呕逆者。",
+      "为桂枝加葛根汤兼证治法。",
+      "葛根升津、半夏降逆，升降相因。"
+    ]
+  },
+  {
+    id: 108, name: "葛根加芩连半夏汤", category: "太阳病",
+    composition: [
+      { drug: "葛根", dose: "四两" },
+      { drug: "麻黄", dose: "三两" },
+      { drug: "桂枝", dose: "二两" },
+      { drug: "芍药", dose: "二两" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "大枣", dose: "十二枚" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "黄连", dose: "三两" },
+      { drug: "半夏", dose: "半升" }
+    ],
+    method: "以水一斗，先煮麻黄葛根，减二升，去沫，内诸药，煮取三升，去滓，温服一升。",
+    original: "协热下利兼呕吐者，本方主之。（常见加减方）",
+    keyPoints: [
+      "解表清里、降逆止呕。",
+      "葛根汤加芩连半夏。",
+      "倪师：表里同病、下利呕逆之证。",
+      "为葛根汤与葛根芩连汤合法。",
+      "表里双解、升清降浊。"
+    ]
+  },
+  {
+    id: 109, name: "五苓散加茵陈", category: "阳明病",
+    composition: [
+      { drug: "猪苓", dose: "十八铢" },
+      { drug: "泽泻", dose: "一两六铢" },
+      { drug: "白术", dose: "十八铢" },
+      { drug: "茯苓", dose: "十八铢" },
+      { drug: "桂枝", dose: "半两" },
+      { drug: "茵陈", dose: "六两" }
+    ],
+    method: "捣为散，以白饮和服方寸匕，日三服。",
+    original: "湿热黄疸、小便不利者，本方主之。（常见加减方）",
+    keyPoints: [
+      "化气利水、清热利湿。",
+      "五苓散加茵陈。",
+      "倪师：湿热黄疸兼水湿内停。",
+      "主治身目发黄、小便不利、口渴。",
+      "为五苓散与茵陈蒿汤的变通。"
+    ]
+  },
+  {
+    id: 110, name: "葛根汤加石膏", category: "太阳病",
+    composition: [
+      { drug: "葛根", dose: "四两" },
+      { drug: "麻黄", dose: "三两" },
+      { drug: "桂枝", dose: "二两" },
+      { drug: "芍药", dose: "二两" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "大枣", dose: "十二枚" },
+      { drug: "石膏", dose: "二两" }
+    ],
+    method: "以水一斗，先煮麻黄葛根，减二升，去沫，内诸药，煮取三升，去滓，温服一升。",
+    original: "太阳阳明合病、表寒里热者，本方主之。（常见加减方）",
+    keyPoints: [
+      "解表散寒、清解里热。",
+      "葛根汤加石膏。",
+      "倪师：表寒里热、项背强急兼烦躁。",
+      "为大青龙汤之轻者。",
+      "用于表寒里热轻证。"
+    ]
+  },
+  {
+    id: 111, name: "小青龙汤加石膏", category: "太阳病",
+    composition: [
+      { drug: "麻黄", dose: "三两" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "细辛", dose: "三两" },
+      { drug: "干姜", dose: "三两" },
+      { drug: "甘草", dose: "三两" },
+      { drug: "桂枝", dose: "三两" },
+      { drug: "五味子", dose: "半升" },
+      { drug: "半夏", dose: "半升" },
+      { drug: "石膏", dose: "二两" }
+    ],
+    method: "以水一斗，先煮麻黄，去上沫，内诸药，煮取三升，去滓，温服一升。",
+    original: "肺胀，咳而上气，烦躁而喘，脉浮者，心下有水，小青龙汤加石膏主之。（《金匮要略》引）",
+    keyPoints: [
+      "外散风寒、内化水饮、兼清郁热。",
+      "小青龙汤加石膏。",
+      "倪师：外寒内饮、兼有郁热、烦躁。",
+      "主治咳喘、烦躁、脉浮。",
+      "为小青龙汤证兼有里热者。"
+    ]
+  },
+  {
+    id: 112, name: "越婢汤", category: "太阳病",
+    composition: [
+      { drug: "麻黄", dose: "六两" },
+      { drug: "石膏", dose: "半斤" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "大枣", dose: "十五枚" }
+    ],
+    method: "以水六升，先煮麻黄，去上沫，内诸药，煮取三升，分温三服。",
+    original: "风水，一身悉肿，脉浮不渴，无大热者，越婢汤主之。（《金匮要略》引）",
+    keyPoints: [
+      "发汗利水、清泄郁热。",
+      "麻黄发汗利水、石膏清泄郁热、姜枣草和中。",
+      "倪师：风水证、肺失宣降、水湿泛溢。",
+      "主治一身悉肿、脉浮、无大热。",
+      "为治风水主方。"
+    ]
+  },
+  {
+    id: 113, name: "文蛤汤", category: "太阳病",
+    composition: [
+      { drug: "文蛤", dose: "五两" },
+      { drug: "麻黄", dose: "三两" },
+      { drug: "甘草", dose: "三两" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "石膏", dose: "五两" },
+      { drug: "杏仁", dose: "五十枚" },
+      { drug: "大枣", dose: "十二枚" }
+    ],
+    method: "以水六升，煮取二升，温服一升，汗出即愈。",
+    original: "吐后，渴欲得水而贪饮者，文蛤汤主之。兼主微风，脉紧，头痛。（《金匮要略》引）",
+    keyPoints: [
+      "清热生津、解表散邪。",
+      "文蛤清热生津、麻黄杏仁石膏解表清热、姜枣草和中。",
+      "倪师：吐后津伤、复感外邪。",
+      "主治贪饮、脉紧、头痛。",
+      "为文蛤散之变方。",
+      "吐后渴贪饮为津液大伤。"
+    ]
+  }
+,
+  // ============ 金匮要略方剂（131方）============
+  {id:200, name:"栝楼桂枝汤", category:"金匮要略-痉湿暍病", composition:[{drug:"瓜蒌根",dose:"二两"},{drug:"桂枝",dose:"三两"},{drug:"芍药",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"生姜",dose:"三两"},{drug:"大枣",dose:"十二枚"}], method:"以水九升，煮取三升，分温三服，取微汗。", original:"太阳病，其证备，身体强，几几然，脉反沉迟，此为痉，栝楼桂枝汤主之。（痉湿暍病篇）", keyPoints:["柔润筋脉、解肌止痉。","瓜蒌根生津润燥、滋养筋脉，桂枝汤调和营卫。","为太阳病津液不足、筋脉失养而致痉的治法。","与葛根汤区别：彼为实邪无汗，此为津伤有汗。","脉沉迟为津液不足。"]},
+  {id:201, name:"葛根汤(金匮)", category:"金匮要略-痉湿暍病", composition:[{drug:"葛根",dose:"四两"},{drug:"麻黄",dose:"三两（去节）"},{drug:"桂枝",dose:"二两（去皮）"},{drug:"芍药",dose:"二两"},{drug:"甘草",dose:"二两（炙）"},{drug:"生姜",dose:"三两"},{drug:"大枣",dose:"十二枚"}], method:"以水一斗，先煮麻黄、葛根，减二升，去白沫，内诸药，煮取三升。", original:"太阳病，无汗而小便反少，气上冲胸，口噤不得语，欲作刚痉，葛根汤主之。（痉湿暍病篇）", keyPoints:["发汗解表、升津舒筋。","葛根升津液、舒筋脉，麻黄发汗解表。","为刚痉初起、无汗、小便少的治法。","口噤不得语为阳明经筋急。","与栝楼桂枝汤区别：彼为柔痉、此为刚痉。"]},
+  {id:202, name:"麻黄加术汤", category:"金匮要略-痉湿暍病", composition:[{drug:"麻黄",dose:"三两（去节）"},{drug:"桂枝",dose:"二两（去皮）"},{drug:"甘草",dose:"一两（炙）"},{drug:"杏仁",dose:"七十个（去皮尖）"},{drug:"白术",dose:"四两"}], method:"以水九升，先煮麻黄，减二升，去上沫，内诸药，煮取二升半。", original:"湿家身烦疼，可与麻黄加术汤发其汗为宜。（痉湿暍病篇）", keyPoints:["发汗解表、散寒除湿。","麻黄汤发汗解表，加白术健脾祛湿。","为寒湿在表、身烦疼的治法。","白术量重（四两），意在走表祛湿。","麻黄得术、虽发汗不致过汗；术得麻黄、能行表里之湿。"]},
+  {id:203, name:"麻黄杏仁薏苡甘草汤", category:"金匮要略-痉湿暍病", composition:[{drug:"麻黄",dose:"半两（去节，汤泡）"},{drug:"杏仁",dose:"十个（去皮尖）"},{drug:"薏苡仁",dose:"半两"},{drug:"甘草",dose:"一两（炙）"}], method:"剉麻豆大，每服四钱匕，水盏半，煮八分，去滓，温服。", original:"病者一身尽疼，发热，日晡所剧者，名风湿，此病伤于汗出当风。（痉湿暍病篇）", keyPoints:["解表祛湿、清热宣痹。","麻黄杏仁解表宣肺，薏苡仁清热祛湿。","为风湿在表、一身尽疼的治法。","日晡所剧为湿邪化热。","麻黄量小（半两）、取微汗。"]},
+  {id:204, name:"防己黄芪汤", category:"金匮要略-痉湿暍病", composition:[{drug:"防己",dose:"一两"},{drug:"黄芪",dose:"一两一分"},{drug:"白术",dose:"三分"},{drug:"甘草",dose:"半两（炙）"},{drug:"生姜",dose:"四片"},{drug:"大枣",dose:"一枚"}], method:"上剉麻豆大，每抄五钱匕，生姜四片，大枣一枚，水盏半，煎八分，去滓，温服。", original:"风湿，脉浮，身重，汗出恶风者，防己黄芪汤主之。（痉湿暍病篇）", keyPoints:["益气固表、利水祛湿。","黄芪益气固表，防己利水祛湿，白术健脾。","为风湿表虚、汗出恶风的治法。","服后如虫行皮中为卫阳振奋、驱湿下行。","临床用于风湿性关节炎、肥胖、水肿。"]},
+  {id:205, name:"桂枝附子汤", category:"金匮要略-痉湿暍病", composition:[{drug:"桂枝",dose:"四两（去皮）"},{drug:"生姜",dose:"三两（切）"},{drug:"附子",dose:"三枚（炮，去皮）"},{drug:"甘草",dose:"二两（炙）"},{drug:"大枣",dose:"十二枚（擘）"}], method:"以水六升，煮取二升，去滓，分温三服。", original:"伤寒八九日，风湿相搏，身体疼烦，不能自转侧，脉浮虚而涩者，桂枝附子汤主之。（痉湿暍病篇）", keyPoints:["温经散寒、祛风除湿。","桂枝汤去芍药加附子，温经散寒止痛。","为风湿相搏、阳气虚衰的治法。","脉浮虚而涩为阳虚风湿。","附子用三枚，量大、温阳力宏。"]},
+  {id:206, name:"白术附子汤", category:"金匮要略-痉湿暍病", composition:[{drug:"白术",dose:"二两"},{drug:"附子",dose:"一枚半（炮，去皮）"},{drug:"甘草",dose:"一两（炙）"},{drug:"生姜",dose:"一两半（切）"},{drug:"大枣",dose:"六枚"}], method:"以水三升，煮取一升，去滓，分温三服。", original:"若大便坚，小便自利者，去桂加白术汤主之。（痉湿暍病篇）", keyPoints:["健脾祛湿、温经止痛。","白术健脾祛湿，附子温经散寒。","为风湿在表、湿重阳虚的治法。","服后如冒状为术附并走皮中、逐水气的反应。","与桂枝附子汤区别：彼为表阳虚、此为湿重。"]},
+  {id:207, name:"甘草附子汤", category:"金匮要略-痉湿暍病", composition:[{drug:"甘草",dose:"二两（炙）"},{drug:"白术",dose:"二两"},{drug:"附子",dose:"二枚（炮，去皮）"},{drug:"桂枝",dose:"四两（去皮）"}], method:"以水六升，煮取三升，去滓，温服一升，日三服。", original:"风湿相搏，骨节疼烦，掣痛不得屈伸，汗出短气，小便不利，甘草附子汤主之。（痉湿暍病篇）", keyPoints:["温阳散寒、祛湿止痛。","桂枝温经散寒，白术健脾祛湿，附子温阳。","为风湿俱盛、阳气虚衰的治法。","掣痛不得屈伸为风湿深入骨节。","三附子汤皆治阳虚风湿，临床须辨证选用。"]},
+  {id:208, name:"白虎加人参汤(金匮)", category:"金匮要略-痉湿暍病", composition:[{drug:"知母",dose:"六两"},{drug:"石膏",dose:"一斤（碎）"},{drug:"甘草",dose:"二两"},{drug:"粳米",dose:"六合"},{drug:"人参",dose:"三两"}], method:"以水一斗，煮米熟汤成，去滓，温服一升。", original:"太阳中热者，暍是也。汗出恶寒，身热而渴，白虎加人参汤主之。（痉湿暍病篇）", keyPoints:["清热生津、益气养阴。","白虎汤清热，人参益气生津。","为暑热伤气、津液不足的治法。","汗出恶寒为暑热伤气、卫外不固。","临床用于暑热、热病气津两伤。"]},
+  {id:209, name:"一物瓜蒂汤", category:"金匮要略-痉湿暍病", composition:[{drug:"瓜蒂",dose:"二十个"}], method:"剉，以水一升，煮取五合，去滓，顿服。", original:"太阳中暍，身热疼重，而脉微弱，此以夏月伤冷水，水行皮中所致也。（痉湿暍病篇）", keyPoints:["祛湿散水。","瓜蒂涌吐、祛水湿。","为暑月伤湿、水行皮中的治法。","身热疼重为湿郁肌表。","脉微弱为暑伤气。"]},
+  {id:210, name:"百合知母汤", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"百合",dose:"七枚（擘）"},{drug:"知母",dose:"三两（切）"}], method:"先以水洗百合，渍一宿，去其水，更以泉水二升，煎取一升。", original:"百合病，发汗后者，百合知母汤主之。（百合狐惑阴阳毒病篇）", keyPoints:["润肺清心、安神定志。","百合润肺清心，知母清热滋阴。","为百合病误汗后、津液受伤的治法。","用泉水煎药，取其甘寒清热。"]},
+  {id:211, name:"滑石代赭汤", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"百合",dose:"七枚（擘）"},{drug:"滑石",dose:"三两（碎，绵裹）"},{drug:"代赭石",dose:"一枚（如弹丸大，碎）"}], method:"先以水洗百合，渍一宿，去其水，更以泉水二升，煎取一升。", original:"百合病，下之后者，滑石代赭汤主之。（百合狐惑阴阳毒病篇）", keyPoints:["清肺利水、降逆和胃。","百合润肺清心，滑石清热利水，代赭石重镇降逆。","为百合病误下后、津伤气逆的治法。"]},
+  {id:212, name:"百合鸡子汤", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"百合",dose:"七枚（擘）"},{drug:"鸡子黄",dose:"一枚"}], method:"先以水洗百合，渍一宿，去其水，更以泉水二升，煎取一升，内鸡子黄，搅匀。", original:"百合病，吐之后者，百合鸡子汤主之。（百合狐惑阴阳毒病篇）", keyPoints:["润肺清心、养血安神。","百合润肺清心，鸡子黄养血滋阴、安神。","为百合病误吐后、阴液受伤的治法。"]},
+  {id:213, name:"百合地黄汤", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"百合",dose:"七枚（擘）"},{drug:"生地黄汁",dose:"一升"}], method:"先以水洗百合，渍一宿，去其水，更以泉水二升，煎取一升，内地黄汁，煎取一升五合，分温再服。", original:"百合病，不经吐、下、发汗，病形如初者，百合地黄汤主之。（百合狐惑阴阳毒病篇）", keyPoints:["润肺清心、凉血养阴。","百合润肺清心、生地黄汁凉血养阴。","为百合病正治之主方。","服后大便如漆为地黄汁之色。"]},
+  {id:214, name:"百合洗方", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"百合",dose:"一升"}], method:"以水一斗，渍之一宿，以洗身。洗已，食煮饼，勿以盐豉也。", original:"百合病一月不解，变成渴者，百合洗方主之。（百合狐惑阴阳毒病篇）", keyPoints:["润肺清心、外洗皮腠。","百合渍水洗身，取皮毛与肺合之意。","为百合病经久变渴的治法。"]},
+  {id:215, name:"栝楼牡蛎散", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"瓜蒌根",dose:"等分"},{drug:"牡蛎",dose:"等分（熬）"}], method:"为细末，饮服方寸匕，日三服。", original:"百合病，渴不差者，栝楼牡蛎散主之。（百合狐惑阴阳毒病篇）", keyPoints:["生津止渴、潜阳敛阴。","瓜蒌根生津止渴，牡蛎潜阳敛阴。","为百合病口渴不止的治法。"]},
+  {id:216, name:"甘草泻心汤(金匮)", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"甘草",dose:"四两（炙）"},{drug:"黄芩",dose:"三两"},{drug:"干姜",dose:"三两"},{drug:"半夏",dose:"半升"},{drug:"黄连",dose:"一两"},{drug:"大枣",dose:"十二枚"}], method:"以水一斗，煮取六升，去滓，再煎取三升，温服一升。", original:"狐惑之为病，状如伤寒……蚀于上部则声喝，甘草泻心汤主之。（百合狐惑阴阳毒病篇）", keyPoints:["清热燥湿、解毒安中。","甘草重用清热解毒，黄芩黄连清热燥湿。","为狐惑病蚀于上部的治法。","临床用于白塞氏病、口腔溃疡。"]},
+  {id:217, name:"苦参汤", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"苦参",dose:"一升"}], method:"以水一斗，煎取七升，去滓，熏洗，日三服。", original:"蚀于下部则咽干，苦参汤洗之。（百合狐惑阴阳毒病篇）", keyPoints:["清热燥湿、杀虫解毒。","苦参一味，煎汤外洗。","为狐惑病蚀于下部的治法。"]},
+  {id:218, name:"雄黄熏方", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"雄黄",dose:"一味"}], method:"为末，筒瓦二枚合之，烧，向肛熏之。", original:"蚀于肛者，雄黄熏之。（百合狐惑阴阳毒病篇）", keyPoints:["解毒杀虫、燥湿止痒。","雄黄一味，烧烟熏肛。","为狐惑病蚀于肛门的治法。"]},
+  {id:219, name:"赤小豆当归散", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"赤小豆",dose:"三升（浸，令芽出）"},{drug:"当归",dose:"三两"}], method:"杵为散，浆水服方寸匕，日三服。", original:"病者脉数，无热，微烦，默默但欲卧，汗出……若能食者，脓已成也，赤小豆当归散主之。（百合狐惑阴阳毒病篇）", keyPoints:["清热利湿、排脓活血。","赤小豆利湿排脓，当归活血祛瘀。","为狐惑病成脓的治法。"]},
+  {id:220, name:"升麻鳖甲汤", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"升麻",dose:"二两"},{drug:"当归",dose:"一两"},{drug:"蜀椒",dose:"一两（炒去汗）"},{drug:"甘草",dose:"二两"},{drug:"雄黄",dose:"半两（研）"},{drug:"鳖甲",dose:"一片（炙）"}], method:"以水四升，煮取一升，顿服之。", original:"阳毒之为病，面赤斑斑如锦纹，咽喉痛，唾脓血，升麻鳖甲汤主之。（百合狐惑阴阳毒病篇）", keyPoints:["清热解毒、散瘀利咽。","升麻清热解毒，鳖甲滋阴散瘀，雄黄解毒。","为阳毒病的治法。","五日可治、七日不可治强调早期治疗。"]},
+  {id:221, name:"甘草汤(金匮)", category:"金匮要略-百合狐惑阴阳毒病", composition:[{drug:"甘草",dose:"二两"}], method:"以水三升，煮取一升半，去滓，温服七合。", original:"少阴病二三日，咽痛者，可与甘草汤。（百合狐惑阴阳毒病篇）", keyPoints:["清热解毒、利咽止痛。","生甘草一味，清热解毒。","为少阴咽痛的轻证治法。"]},
+  {id:222, name:"白虎加桂枝汤", category:"金匮要略-疟病", composition:[{drug:"知母",dose:"六两"},{drug:"甘草",dose:"二两（炙）"},{drug:"石膏",dose:"一斤"},{drug:"粳米",dose:"二合"},{drug:"桂枝",dose:"三两（去皮）"}], method:"剉，每五钱，水一盏半，煎至八分，去滓，温服，汗出愈。", original:"温疟者，其脉如平，身无寒但热，骨节疼烦，时呕，白虎加桂枝汤主之。（疟病篇）", keyPoints:["清热生津、解表散邪。","白虎汤清热生津，桂枝解表散邪。","为温疟但热不寒、骨节疼烦的治法。","时呕为热扰胃气。"]},
+  {id:223, name:"蜀漆散", category:"金匮要略-疟病", composition:[{drug:"蜀漆",dose:"（洗去腥）"},{drug:"云母",dose:"（烧二日夜）"},{drug:"龙骨",dose:"等分"}], method:"杵为散，未发前以浆水服半钱匕。", original:"疟多寒者，名曰牡疟，蜀漆散主之。（疟病篇）", keyPoints:["祛痰截疟、镇惊安神。","蜀漆（常山苗）祛痰截疟，云母龙骨重镇安神。","为牡疟多寒的治法。","未发前服、取先安未受邪之地。"]},
+  {id:224, name:"鳖甲煎丸", category:"金匮要略-疟病", composition:[{drug:"鳖甲",dose:"十二分（炙）"},{drug:"乌扇",dose:"三分（烧）"},{drug:"黄芩",dose:"三分"},{drug:"柴胡",dose:"六分"},{drug:"鼠妇",dose:"三分（熬）"},{drug:"干姜",dose:"三分"},{drug:"大黄",dose:"三分"},{drug:"芍药",dose:"五分"},{drug:"桂枝",dose:"三分"},{drug:"葶苈",dose:"一分（熬）"},{drug:"石韦",dose:"三分"},{drug:"厚朴",dose:"三分"},{drug:"牡丹",dose:"五分"},{drug:"瞿麦",dose:"二分"},{drug:"紫葳",dose:"三分"},{drug:"半夏",dose:"一分"},{drug:"人参",dose:"一分"},{drug:"䗪虫",dose:"五分"},{drug:"阿胶",dose:"三分"},{drug:"蜂窠",dose:"四分"},{drug:"赤硝",dose:"十二分"},{drug:"蜣螂",dose:"六分"},{drug:"桃仁",dose:"二分"}], method:"取煅灶下灰一斗，清酒一斛五斗，浸灰，候酒尽一半，着鳖甲于中，煮令泛烂如胶漆，绞取汁，内诸药，煎为丸。", original:"病疟，以月一日发，当以十五日愈……如其不差，当云何？师曰：此结为癥瘕，名曰疟母，急治之，宜鳖甲煎丸。（疟病篇）", keyPoints:["行气活血、祛湿化痰、软坚消癥。","鳖甲软坚散结，桃仁大黄活血化瘀，柴胡黄芩和解少阳。","为疟母（疟疾日久形成胁下癥块）的治法。","23味药组成、攻补兼施。"]},
+  {id:225, name:"柴胡去半夏加瓜蒌汤", category:"金匮要略-疟病", composition:[{drug:"柴胡",dose:"八两"},{drug:"人参",dose:"三两"},{drug:"黄芩",dose:"三两"},{drug:"甘草",dose:"三两"},{drug:"瓜蒌根",dose:"四两"},{drug:"生姜",dose:"二两"},{drug:"大枣",dose:"十二枚"}], method:"以水一斗二升，煮取六升，去滓，再煎取三升。", original:"疟病发渴者，柴胡去半夏加瓜蒌汤主之。（疟病篇附方）", keyPoints:["和解少阳、生津止渴。","柴胡黄芩和解少阳，瓜蒌根生津止渴。","为疟病津伤口渴的治法。"]},
+  {id:226, name:"柴胡桂姜汤", category:"金匮要略-疟病", composition:[{drug:"柴胡",dose:"半斤"},{drug:"桂枝",dose:"三两"},{drug:"干姜",dose:"二两"},{drug:"瓜蒌根",dose:"四两"},{drug:"黄芩",dose:"三两"},{drug:"牡蛎",dose:"二两"},{drug:"甘草",dose:"二两"}], method:"以水一斗二升，煮取六升，去滓，再煎取三升。", original:"疟寒多微有热，或但寒不热，服一剂如神。（疟病篇附方）", keyPoints:["和解少阳、温阳化饮。","柴胡黄芩和解少阳，桂枝干姜温阳化饮。","为疟寒多热少的治法。"]},
+  {id:227, name:"侯氏黑散", category:"金匮要略-中风历节", composition:[{drug:"菊花",dose:"四十分"},{drug:"白术",dose:"十分"},{drug:"细辛",dose:"三分"},{drug:"茯苓",dose:"三分"},{drug:"牡蛎",dose:"三分"},{drug:"桔梗",dose:"八分"},{drug:"防风",dose:"十分"},{drug:"人参",dose:"三分"},{drug:"矾石",dose:"三分"},{drug:"黄芩",dose:"五分"},{drug:"当归",dose:"三分"},{drug:"干姜",dose:"三分"},{drug:"芎䓖",dose:"三分"},{drug:"桂枝",dose:"三分"}], method:"杵为散，酒服方寸匕，日一服，冷食六十日止。", original:"侯氏黑散：治大风，四肢烦重，心中恶寒不足者。（中风历节病篇附方）", keyPoints:["清热祛风、化痰通络。","菊花清热平肝，牡蛎潜阳熄风，防风桂枝祛风。","为中风初起、风痰上扰的治法。","冷食助药力、热食则下。"]},
+  {id:228, name:"风引汤", category:"金匮要略-中风历节", composition:[{drug:"大黄",dose:"四两"},{drug:"干姜",dose:"四两"},{drug:"龙骨",dose:"四两"},{drug:"桂枝",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"牡蛎",dose:"二两"},{drug:"寒水石",dose:"六两"},{drug:"滑石",dose:"六两"},{drug:"赤石脂",dose:"六两"},{drug:"白石脂",dose:"六两"},{drug:"紫石英",dose:"六两"},{drug:"石膏",dose:"六两"}], method:"杵，粗筛，以韦囊盛之，取三指撮，井花水三升，煮三沸，温服一升。", original:"风引汤：除热瘫痫。（中风历节病篇附方）", keyPoints:["清热降火、重镇潜阳。","大黄泻热，石膏等清热，龙牡等重镇潜阳。","为热瘫痫的治法。","以石代水煎药、取其重镇沉降。","临床用于高血压中风、癫痫。"]},
+  {id:229, name:"防己地黄汤", category:"金匮要略-中风历节", composition:[{drug:"防己",dose:"一分"},{drug:"桂枝",dose:"三分"},{drug:"防风",dose:"三分"},{drug:"甘草",dose:"一分"},{drug:"生地黄",dose:"二斤（蒸）"}], method:"上四味，以酒一杯，渍之一宿，绞取汁，生地黄蒸之如斗米饭久。", original:"防己地黄汤：治病如狂状，妄行，独语不休，无寒热，其脉浮。（中风历节病篇附方）", keyPoints:["滋阴凉血、祛风通络。","生地黄重用滋阴凉血，防己防风桂枝祛风通络。","为血虚风动、如狂妄行的治法。"]},
+  {id:230, name:"头风摩散", category:"金匮要略-中风历节", composition:[{drug:"大附子",dose:"一枚（炮）"},{drug:"盐",dose:"等分"}], method:"为散，沐了，以方寸匕，已摩疾上，令药力行。", original:"头风摩散方。（中风历节病篇附方）", keyPoints:["温经散寒、祛风止痛。","附子温经散寒，盐引药入皮肤。","为头风外治的方剂。"]},
+  {id:231, name:"桂枝芍药知母汤", category:"金匮要略-中风历节", composition:[{drug:"桂枝",dose:"四两"},{drug:"芍药",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"麻黄",dose:"二两"},{drug:"生姜",dose:"五两"},{drug:"白术",dose:"五两"},{drug:"知母",dose:"四两"},{drug:"防风",dose:"四两"},{drug:"附子",dose:"二枚（炮）"}], method:"以水七升，煮取二升，温服七合，日三服。", original:"诸肢节疼痛，身体尪羸，脚肿如脱，头眩短气，温温欲吐，桂枝芍药知母汤主之。（中风历节病篇）", keyPoints:["祛风除湿、温经散寒、滋阴清热。","桂枝麻黄防风祛风，附子温经，白术祛湿，知母滋阴。","为风湿历节、化热伤阴的治法。"]},
+  {id:232, name:"乌头汤", category:"金匮要略-中风历节", composition:[{drug:"麻黄",dose:"三两"},{drug:"芍药",dose:"三两"},{drug:"黄芪",dose:"三两"},{drug:"甘草",dose:"三两（炙）"},{drug:"川乌",dose:"五枚（蜜煎）"}], method:"以水三升，煮取一升，去滓，内蜜煎中，更煎之，服七合。", original:"病历节，不可屈伸，疼痛，乌头汤主之。（中风历节病篇）", keyPoints:["温经散寒、除湿止痛。","乌头大热、温经散寒止痛，麻黄散寒，黄芪益气，蜜解乌头毒。","为寒湿历节、疼痛不可屈伸的治法。"]},
+  {id:233, name:"矾石汤", category:"金匮要略-中风历节", composition:[{drug:"矾石",dose:"二两"}], method:"以浆水一斗五升，煎三五沸，浸脚良。", original:"矾石汤：治脚气冲心。（中风历节病篇附方）", keyPoints:["解毒燥湿、收敛止痒。","矾石一味，煎汤浸脚。","为脚气冲心的外治法。"]},
+  {id:234, name:"续命汤", category:"金匮要略-中风历节", composition:[{drug:"麻黄",dose:"三两"},{drug:"桂枝",dose:"三两"},{drug:"当归",dose:"三两"},{drug:"人参",dose:"三两"},{drug:"石膏",dose:"三两"},{drug:"干姜",dose:"三两"},{drug:"甘草",dose:"三两"},{drug:"芎䓖",dose:"一两"},{drug:"杏仁",dose:"四十枚"}], method:"以水一斗，煮取四升，温服一升，当小汗。", original:"《古今录验》续命汤：治中风痱，身体不能自收持。（中风历节病篇附方）", keyPoints:["扶正祛风、清热通络。","麻黄桂枝祛风，石膏清热，人参干姜温中，当归芎䓖养血。","为中风痱的治法。"]},
+  {id:235, name:"三黄汤", category:"金匮要略-中风历节", composition:[{drug:"麻黄",dose:"五分"},{drug:"独活",dose:"四分"},{drug:"细辛",dose:"二分"},{drug:"黄芪",dose:"二分"},{drug:"黄芩",dose:"三分"}], method:"以水六升，煮取二升，分温三服。", original:"《千金》三黄汤：治中风手足拘急，百节疼痛。（中风历节病篇附方）", keyPoints:["益气固表、清热祛风。","黄芪益气固表，麻黄独活细辛祛风，黄芩清热。","为中风表虚、风湿化热的治法。"]},
+  {id:236, name:"术附汤", category:"金匮要略-中风历节", composition:[{drug:"白术",dose:"二两"},{drug:"附子",dose:"一枚半（炮，去皮）"},{drug:"甘草",dose:"一两（炙）"}], method:"剉，每五钱匕，姜五片，枣一枚，水盏半，煎七成。", original:"近效方术附汤：治风虚头重眩，苦极，不知食味。（中风历节病篇附方）", keyPoints:["温阳祛湿、健脾补中。","白术健脾祛湿，附子温阳散寒。","为脾肾阳虚、风虚头重的治法。"]},
+  {id:237, name:"八味丸(肾气丸)", category:"金匮要略-中风历节", composition:[{drug:"干地黄",dose:"八两"},{drug:"山茱萸",dose:"四两"},{drug:"薯蓣",dose:"四两"},{drug:"泽泻",dose:"三两"},{drug:"茯苓",dose:"三两"},{drug:"牡丹皮",dose:"三两"},{drug:"桂枝",dose:"一两"},{drug:"附子",dose:"一两（炮）"}], method:"上八味，末之，炼蜜和丸梧子大，酒下十五丸。", original:"崔氏八味丸：治脚气上入，少腹不仁。（中风历节病篇附方）", keyPoints:["温补肾阳、化气行水。","干地黄山茱萸薯蓣补肾填精，泽泻茯苓利水，桂枝附子温阳。","为肾阳虚衰的治法。","补阳配阴、阴中求阳。"]},
+  {id:238, name:"越婢加术汤", category:"金匮要略-中风历节", composition:[{drug:"麻黄",dose:"六两"},{drug:"石膏",dose:"半斤"},{drug:"生姜",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"白术",dose:"四两"},{drug:"大枣",dose:"十五枚"}], method:"以水六升，先煮麻黄，去上沫，内诸药，煮取三升。", original:"《千金方》越婢加术汤：治肉极，热则身体津脱。（中风历节病篇附方）", keyPoints:["发汗利水、清热祛湿。","麻黄发汗利水，石膏清热，白术健脾祛湿。","为肉极津脱的治法。"]},
+  {id:239, name:"黄芪桂枝五物汤", category:"金匮要略-血痹虚劳", composition:[{drug:"黄芪",dose:"三两"},{drug:"芍药",dose:"三两"},{drug:"桂枝",dose:"三两"},{drug:"生姜",dose:"六两"},{drug:"大枣",dose:"十二枚"}], method:"以水六升，煮取二升，温服七合，日三服。", original:"血痹阴阳俱微，寸口关上微，尺中小紧，外证身体不仁，如风痹状，黄芪桂枝五物汤主之。（血痹虚劳病篇）", keyPoints:["益气养血、温经通痹。","黄芪益气固表，桂枝汤调和营卫、生姜重用温经。","为血痹、身体不仁的治法。"]},
+  {id:240, name:"桂枝加龙骨牡蛎汤", category:"金匮要略-血痹虚劳", composition:[{drug:"桂枝",dose:"三两"},{drug:"芍药",dose:"三两"},{drug:"生姜",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"大枣",dose:"十二枚"},{drug:"龙骨",dose:"三两"},{drug:"牡蛎",dose:"三两"}], method:"以水七升，煮取三升，分温三服。", original:"夫失精家，少腹弦急，阴头寒，目眩，发落……桂枝加龙骨牡蛎汤主之。（血痹虚劳病篇）", keyPoints:["调和阴阳、潜镇固涩。","桂枝汤调和营卫，龙骨牡蛎潜镇安神、收敛固涩。","为失精家、阴阳两虚的治法。"]},
+  {id:241, name:"天雄散", category:"金匮要略-血痹虚劳", composition:[{drug:"天雄",dose:"三两（炮）"},{drug:"白术",dose:"八两"},{drug:"桂枝",dose:"六两"},{drug:"龙骨",dose:"三两"}], method:"杵为散，酒服半钱匕，日三服。", original:"天雄散方。（血痹虚劳病篇附方）", keyPoints:["温肾助阳、固涩精关。","天雄温肾助阳，白术健脾，桂枝温通，龙骨固涩。","为肾阳虚衰、遗精的治法。"]},
+  {id:242, name:"小建中汤(金匮)", category:"金匮要略-血痹虚劳", composition:[{drug:"桂枝",dose:"三两（去皮）"},{drug:"甘草",dose:"二两（炙）"},{drug:"大枣",dose:"十二枚"},{drug:"芍药",dose:"六两"},{drug:"生姜",dose:"三两"},{drug:"胶饴",dose:"一升"}], method:"以水七升，煮取三升，去滓，内胶饴，更上微火消解。", original:"虚劳里急，悸，衄，腹中痛，梦失精，四肢酸疼，手足烦热，咽干口燥，小建中汤主之。（血痹虚劳病篇）", keyPoints:["温中补虚、和里缓急。","桂枝汤倍芍药加饴糖。","为虚劳里急、腹中痛的治法。","为建中法的代表方。"]},
+  {id:243, name:"黄芪建中汤", category:"金匮要略-血痹虚劳", composition:[{drug:"桂枝",dose:"三两（去皮）"},{drug:"甘草",dose:"二两（炙）"},{drug:"大枣",dose:"十二枚"},{drug:"芍药",dose:"六两"},{drug:"生姜",dose:"三两"},{drug:"胶饴",dose:"一升"},{drug:"黄芪",dose:"一两半"}], method:"以水七升，煮取三升，去滓，内胶饴，更上微火消解。", original:"虚劳里急，诸不足，黄芪建中汤主之。（血痹虚劳病篇）", keyPoints:["温中补虚、益气建中。","小建中汤加黄芪，益气之力更强。","为虚劳诸不足的治法。"]},
+  {id:244, name:"肾气丸", category:"金匮要略-血痹虚劳", composition:[{drug:"干地黄",dose:"八两"},{drug:"山茱萸",dose:"四两"},{drug:"薯蓣",dose:"四两"},{drug:"泽泻",dose:"三两"},{drug:"茯苓",dose:"三两"},{drug:"牡丹皮",dose:"三两"},{drug:"桂枝",dose:"一两"},{drug:"附子",dose:"一两（炮）"}], method:"上八味，末之，炼蜜和丸梧子大，酒下十五丸。", original:"虚劳腰痛，少腹拘急，小便不利者，八味肾气丸主之。（血痹虚劳病篇）", keyPoints:["温补肾阳、化气行水。","干地黄山茱萸薯蓣补肾填精，泽泻茯苓利水，桂枝附子温阳。","为肾阳虚衰、腰痛小便不利的治法。"]},
+  {id:245, name:"薯蓣丸", category:"金匮要略-血痹虚劳", composition:[{drug:"薯蓣",dose:"三十分"},{drug:"当归",dose:"十分"},{drug:"桂枝",dose:"十分"},{drug:"曲",dose:"十分"},{drug:"干地黄",dose:"十分"},{drug:"豆黄卷",dose:"十分"},{drug:"甘草",dose:"二十八分"},{drug:"人参",dose:"七分"},{drug:"芎䓖",dose:"六分"},{drug:"芍药",dose:"六分"},{drug:"白术",dose:"六分"},{drug:"麦门冬",dose:"六分"},{drug:"杏仁",dose:"六分"},{drug:"柴胡",dose:"五分"},{drug:"桔梗",dose:"五分"},{drug:"茯苓",dose:"五分"},{drug:"阿胶",dose:"七分"},{drug:"干姜",dose:"三分"},{drug:"白敛",dose:"二分"},{drug:"防风",dose:"六分"},{drug:"大枣",dose:"百枚"}], method:"为末，炼蜜和丸，如弹子大，空腹酒服一丸，一百丸为剂。", original:"虚劳诸不足，风气百疾，薯蓣丸主之。（血痹虚劳病篇）", keyPoints:["补气养血、祛风散邪。","薯蓣（山药）健脾补肾为主，人参白术茯苓甘草四君补气，当归芍药芎䓖地黄麦冬阿胶养血滋阴。","为虚劳诸不足兼风气的治法。"]},
+  {id:246, name:"酸枣仁汤", category:"金匮要略-血痹虚劳", composition:[{drug:"酸枣仁",dose:"二升"},{drug:"甘草",dose:"一两"},{drug:"知母",dose:"二两"},{drug:"茯苓",dose:"二两"},{drug:"芎䓖",dose:"二两"}], method:"以水八升，煮酸枣仁，得六升，内诸药，煮取三升，分温三服。", original:"虚劳虚烦不得眠，酸枣仁汤主之。（血痹虚劳病篇）", keyPoints:["养血安神、清热除烦。","酸枣仁重用养肝血、安心神，知母清热除烦，茯苓宁心安神。","为虚劳虚烦失眠的治法。"]},
+  {id:247, name:"大黄䗪虫丸", category:"金匮要略-血痹虚劳", composition:[{drug:"大黄",dose:"十分（蒸）"},{drug:"黄芩",dose:"二两"},{drug:"甘草",dose:"三两"},{drug:"桃仁",dose:"一升"},{drug:"杏仁",dose:"一升"},{drug:"芍药",dose:"四两"},{drug:"干地黄",dose:"十两"},{drug:"干漆",dose:"一两"},{drug:"虻虫",dose:"一升"},{drug:"水蛭",dose:"百枚"},{drug:"蛴螬",dose:"一升"},{drug:"䗪虫",dose:"半升"}], method:"为末，炼蜜和丸小豆大，酒饮服五丸，日三服。", original:"五劳虚极羸瘦，腹满不能饮食……内有干血，肌肤甲错，两目黯黑……大黄䗪虫丸主之。（血痹虚劳病篇）", keyPoints:["活血化瘀、缓中补虚。","大黄䗪虫水蛭虻虫蛴螬干漆桃仁破血逐瘀，地黄芍药养血润燥。","为五劳虚极、内有干血的治法。"]},
+  {
+    id: 248, name: "甘草干姜汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "甘草", dose: "四两（炙）" },
+      { drug: "干姜", dose: "二两（炮）" }
+    ],
+    method: "以水三升，煮取一升五合，去滓，分温再服。",
+    original: "肺痿吐涎沫而不咳者，其人不渴，必遗尿，小便数，所以然者，以上虚不能制下故也。此为肺中冷，必眩，多涎唾，甘草干姜汤以温之。若服汤已渴者，属消渴。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "温肺复气、健脾化饮。",
+      "甘草重用（四两）补益中气，干姜温中散寒、温肺化饮。",
+      "为肺痿肺中冷、吐涎沫的治法。",
+      "不咳不渴为寒而不热。",
+      "遗尿小便数为上虚不能制下。",
+      "本方亦治伤寒误汗后阴阳两虚之先复其阳。"
+    ]
+  },
+  {
+    id: 249, name: "桔梗汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "桔梗", dose: "一两" },
+      { drug: "甘草", dose: "二两" }
+    ],
+    method: "以水三升，煮取一升，去滓，温分再服。",
+    original: "咳而胸满，振寒脉数，咽干不渴，时出浊唾腥臭，久久吐脓如米粥者，为肺痈，桔梗汤主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "清热解毒、排脓利咽。",
+      "桔梗宣肺排脓、利咽，甘草清热解毒。",
+      "为肺痈成脓的治法。",
+      "振寒脉数为脓毒内蕴。",
+      "时出浊唾腥臭为肺痈溃脓。",
+      "临床用于肺脓肿、急性咽炎。"
+    ]
+  },
+  {
+    id: 250, name: "苇茎汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "苇茎", dose: "二升" },
+      { drug: "薏苡仁", dose: "半升" },
+      { drug: "桃仁", dose: "五十枚" },
+      { drug: "瓜瓣", dose: "半升" }
+    ],
+    method: "以水一斗，先煮苇茎，得五升，去滓，内诸药，煮取二升，服一升，再服，当吐如脓。",
+    original: "《千金》苇茎汤：治咳有微热，烦满，胸中甲错，是为肺痈。（肺痿肺痈咳嗽上气篇附方）",
+    keyPoints: [
+      "清热化痰、逐瘀排脓。",
+      "苇茎清肺泻热，薏苡仁清热排脓，桃仁活血化瘀，瓜瓣（冬瓜子）清热化痰排脓。",
+      "为肺痈成脓的治法。",
+      "胸中甲错为内痈外现。",
+      "临床用于肺脓肿、支气管扩张。",
+      "为治肺痈的经典方。"
+    ]
+  },
+  {
+    id: 251, name: "葶苈大枣泻肺汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "葶苈", dose: "（熬令黄色，捣丸如弹子大）" },
+      { drug: "大枣", dose: "十二枚" }
+    ],
+    method: "先以水三升，煮枣取二升，去枣，内葶苈，煮取一升，顿服。",
+    original: "肺痈，喘不得卧，葶苈大枣泻肺汤主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "泻肺逐水、护中扶正。",
+      "葶苈子泻肺逐水、平喘，大枣护中、和缓峻烈。",
+      "为肺痈痰壅气逆的治法。",
+      "喘不得卧为痰壅气逆。",
+      "先煮大枣后纳葶苈，护胃气。",
+      "临床用于胸腔积液、肺心病。"
+    ]
+  },
+  {
+    id: 252, name: "越婢加半夏汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "麻黄", dose: "六两" },
+      { drug: "石膏", dose: "半斤" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "大枣", dose: "十五枚" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "半夏", dose: "半升" }
+    ],
+    method: "以水六升，先煮麻黄，去上沫，内诸药，煮取三升，分温三服。",
+    original: "咳而上气，此为肺胀，其人喘，目如脱状，脉浮大者，越婢加半夏汤主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "宣肺泄热、降逆化痰。",
+      "越婢汤宣肺泄热，加半夏降逆化痰。",
+      "为肺胀外寒内热、痰饮上逆的治法。",
+      "目如脱状为肺气壅塞。",
+      "脉浮大为邪盛于表里。",
+      "临床用于肺气肿、哮喘。"
+    ]
+  },
+  {
+    id: 253, name: "小青龙加石膏汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "麻黄", dose: "三两" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "桂枝", dose: "三两" },
+      { drug: "细辛", dose: "三两" },
+      { drug: "甘草", dose: "三两" },
+      { drug: "干姜", dose: "三两" },
+      { drug: "五味子", dose: "半升" },
+      { drug: "半夏", dose: "半升" },
+      { drug: "石膏", dose: "二两" }
+    ],
+    method: "以水一斗，先煮麻黄，去上沫，内诸药，煮取三升，强人服一升，羸者减之，日三服，小儿服四合。",
+    original: "肺胀，咳而上气，烦躁而喘，脉浮者，心下有水，小青龙加石膏汤主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "解表散寒、温肺化饮、兼清郁热。",
+      "小青龙汤解表散寒、温肺化饮，加石膏清郁热。",
+      "为肺胀外寒内饮、兼有郁热的治法。",
+      "烦躁为内有郁热。",
+      "脉浮为表邪未尽。",
+      "临床用于寒包火证之哮喘。"
+    ]
+  },
+  {
+    id: 254, name: "射干麻黄汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "射干", dose: "三两" },
+      { drug: "麻黄", dose: "四两" },
+      { drug: "生姜", dose: "四两" },
+      { drug: "细辛", dose: "三两" },
+      { drug: "紫菀", dose: "三两" },
+      { drug: "款冬花", dose: "三两" },
+      { drug: "五味子", dose: "半升" },
+      { drug: "大枣", dose: "七枚" },
+      { drug: "半夏", dose: "半升" }
+    ],
+    method: "以水一斗二升，先煮麻黄两沸，去上沫，内诸药，煮取三升，分温三服。",
+    original: "咳而上气，喉中水鸡声，射干麻黄汤主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "温肺化饮、止咳平喘。",
+      "射干利咽开结，麻黄宣肺平喘，紫菀款冬花止咳化痰，细辛半夏生姜温肺化饮，五味子收敛肺气，大枣和中。",
+      "为寒饮咳喘、喉中水鸡声的治法。",
+      "喉中水鸡声为痰阻气道。",
+      "临床用于哮喘、支气管炎。",
+      "为治寒哮的代表方。"
+    ]
+  },
+  {
+    id: 255, name: "皂荚丸", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "皂荚", dose: "八两（刮去皮，酥炙）" }
+    ],
+    method: "为末，蜜丸梧子大，以枣膏和汤服三丸，日三夜一服。",
+    original: "咳逆上气，时时吐浊，但坐不得眠，皂荚丸主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "涤痰开窍、止咳平喘。",
+      "皂荚涤痰开窍，蜜丸枣汤护胃和中。",
+      "为痰浊壅肺、咳逆上气的治法。",
+      "时时吐浊为痰浊壅盛。",
+      "但坐不得眠为痰阻气逆。",
+      "皂荚药力峻烈、用蜜丸缓用。"
+    ]
+  },
+  {
+    id: 256, name: "厚朴麻黄汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "厚朴", dose: "五两" },
+      { drug: "麻黄", dose: "四两" },
+      { drug: "石膏", dose: "如鸡子大" },
+      { drug: "杏仁", dose: "半升" },
+      { drug: "半夏", dose: "半升" },
+      { drug: "干姜", dose: "二两" },
+      { drug: "细辛", dose: "二两" },
+      { drug: "小麦", dose: "一升" },
+      { drug: "五味子", dose: "半升" }
+    ],
+    method: "以水一斗二升，先煮小麦熟，去滓，内诸药，煮取五升，温服一升，日三服。",
+    original: "咳而脉浮者，厚朴麻黄汤主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "宣肺降气、化饮清热。",
+      "厚朴麻黄杏仁宣肺降气，石膏清热，干姜细辛半夏温肺化饮，五味子收敛，小麦养心和中。",
+      "为寒饮化热、咳逆上气的治法。",
+      "脉浮为邪在肺。",
+      "先煮小麦以养心。",
+      "临床用于哮喘、慢性支气管炎。"
+    ]
+  },
+  {
+    id: 257, name: "泽漆汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "半夏", dose: "半升" },
+      { drug: "紫参", dose: "五两" },
+      { drug: "泽漆", dose: "三斤（以东流水五斗，煮取一斗五升）" },
+      { drug: "生姜", dose: "五两" },
+      { drug: "白前", dose: "五两" },
+      { drug: "甘草", dose: "三两（炙）" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "人参", dose: "三两" },
+      { drug: "桂枝", dose: "三两" }
+    ],
+    method: "内泽漆汁中，煮取五升，温服五合，至夜尽。",
+    original: "脉沉者，泽漆汤主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "逐水消痰、益气清热。",
+      "泽漆（猫眼草）逐水消痰，紫参活血解毒，半夏白前化痰止咳，人参益气，桂枝温通，黄芩清热，生姜和胃，甘草调和。",
+      "为水饮内停、咳逆的治法。",
+      "脉沉为水饮在里。",
+      "泽漆先煎取汁、再纳诸药。",
+      "临床用于胸腔积液、肺心病。"
+    ]
+  },
+  {
+    id: 258, name: "麦门冬汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "麦门冬", dose: "七升" },
+      { drug: "半夏", dose: "一升" },
+      { drug: "人参", dose: "三两" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "粳米", dose: "三合" },
+      { drug: "大枣", dose: "十二枚" }
+    ],
+    method: "以水一斗二升，煮取六升，温服一升，日三夜一服。",
+    original: "火逆上气，咽喉不利，止逆下气者，麦门冬汤主之。（肺痿肺痈咳嗽上气篇）",
+    keyPoints: [
+      "清养肺胃、降逆下气。",
+      "麦门冬重用（七升）滋养肺胃、清降虚火，半夏降逆化痰，人参甘草粳米大枣益气养胃。",
+      "为肺胃阴虚、火逆上气的治法。",
+      "咽喉不利为虚火上炎。",
+      "麦冬量大于半夏（七:一）、以润制燥。",
+      "临床用于慢性咽炎、肺结核、干燥综合征。"
+    ]
+  },
+  {
+    id: 259, name: "甘草汤（附方）", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [{ drug: "甘草", dose: "二两" }],
+    method: "以水三升，煮取一升半，去滓，温服七合，日二服。",
+    original: "附方：甘草汤。（肺痿肺痈咳嗽上气篇附方）",
+    keyPoints: [
+      "清热解毒、利咽止痛。",
+      "生甘草一味、清热解毒。",
+      "为少阴咽痛的轻证治法。",
+      "与桔梗汤相须。",
+      "不效者加桔梗。",
+      "临床用于急性咽炎。"
+    ]
+  },
+  {
+    id: 260, name: "生姜甘草汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "生姜", dose: "五两" },
+      { drug: "人参", dose: "三两" },
+      { drug: "甘草", dose: "四两" },
+      { drug: "大枣", dose: "十五枚" }
+    ],
+    method: "以水七升，煮取三升，分温三服。",
+    original: "《千金》生姜甘草汤：治肺痿咳唾涎沫不止，咽燥而渴。（肺痿肺痈咳嗽上气篇附方）",
+    keyPoints: [
+      "补脾益肺、化饮止咳。",
+      "生姜散寒化饮止咳，人参甘草大枣补脾益肺。",
+      "为肺脾两虚、咳唾涎沫的治法。",
+      "咽燥而渴为津液不足。",
+      "临床用于肺痿后期。",
+      "为脾肺双补的方剂。"
+    ]
+  },
+  {
+    id: 261, name: "桂枝去芍药加皂荚汤", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "桂枝", dose: "三两" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "大枣", dose: "十枚" },
+      { drug: "皂荚", dose: "一枚（去皮子，炙焦）" }
+    ],
+    method: "以水七升，微微火煮取三升，分温三服。",
+    original: "《千金》桂枝去芍药加皂荚汤：治肺痿吐涎沫。（肺痿肺痈咳嗽上气篇附方）",
+    keyPoints: [
+      "温肺化饮、涤痰开窍。",
+      "桂枝汤去芍药加皂荚，温肺涤痰。",
+      "为肺痿痰浊壅盛的治法。",
+      "皂荚涤痰开窍。",
+      "去芍药避其酸敛、碍痰。",
+      "临床用于慢性支气管炎、肺气肿。"
+    ]
+  },
+  {
+    id: 262, name: "桔梗白散", category: "金匮要略-肺痿肺痈咳嗽上气",
+    composition: [
+      { drug: "桔梗", dose: "三分" },
+      { drug: "巴豆", dose: "一分（去皮心，熬黑，研如脂）" },
+      { drug: "贝母", dose: "三分" }
+    ],
+    method: "为散，强人饮服半钱匕，羸者减之。病在膈上者吐脓血，膈下者泻出，若下多不止，饮冷水一杯则定。",
+    original: "《外台》桔梗白散：治咳而胸满，振寒脉数，咽干不渴，时出浊唾腥臭，久久吐脓如米粥者，为肺痈。（肺痿肺痈咳嗽上气篇附方）",
+    keyPoints: [
+      "温下寒实、涤痰破结。",
+      "桔梗宣肺排脓，巴豆峻下寒积，贝母化痰散结。",
+      "为肺痈寒实结胸的治法。",
+      "此即伤寒论三物白散。",
+      "病在膈上者吐脓血、膈下者泻出。",
+      "下多不止饮冷水止泻。"
+    ]
+  },
+  {
+    id: 263, name: "奔豚汤", category: "金匮要略-奔豚气",
+    composition: [
+      { drug: "甘草", dose: "二两" },
+      { drug: "芎䓖", dose: "二两" },
+      { drug: "当归", dose: "二两" },
+      { drug: "半夏", dose: "四两" },
+      { drug: "黄芩", dose: "二两" },
+      { drug: "葛根", dose: "五两" },
+      { drug: "芍药", dose: "二两" },
+      { drug: "生姜", dose: "四两" },
+      { drug: "甘李根白皮", dose: "一升" }
+    ],
+    method: "以水二斗，煮取五升，温服一升，日三夜一服。",
+    original: "奔豚气上冲胸，腹痛，往来寒热，奔豚汤主之。（奔豚气病篇）",
+    keyPoints: [
+      "养血平肝、和胃降逆。",
+      "甘李根白皮清肝热、降逆气，黄芩葛根清热，当归芍药芎䓖养血柔肝，生姜半夏和胃降逆，甘草调和。",
+      "为肝气奔豚、气上冲胸的治法。",
+      "往来寒热为少阳病。",
+      "腹痛为肝气横逆。",
+      "甘李根白皮为治奔豚专药。"
+    ]
+  },
+  {
+    id: 264, name: "桂枝加桂汤", category: "金匮要略-奔豚气",
+    composition: [
+      { drug: "桂枝", dose: "五两" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "大枣", dose: "十二枚" }
+    ],
+    method: "以水七升，微火煮取三升，去滓，温服一升。",
+    original: "发汗后，烧针令其汗，针处被寒，核起而赤者，必发奔豚，气从少腹上至心，灸其核上各一壮，与桂枝加桂汤主之。（奔豚气病篇）",
+    keyPoints: [
+      "温通心阳、平冲降逆。",
+      "桂枝汤加桂枝二两（共五两），增强平冲降逆之力。",
+      "为心阳虚奔豚的治法。",
+      "气从少腹上至心为肾气上凌。",
+      "加桂以泄奔豚气。",
+      "此与伤寒论桂枝加桂汤同方。"
+    ]
+  },
+  {
+    id: 265, name: "茯苓桂枝甘草大枣汤", category: "金匮要略-奔豚气",
+    composition: [
+      { drug: "茯苓", dose: "半斤" },
+      { drug: "甘草", dose: "二两（炙）" },
+      { drug: "大枣", dose: "十五枚" },
+      { drug: "桂枝", dose: "四两" }
+    ],
+    method: "以甘澜水一斗，先煮茯苓，减二升，内诸药，煮取三升，去滓，温服一升，日三服。甘澜水法：取水二斗，置大盆内，以勺扬之，水上有珠子五六千颗相逐，取用之。",
+    original: "发汗后，脐下悸者，欲作奔豚，茯苓桂枝甘草大枣汤主之。（奔豚气病篇）",
+    keyPoints: [
+      "温通心阳、化气利水。",
+      "茯苓重用（半斤）利水宁心，桂枝温通心阳、平冲降逆，甘草大枣培土制水。",
+      "为水饮欲作奔豚的治法。",
+      "脐下悸为水气上冲。",
+      "甘澜水取其轻扬不助水湿。",
+      "与伤寒论茯苓桂枝甘草大枣汤同方。"
+    ]
+  },
+  {
+    id: 266, name: "瓜蒌薤白白酒汤", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "瓜蒌实", dose: "一枚（捣）" },
+      { drug: "薤白", dose: "半升" },
+      { drug: "白酒", dose: "七升" }
+    ],
+    method: "同煮，取二升，分温再服。",
+    original: "胸痹之病，喘息咳唾，胸背痛，短气，寸口脉沉而迟，关上小紧数，瓜蒌薤白白酒汤主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "通阳散结、豁痰下气。",
+      "瓜蒌实宽胸化痰，薤白通阳散结，白酒（醪糟）温通气血。",
+      "为胸痹主方。",
+      "寸口脉沉而迟为阳气不运。",
+      "关上小紧数为痰浊内阻。",
+      "临床用于冠心病心绞痛。"
+    ]
+  },
+  {
+    id: 267, name: "瓜蒌薤白半夏汤", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "瓜蒌实", dose: "一枚" },
+      { drug: "薤白", dose: "三两" },
+      { drug: "半夏", dose: "半升" },
+      { drug: "白酒", dose: "一斗" }
+    ],
+    method: "同煮，取四升，温服一升，日三服。",
+    original: "胸痹不得卧，心痛彻背者，瓜蒌薤白半夏汤主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "通阳散结、祛痰宽胸。",
+      "瓜蒌薤白白酒汤加半夏，增强化痰散结之力。",
+      "为胸痹痰浊壅盛、心痛彻背的治法。",
+      "不得卧为痰壅气逆。",
+      "心痛彻背为胸背气机不通。",
+      "临床用于冠心病心绞痛重证。"
+    ]
+  },
+  {
+    id: 268, name: "枳实薤白桂枝汤", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "枳实", dose: "四枚" },
+      { drug: "厚朴", dose: "四两" },
+      { drug: "薤白", dose: "半斤" },
+      { drug: "桂枝", dose: "一两" },
+      { drug: "瓜蒌实", dose: "一枚（捣）" }
+    ],
+    method: "以水五升，先煮枳实、厚朴，取二升，去滓，内诸药，煮数沸，分温三服。",
+    original: "胸痹心中痞，留气结在胸，胸满，胁下逆抢心，枳实薤白桂枝汤主之；人参汤亦主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "通阳散结、泄满降逆。",
+      "枳实厚朴行气除满，桂枝通阳平冲，瓜蒌薤白通阳散结。",
+      "为胸痹气滞痞满的治法。",
+      "胁下逆抢心为气逆上冲。",
+      "与人参汤证鉴别：彼为中焦虚寒、此为气滞。",
+      "临床用于冠心病合并胃动力障碍。"
+    ]
+  },
+  {
+    id: 269, name: "人参汤", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "人参", dose: "三两" },
+      { drug: "甘草", dose: "三两" },
+      { drug: "干姜", dose: "三两" },
+      { drug: "白术", dose: "三两" }
+    ],
+    method: "以水八升，煮取三升，温服一升，日三服。",
+    original: "……人参汤亦主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "温中补虚、健脾益气。",
+      "人参益气，干姜温中，白术健脾，甘草调和。",
+      "为胸痹中焦虚寒的治法。",
+      "亦即理中汤。",
+      "中焦虚寒得温则愈。",
+      "临床用于脾胃虚寒证。"
+    ]
+  },
+  {
+    id: 270, name: "茯苓杏仁甘草汤", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "茯苓", dose: "三两" },
+      { drug: "杏仁", dose: "五十个" },
+      { drug: "甘草", dose: "一两" }
+    ],
+    method: "以水一斗，煮取五升，温服一升，日三服。不差，更服。",
+    original: "胸痹，胸中气塞，短气，茯苓杏仁甘草汤主之；橘枳姜汤亦主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "宣肺化饮、利气降逆。",
+      "茯苓利水渗湿，杏仁宣肺降逆，甘草和中。",
+      "为胸痹气塞短气的治法。",
+      "偏于饮阻。",
+      "临床用于冠心病合并肺气肿。",
+      "与橘枳姜汤证鉴别：彼偏气滞、此偏饮阻。"
+    ]
+  },
+  {
+    id: 271, name: "橘枳姜汤", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "橘皮", dose: "一斤" },
+      { drug: "枳实", dose: "三两" },
+      { drug: "生姜", dose: "半斤" }
+    ],
+    method: "以水五升，煮取二升，分温再服。",
+    original: "……橘枳姜汤亦主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "理气宽胸、和胃降逆。",
+      "橘皮理气和胃，枳实行气消痞，生姜和胃散水。",
+      "为胸痹气滞胃逆的治法。",
+      "橘皮用至一斤、量重。",
+      "临床用于冠心病合并胃气上逆。",
+      "与茯苓杏仁甘草汤证鉴别：彼偏饮阻、此偏气滞。"
+    ]
+  },
+  {
+    id: 272, name: "薏苡附子散", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "薏苡仁", dose: "十五两" },
+      { drug: "附子", dose: "十枚（炮）" }
+    ],
+    method: "杵为散，服方寸匕，日三服。",
+    original: "胸痹缓急者，薏苡附子散主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "温阳散寒、除湿止痛。",
+      "附子重用（十枚）温阳散寒、止痛，薏苡仁除湿宣痹。",
+      "为胸痹急证的治法。",
+      "缓急指有时缓解、有时急骤发作。",
+      "临床用于心绞痛急证。",
+      "散剂服用方便、救急可用。"
+    ]
+  },
+  {
+    id: 273, name: "桂枝生姜枳实汤", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "桂枝", dose: "三两" },
+      { drug: "生姜", dose: "三两" },
+      { drug: "枳实", dose: "五枚" }
+    ],
+    method: "以水六升，煮取三升，分温三服。",
+    original: "心中痞，诸逆心悬痛，桂枝生姜枳实汤主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "通阳散寒、化饮降逆。",
+      "桂枝通阳平冲，生姜温胃散水，枳实行气除痞。",
+      "为心痛悬痛的治法。",
+      "心中痞为气机阻滞。",
+      "诸逆指气逆、饮逆。",
+      "心悬痛为心窝部牵拉痛。"
+    ]
+  },
+  {
+    id: 274, name: "乌头赤石脂丸", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "蜀椒", dose: "一两" },
+      { drug: "附子", dose: "半两（炮）" },
+      { drug: "干姜", dose: "一两" },
+      { drug: "赤石脂", dose: "一两" },
+      { drug: "乌头", dose: "一分（炮）" }
+    ],
+    method: "为末，蜜丸如梧子大，先食服一丸，日三服。不知，稍加服。",
+    original: "心痛彻背，背痛彻心，乌头赤石脂丸主之。（胸痹心痛短气篇）",
+    keyPoints: [
+      "温阳散寒、峻逐阴邪。",
+      "乌头附子干姜蜀椒大热、温阳散寒止痛，赤石脂固涩。",
+      "为阴寒痼结、心痛彻背的治法。",
+      "赤石脂防诸热药过散。",
+      "乌头与附子同用、峻温力猛。",
+      "临床用于心绞痛、真心痛。"
+    ]
+  },
+  {
+    id: 275, name: "九痛丸", category: "金匮要略-胸痹心痛短气",
+    composition: [
+      { drug: "附子", dose: "三两（炮）" },
+      { drug: "生狼牙", dose: "一两（炙香）" },
+      { drug: "巴豆", dose: "一两（去皮心，熬，研如脂）" },
+      { drug: "人参", dose: "一两" },
+      { drug: "干姜", dose: "一两" },
+      { drug: "吴茱萸", dose: "一两" }
+    ],
+    method: "为末，炼蜜丸如梧子大，酒下。强人初服三丸，日三服；弱者二丸。兼治卒中恶，腹胀痛，口不能言；又治连年积冷，流注心胸痛，并冷冲上气，落马坠车血疾等，皆主之。忌口如常法。",
+    original: "附方：九痛丸：治九种心痛。（胸痹心痛短气篇附方）",
+    keyPoints: [
+      "温阳散寒、攻逐冷积。",
+      "附子干姜吴茱萸温阳散寒，巴豆峻下冷积，狼牙祛积杀虫，人参益气。",
+      "为九种心痛（冷积心痛）的治法。",
+      "九痛：虫、注、风、悸、食、饮、冷、热、去来痛。",
+      "温下并用、攻补兼施。",
+      "临床用于心腹冷痛。"
+    ]
+  },
+  {
+    id: 276, name: "厚朴七物汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "厚朴", dose: "半斤" },
+      { drug: "甘草", dose: "三两" },
+      { drug: "大黄", dose: "三两" },
+      { drug: "大枣", dose: "十枚" },
+      { drug: "枳实", dose: "五枚" },
+      { drug: "桂枝", dose: "二两" },
+      { drug: "生姜", dose: "五两" }
+    ],
+    method: "以水一斗，煮取四升，温服八合，日三服。呕者加半夏五合；下利去大黄；寒多者加生姜至半斤。",
+    original: "病腹满，发热十日，脉浮而数，饮食如故，厚朴七物汤主之。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "行气除满、解表散寒。",
+      "厚朴枳实大黄行气除满，桂枝生姜解表散寒，甘草大枣和中。",
+      "为腹满兼表证的治法。",
+      "脉浮数为表里同病。",
+      "饮食如故为胃气尚和。",
+      "下利去大黄、寒多加生姜。"
+    ]
+  },
+  {
+    id: 277, name: "附子粳米汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "附子", dose: "一枚（炮）" },
+      { drug: "半夏", dose: "半升" },
+      { drug: "甘草", dose: "一两" },
+      { drug: "大枣", dose: "十枚" },
+      { drug: "粳米", dose: "半升" }
+    ],
+    method: "以水八升，煮米熟，汤成，去滓，温服一升，日三服。",
+    original: "腹中寒气，雷鸣切痛，胸胁逆满，呕吐，附子粳米汤主之。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "温中散寒、降逆止呕。",
+      "附子温中散寒，半夏降逆止呕，粳米大枣甘草益气和中。",
+      "为腹中寒气、雷鸣切痛的治法。",
+      "雷鸣切痛为寒气攻冲。",
+      "胸胁逆满为寒气上逆。",
+      "临床用于胃肠痉挛。"
+    ]
+  },
+  {
+    id: 278, name: "厚朴三物汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "厚朴", dose: "八两" },
+      { drug: "大黄", dose: "四两" },
+      { drug: "枳实", dose: "五枚" }
+    ],
+    method: "以水一斗二升，先煮二味，取五升，内大黄，煮取三升，温服一升，以利为度。",
+    original: "痛而闭者，厚朴三物汤主之。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "行气除满、通腑导滞。",
+      "厚朴重用（八两）行气除满，枳实大黄通腑导滞。",
+      "为气滞腹满、便闭的治法。",
+      "与小承气汤组成相同、剂量不同。",
+      "彼以泻热通便为主、此以行气除满为主。",
+      "临床用于肠梗阻。"
+    ]
+  },
+  {
+    id: 279, name: "大柴胡汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "柴胡", dose: "半斤" },
+      { drug: "黄芩", dose: "三两" },
+      { drug: "芍药", dose: "三两" },
+      { drug: "半夏", dose: "半升（洗）" },
+      { drug: "枳实", dose: "四枚（炙）" },
+      { drug: "大黄", dose: "二两" },
+      { drug: "大枣", dose: "十二枚" },
+      { drug: "生姜", dose: "五两" }
+    ],
+    method: "以水一斗二升，煮取六升，去滓再煎，温服一升，日三服。",
+    original: "按之心下满痛者，此为实也，当下之，宜大柴胡汤。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "和解少阳、内泻热结。",
+      "柴胡黄芩和解少阳，大黄枳实泻下热结，半夏生姜和胃，芍药大枣缓急。",
+      "为心下满痛、阳明少阳合病的治法。",
+      "按之心下满痛为实邪内结。",
+      "与伤寒论大柴胡汤同方。",
+      "临床用于胆囊炎、胰腺炎。"
+    ]
+  },
+  {
+    id: 280, name: "大承气汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "大黄", dose: "四两（酒洗）" },
+      { drug: "厚朴", dose: "半斤（炙，去皮）" },
+      { drug: "枳实", dose: "五枚（炙）" },
+      { drug: "芒硝", dose: "三合" }
+    ],
+    method: "以水一斗，先煮二物，取五升，去滓，内大黄，煮取二升，去滓，内芒硝，更上火微煮令沸，分温再服，得下止服。",
+    original: "……其脉数而紧者，乃弦也……此皆当下之证，宜大承气汤。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "峻下热结。",
+      "大黄芒硝泻热软坚、枳实厚朴行气除满。",
+      "为阳明腑实重证的治法。",
+      "脉数而紧为宿食内结。",
+      "临床用于肠梗阻、急性阑尾炎。",
+      "与伤寒论大承气汤同方。"
+    ]
+  },
+  {
+    id: 281, name: "大建中汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "蜀椒", dose: "二合（去汗）" },
+      { drug: "干姜", dose: "四两" },
+      { drug: "人参", dose: "二两" }
+    ],
+    method: "以水四升，煮取二升，去滓，内胶饴一升，微火煎取一升半，分温再服；如一炊顷，可饮粥二升，后更服，当一日食糜，温覆之。",
+    original: "心胸中大寒痛，呕不能饮食，腹中寒，上冲皮起，出见有头足，上下痛而不可触近者，大建中汤主之。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "温中散寒、补虚建中。",
+      "蜀椒干姜大热温中散寒，人参胶饴补虚建中。",
+      "为中焦虚寒、腹中大寒痛的治法。",
+      "上冲皮起、出见有头足为寒气攻冲。",
+      "痛不可触近为寒实。",
+      "临床用于胃肠痉挛、慢性胃炎。"
+    ]
+  },
+  {
+    id: 282, name: "大黄附子汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "大黄", dose: "三两" },
+      { drug: "附子", dose: "三枚（炮）" },
+      { drug: "细辛", dose: "二两" }
+    ],
+    method: "以水五升，煮取二升，分温三服；若强人煮取二升半，分温三服。服后如人行四五里，进一服。",
+    original: "胁下偏痛，发热，其脉紧弦，此寒也，以温药下之，宜大黄附子汤。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "温下寒积。",
+      "大黄泻下、附子细辛温经散寒。",
+      "为寒实内结的治法。",
+      "脉紧弦为寒实之象。",
+      "胁下偏痛为寒偏着。",
+      "临床用于寒积便秘。"
+    ]
+  },
+  {
+    id: 283, name: "赤丸", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "茯苓", dose: "四两" },
+      { drug: "乌头", dose: "二两（炮）" },
+      { drug: "半夏", dose: "四两（洗）" },
+      { drug: "细辛", dose: "一两" }
+    ],
+    method: "为末，内真朱为色，炼蜜为丸如麻子大，先食饮酒下三丸，日再夜一服。不知，稍增之，以知为度。",
+    original: "寒气厥逆，赤丸主之。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "温阳散寒、降逆化饮。",
+      "乌头细辛温阳散寒止痛，茯苓半夏化饮降逆，朱砂为衣镇心安神。",
+      "为寒气厥逆的治法。",
+      "厥逆为手足冷。",
+      "酒下以助药力。",
+      "临床用于寒饮腹痛。"
+    ]
+  },
+  {
+    id: 284, name: "乌头煎", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "乌头", dose: "大者五枚（熬，去皮，不㕮咀）" }
+    ],
+    method: "以水三升，煮取一升，去滓，内蜜二升，煎令水气尽，取二升，强人服七合，弱人服五合。不差，明日更服，不可一日再服。",
+    original: "寒疝腹中痛，逆冷，手足不仁，若身疼痛，灸刺诸药不能治，抵当乌头桂枝汤主之。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "峻逐阴寒、缓急止痛。",
+      "乌头大热、峻逐阴寒止痛，蜜解乌头之毒、缓其峻烈。",
+      "为寒疝腹痛、手足不仁的治法。",
+      "煎令水气尽、取蜜与乌头之力共存。",
+      "强人服七合、弱人五合。",
+      "临床用于疝痛重证。"
+    ]
+  },
+  {
+    id: 285, name: "当归生姜羊肉汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "当归", dose: "三两" },
+      { drug: "生姜", dose: "五两" },
+      { drug: "羊肉", dose: "一斤" }
+    ],
+    method: "以水八升，煮取三升，温服七合，日三服。若寒多者加生姜成一斤；痛多而呕者，加橘皮二两、白术一两。加生姜者，亦加水五升，煮取三升二合，服之。",
+    original: "寒疝腹中痛，及胁痛里急者，当归生姜羊肉汤主之。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "养血散寒、温中止痛。",
+      "当归养血活血，生姜温中散寒，羊肉温补气血。",
+      "为血虚寒疝的治法。",
+      "胁痛里急为血虚寒凝。",
+      "药食同疗、亦为食疗方。",
+      "临床用于产后腹痛、虚寒腹痛。"
+    ]
+  },
+  {
+    id: 286, name: "柴胡桂枝汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "桂枝", dose: "一两半" },
+      { drug: "黄芩", dose: "一两半" },
+      { drug: "人参", dose: "一两半" },
+      { drug: "甘草", dose: "一两（炙）" },
+      { drug: "半夏", dose: "二合半" },
+      { drug: "芍药", dose: "一两半" },
+      { drug: "大枣", dose: "六枚" },
+      { drug: "生姜", dose: "一两半" },
+      { drug: "柴胡", dose: "四两" }
+    ],
+    method: "以水七升，煮取三升，去滓，温服一升，日三服。",
+    original: "《外台》柴胡桂枝汤：治心腹卒中痛者。（腹满寒疝宿食病篇附方）",
+    keyPoints: [
+      "和解少阳、解肌散邪。",
+      "小柴胡汤与桂枝汤合方。",
+      "为太少同病、心腹卒痛的治法。",
+      "桂枝汤解肌散寒、小柴胡和解少阳。",
+      "两方合用、和解表里。",
+      "临床用于胃痛兼外感。"
+    ]
+  },
+  {
+    id: 287, name: "走马汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "巴豆", dose: "二枚（去皮心，熬）" },
+      { drug: "杏仁", dose: "二枚" }
+    ],
+    method: "以绵缠，捶令碎，热汤二合，捻取白汁，饮之当下。老小量之。通治飞尸鬼击病。",
+    original: "《外台》走马汤：治中恶心痛腹胀，大便不通。（腹满寒疝宿食病篇附方）",
+    keyPoints: [
+      "温下寒积、峻攻冷积。",
+      "巴豆峻下冷积，杏仁宣肺润肠。",
+      "为中恶、寒积腹痛的治法。",
+      "热汤捻白汁服、力专效宏。",
+      "通治飞尸鬼击。",
+      "临床用于寒积急腹症。"
+    ]
+  },
+  {
+    id: 288, name: "瓜蒂散", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "瓜蒂", dose: "一分（熬黄）" },
+      { drug: "赤小豆", dose: "一分（煮）" }
+    ],
+    method: "为散已，合治之，取一钱匕，以香豉一合，用热汤七合，煮作稀糜，去滓，取汁和散，温顿服之。不吐者，少少加，得快吐乃止。诸亡血虚家，不可与之。",
+    original: "宿食在上脘，当吐之，宜瓜蒂散。（腹满寒疝宿食病篇）",
+    keyPoints: [
+      "涌吐痰食。",
+      "瓜蒂涌吐痰食，赤小豆祛湿，香豉轻清。",
+      "为痰食停滞在上的治法。",
+      "与伤寒论瓜蒂散同方。",
+      "诸亡血虚家忌用。",
+      "得快吐乃止、防过吐伤正。"
+    ]
+  },
+  {
+    id: 289, name: "旋覆花汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "旋覆花", dose: "三两" },
+      { drug: "葱", dose: "十四茎" },
+      { drug: "新绛", dose: "少许" }
+    ],
+    method: "以水三升，煮取一升，顿服之。",
+    original: "肝着，其人常欲蹈其胸上，先未苦时，但欲饮热，旋覆花汤主之。（五脏风寒积聚病篇附方）",
+    keyPoints: [
+      "行气活血、通络散结。",
+      "旋覆花下气散结，葱白通阳散寒，新绛（茜草）活血祛瘀。",
+      "为肝着气滞血瘀的治法。",
+      "常欲蹈其胸上为气滞血瘀不通。",
+      "新绛为治血瘀要药。",
+      "临床用于胸胁久痛、慢性肝炎。"
+    ]
+  },
+  {
+    id: 290, name: "麻黄醇酒汤", category: "金匮要略-腹满寒疝宿食",
+    composition: [
+      { drug: "麻黄", dose: "三两（去节）" }
+    ],
+    method: "以美酒五升，煮取二升半，顿服尽。古方用之甚效，今人用之或不见效，何也？酒不美也。",
+    original: "《千金》麻黄醇酒汤：治黄疸。（黄疸病篇附方）",
+    keyPoints: [
+      "发汗解表、祛湿退黄。",
+      "麻黄发汗解表、宣肺利水，美酒温通血脉、助药力。",
+      "为表实黄疸的治法。",
+      "酒不美则效差。",
+      "顿服取峻汗。",
+      "临床用于黄疸初期表证。"
+    ]
+  },
+  {
+    id: 291, name: "麻子仁丸", category: "金匮要略-五脏风寒积聚",
+    composition: [
+      { drug: "麻子仁", dose: "二升" },
+      { drug: "芍药", dose: "半斤" },
+      { drug: "枳实", dose: "一斤" },
+      { drug: "大黄", dose: "一斤（去皮）" },
+      { drug: "厚朴", dose: "一尺（去皮）" },
+      { drug: "杏仁", dose: "一升（去皮尖，熬，别作脂）" }
+    ],
+    method: "为末，炼蜜和丸如梧桐子大，饮服十丸，日三服，渐加，以知为度。",
+    original: "趺阳脉浮而涩，浮则胃气强，涩则小便数，浮涩相搏，大便则坚，其脾为约，麻子仁丸主之。（五脏风寒积聚病篇）",
+    keyPoints: [
+      "润肠通便、泻热行气。",
+      "麻子仁润肠，杏仁润降，芍药养阴，大黄枳朴行气泻热。",
+      "为脾约便秘的治法。",
+      "脾约为脾不能为胃行津液。",
+      "与伤寒论麻子仁丸同方。",
+      "临床用于习惯性便秘。"
+    ]
+  },
+  {
+    id: 292, name: "甘草干姜茯苓白术汤（肾着汤）", category: "金匮要略-五脏风寒积聚",
+    composition: [
+      { drug: "甘草", dose: "二两" },
+      { drug: "干姜", dose: "四两" },
+      { drug: "茯苓", dose: "四两" },
+      { drug: "白术", dose: "二两" }
+    ],
+    method: "以水五升，煮取三升，分温三服，腰中即温。",
+    original: "肾着之病，其人身体重，腰中冷，如坐水中，形如水状，反不渴，小便自利，饮食如故，腰以下冷痛，腹重如带五千钱，甘姜苓术汤主之。（五脏风寒积聚病篇）",
+    keyPoints: [
+      "温中散寒、健脾祛湿。",
+      "干姜温中散寒，茯苓利水渗湿，白术健脾燥湿，甘草调和。",
+      "为肾着寒湿腰痛的治法。",
+      "腰冷如坐水中为寒湿外着。",
+      "病在腰部、实际为脾虚寒湿下注。",
+      "腰中即温为药效标志。"
+    ]
+  },
+  {
+    id: 293, name: "苓桂术甘汤", category: "金匮要略-五脏风寒积聚",
+    composition: [
+      { drug: "茯苓", dose: "四两" },
+      { drug: "桂枝", dose: "三两" },
+      { drug: "白术", dose: "二两" },
+      { drug: "甘草", dose: "二两" }
+    ],
+    method: "以水六升，煮取三升，分温三服，小便则利。",
+    original: "心下有痰饮，胸胁支满，目眩，苓桂术甘汤主之。（痰饮咳嗽病篇）",
+    keyPoints: [
+      "温阳化饮、健脾祛湿。",
+      "茯苓利水渗湿，桂枝温阳化气，白术健脾燥湿，甘草调和。",
+      "为痰饮停聚的治法。",
+      "胸胁支满为饮停胸胁。",
+      "目眩为饮阻清阳。",
+      "临床用于水饮内停证。"
+    ]
+  },
+  {
+    id: 294, name: "二加龙骨牡蛎汤", category: "金匮要略-五脏风寒积聚",
+    composition: [
+      { drug: "龙骨", dose: "三两" },
+      { drug: "牡蛎", dose: "三两" },
+      { drug: "白薇", dose: "三两" },
+      { drug: "附子", dose: "三两（炮）" },
+      { drug: "芍药", dose: "四两" },
+      { drug: "甘草", dose: "二两" },
+      { drug: "大枣", dose: "十二枚" },
+      { drug: "生姜", dose: "三两" }
+    ],
+    method: "以水八升，煮取三升，分温三服。",
+    original: "《小品》二加龙骨牡蛎汤：治虚劳少精。（五脏风寒积聚病篇附方）",
+    keyPoints: [
+      "调和阴阳、潜镇固涩。",
+      "桂枝加龙骨牡蛎汤去桂枝加白薇附子。",
+      "为虚劳阴阳两虚的治法。",
+      "白薇清虚热、附子温阳。",
+      "阴阳双调、寒热并用。",
+      "临床用于遗精、失眠。"
+    ]
+  },
+  {
+    id: 295, name: "炙甘草汤", category: "金匮要略-五脏风寒积聚",
+    composition: [
+      { drug: "甘草", dose: "四两（炙）" },
+      { drug: "桂枝", dose: "三两" },
+      { drug: "生姜", dose: "三两（切）" },
+      { drug: "麦门冬", dose: "半升" },
+      { drug: "麻仁", dose: "半升" },
+      { drug: "人参", dose: "二两" },
+      { drug: "阿胶", dose: "二两" },
+      { drug: "大枣", dose: "三十枚" },
+      { drug: "生地黄", dose: "一斤" }
+    ],
+    method: "上九味，以酒七升，水八升，先煮八味取三升，去滓，内胶消尽，温服一升，日三服。一名复脉汤。",
+    original: "《千金翼》炙甘草汤：治虚劳不足，汗出而闷，脉结悸，行动如常，不出百日，危急者十一日死。（五脏风寒积聚病篇附方）",
+    keyPoints: [
+      "益气滋阴、通阳复脉。",
+      "炙甘草益气补中，生地黄麦冬阿胶麻仁滋阴养血，桂枝生姜通阳，人参大枣益气，酒行药力。",
+      "为气血两虚、心动悸脉结代的治法。",
+      "脉结代为气血不续。",
+      "与伤寒论炙甘草汤同方。",
+      "临床用于心律失常、心悸。"
+    ]
+  },
+  {id:296, name:"甘遂半夏汤", category:"金匮要略-痰饮咳嗽", composition:[{drug:"甘遂",dose:"大者三枚"},{drug:"半夏",dose:"十二枚"},{drug:"芍药",dose:"五枚"},{drug:"甘草",dose:"（炙）如指大一枚"}], method:"以水二升，煮取半升，去滓，以蜜半升，和药汁煎取八合，顿服之。", original:"病者脉伏，其人欲自利，利反快，虽利，心下续坚满，此为留饮欲去故也，甘遂半夏汤主之。（痰饮咳嗽病篇）", keyPoints:["攻下逐水、缓急散结。","甘遂攻下逐水，半夏散结化痰，芍药甘草酸甘缓急，蜜解甘遂之毒。","为留饮欲去、心下坚满的治法。","甘遂与甘草相反同用、激荡水饮。"]},
+  {id:297, name:"十枣汤", category:"金匮要略-痰饮咳嗽", composition:[{drug:"芫花",dose:"（熬）"},{drug:"甘遂",dose:"大戟各等分"},{drug:"大枣",dose:"十枚"}], method:"上三味，捣筛，以水一升五合，先煮肥大枣十枚，取八合，去滓，内药末，强人服一钱匕，羸人服半钱匕，平旦温服之。", original:"病悬饮者，十枣汤主之。（痰饮咳嗽病篇）", keyPoints:["攻逐水饮。","芫花甘遂大戟攻逐水饮，大枣护胃。","为悬饮、悬饮内停的治法。","晨起温服、得快下利后糜粥自养。"]},
+  {id:298, name:"大青龙汤(金匮)", category:"金匮要略-痰饮咳嗽", composition:[{drug:"麻黄",dose:"六两（去节）"},{drug:"桂枝",dose:"二两（去皮）"},{drug:"甘草",dose:"二两（炙）"},{drug:"杏仁",dose:"四十个（去皮尖）"},{drug:"生姜",dose:"三两（切）"},{drug:"大枣",dose:"十枚"},{drug:"石膏",dose:"如鸡子大（碎）"}], method:"以水九升，先煮麻黄，减二升，去上沫，内诸药，煮取三升。", original:"病溢饮者，当发其汗，大青龙汤主之；小青龙汤亦主之。（痰饮咳嗽病篇）", keyPoints:["发汗解表、清热除烦。","麻黄汤发汗解表加石膏清里热、姜枣和中。","为溢饮兼里热的治法。","与伤寒论大青龙汤同方。"]},
+  {id:299, name:"小青龙汤(金匮)", category:"金匮要略-痰饮咳嗽", composition:[{drug:"麻黄",dose:"三两（去节）"},{drug:"芍药",dose:"三两"},{drug:"五味子",dose:"半升"},{drug:"干姜",dose:"三两"},{drug:"甘草",dose:"三两（炙）"},{drug:"细辛",dose:"三两"},{drug:"桂枝",dose:"三两（去皮）"},{drug:"半夏",dose:"半升（汤洗）"}], method:"以水一斗，先煮麻黄，减二升，去上沫，内诸药，煮取三升。", original:"病溢饮者，当发其汗……小青龙汤亦主之。（痰饮咳嗽病篇）", keyPoints:["解表散寒、温肺化饮。","麻桂解表散寒，姜辛夏温肺化饮，芍药和营，五味子敛肺。","为溢饮外寒内饮的治法。"]},
+  {id:300, name:"木防己汤", category:"金匮要略-痰饮咳嗽", composition:[{drug:"木防己",dose:"三两"},{drug:"石膏",dose:"十二枚（如鸡子大）"},{drug:"桂枝",dose:"二两"},{drug:"人参",dose:"四两"}], method:"以水六升，煮取二升，分温再服。", original:"膈间支饮，其人喘满，心下痞坚，面色黧黑，其脉沉紧，得之数十日，医吐下之不愈，木防己汤主之。（痰饮咳嗽病篇）", keyPoints:["行水散结、补虚清热。","木防己利水，桂枝通阳，石膏清热，人参补虚。","为支饮、膈间痞坚的治法。","面色黧黑为饮停血瘀。"]},
+  {id:301, name:"木防己加茯苓芒硝汤", category:"金匮要略-痰饮咳嗽", composition:[{drug:"木防己",dose:"三两"},{drug:"桂枝",dose:"二两"},{drug:"人参",dose:"四两"},{drug:"芒硝",dose:"三合"},{drug:"茯苓",dose:"四两"}], method:"以水六升，煮取二升，去滓，内芒硝，再微煎，分温再服，微利则愈。", original:"……虚者即愈，实者三日复发，复与不愈者，宜木防己汤去石膏加茯苓芒硝汤主之。（痰饮咳嗽病篇）", keyPoints:["行水散结、软坚泻热。","木防己汤去石膏加茯苓芒硝。","为支饮复发的治法。","实者为水饮结实。","芒硝软坚泻热。"]},
+  {id:302, name:"泽泻汤", category:"金匮要略-痰饮咳嗽", composition:[{drug:"泽泻",dose:"五两"},{drug:"白术",dose:"二两"}], method:"以水二升，煮取一升，分温再服。", original:"心下有支饮，其人苦冒眩，泽泻汤主之。（痰饮咳嗽病篇）", keyPoints:["利水祛饮、健脾燥湿。","泽泻利水渗湿，白术健脾燥湿。","为支饮冒眩的治法。","苦冒眩为饮邪上泛清阳。"]},
+  {id:303, name:"厚朴大黄汤", category:"金匮要略-痰饮咳嗽", composition:[{drug:"厚朴",dose:"一尺"},{drug:"大黄",dose:"六两"},{drug:"枳实",dose:"四枚"}], method:"以水五升，煮取二升，分温再服。", original:"支饮不得息，葶苈大枣泻肺汤主之。厚朴大黄汤亦主之。（痰饮咳嗽病篇）", keyPoints:["行气除满、泻下导滞。","厚朴行气，大黄枳实泻下。","为支饮腹满便秘的治法。"]},
+  {id:304, name:"葶苈大枣泻肺汤(金匮)", category:"金匮要略-痰饮咳嗽", composition:[{drug:"葶苈",dose:"（熬令黄色，捣丸如弹子大）"},{drug:"大枣",dose:"十二枚"}], method:"先以水三升，煮枣取二升，去枣，内葶苈，煮取一升，顿服。", original:"支饮不得息，葶苈大枣泻肺汤主之。（痰饮咳嗽病篇）", keyPoints:["泻肺逐水、护中扶正。","葶苈子泻肺逐水，大枣护中。","为支饮痰壅、不得息的治法。"]},
+  {id:305, name:"小半夏汤", category:"金匮要略-痰饮咳嗽", composition:[{drug:"半夏",dose:"一升"},{drug:"生姜",dose:"半斤"}], method:"以水七升，煮取一升半，分温再服。", original:"呕家本渴，渴者为欲解，今反不渴，心下有支饮故也，小半夏汤主之。（痰饮咳嗽病篇）", keyPoints:["和胃止呕、散饮降逆。","半夏和胃降逆、化饮止呕，生姜温胃散水。","为支饮呕吐的治法。"]},
+  {id:306, name:"己椒苈黄丸", category:"金匮要略-痰饮咳嗽", composition:[{drug:"防己",dose:""},{drug:"椒目",dose:""},{drug:"葶苈",dose:"（熬）"},{drug:"大黄",dose:"各一两"}], method:"为末，蜜丸如梧子大，先食饮服一丸，日三服，稍增，口中有津液。渴者加芒硝半两。", original:"腹满，口舌干燥，此肠间有水气，己椒苈黄丸主之。（痰饮咳嗽病篇）", keyPoints:["攻逐水饮、行气消满。","防己椒目葶苈利水，大黄泻下。","为肠间水气、腹满的治法。"]},
+  {id:307, name:"茯苓饮", category:"金匮要略-痰饮咳嗽", composition:[{drug:"茯苓",dose:"三两"},{drug:"人参",dose:"三两"},{drug:"白术",dose:"三两"},{drug:"枳实",dose:"二两"},{drug:"橘皮",dose:"二两半"},{drug:"生姜",dose:"四两"}], method:"以水六升，煮取一升八合，分温三服，如人行八九里进之。", original:"《外台》茯苓饮：治心胸中有停痰宿水，自吐出水后，心胸间虚，气满，不能食，消痰气，令能食。（痰饮咳嗽病篇附方）", keyPoints:["健脾祛湿、行气消痰。","茯苓白术健脾祛湿，人参益气，枳实橘皮行气，生姜和胃。","为脾胃虚弱、停痰宿水的治法。"]},
+  {id:308, name:"五苓散(金匮)", category:"金匮要略-痰饮咳嗽", composition:[{drug:"泽泻",dose:"一两六铢"},{drug:"猪苓",dose:"十八铢（去皮）"},{drug:"茯苓",dose:"十八铢"},{drug:"白术",dose:"十八铢"},{drug:"桂枝",dose:"半两"}], method:"为末，白饮服方寸匕，日三服，多饮暖水，汗出愈。", original:"假令瘦人脐下有悸，吐涎沫而癫眩，此水也，五苓散主之。（痰饮咳嗽病篇）", keyPoints:["化气利水、解表散邪。","二苓泽泻利水，白术健脾，桂枝化气解表。","为下焦水逆、脐下悸的治法。"]},
+  {id:309, name:"附方：茯苓丸", category:"金匮要略-痰饮咳嗽", composition:[{drug:"茯苓",dose:"二两"},{drug:"枳壳",dose:"半两"},{drug:"半夏",dose:"二两"},{drug:"风化朴硝",dose:"一分"}], method:"为细末，生姜汁煮面糊为丸如梧子大，每服三十丸，生姜汤下。", original:"《外台》茯苓丸。（痰饮咳嗽病篇附方）", keyPoints:["化痰软坚、健脾祛湿。","茯苓健脾渗湿，半夏化痰，枳壳行气，朴硝软坚。","为痰浊凝结、臂痛难举的治法。"]},
+  {id:310, name:"附方：十枣汤(金匮)", category:"金匮要略-痰饮咳嗽", composition:[{drug:"芫花",dose:"（熬）"},{drug:"甘遂",dose:""},{drug:"大戟",dose:"等分"},{drug:"大枣",dose:"十枚"}], method:"三味等分，捣筛，以水一升五合，先煮肥大枣十枚，取八合，去滓，纳药末。", original:"……病悬饮者，十枣汤主之。（痰饮咳嗽病篇）", keyPoints:["攻逐水饮。","芫花甘遂大戟攻逐水饮，大枣护胃。","为悬饮的治法。"]},
+  {id:311, name:"附方：小青龙汤(金匮附)", category:"金匮要略-痰饮咳嗽", composition:[{drug:"麻黄",dose:"三两"},{drug:"甘草",dose:"三两"},{drug:"桂枝",dose:"三两"},{drug:"芍药",dose:"三两"},{drug:"五味子",dose:"半升"},{drug:"干姜",dose:"三两"},{drug:"细辛",dose:"三两"},{drug:"半夏",dose:"半升"}], method:"以水一斗，先煮麻黄，减二升，去上沫，内诸药，煮取三升。", original:"《外台》小青龙汤。（痰饮咳嗽病篇附方）", keyPoints:["解表散寒、温肺化饮。","为支饮咳逆倚息、不得卧的治法。"]},
+  {id:312, name:"附方：木防己汤(金匮附)", category:"金匮要略-痰饮咳嗽", composition:[{drug:"木防己",dose:"三两"},{drug:"石膏",dose:"三两"},{drug:"桂枝",dose:"二两"},{drug:"人参",dose:"四两"}], method:"以水六升，煮取二升，分温再服。", original:"《外台》木防己汤。（痰饮咳嗽病篇附方）", keyPoints:["行水散结、补虚清热。","为支饮、膈间痞坚的治法。"]},
+  {id:313, name:"肾气丸(金匮消渴)", category:"金匮要略-消渴小便不利淋病", composition:[{drug:"干地黄",dose:"八两"},{drug:"山茱萸",dose:"四两"},{drug:"薯蓣",dose:"四两"},{drug:"泽泻",dose:"三两"},{drug:"茯苓",dose:"三两"},{drug:"牡丹皮",dose:"三两"},{drug:"桂枝",dose:"一两"},{drug:"附子",dose:"一两"}], method:"末之，炼蜜和丸梧子大，酒下十五丸。", original:"男子消渴，小便反多，以饮一斗，小便一斗，肾气丸主之。（消渴小便不利淋病篇）", keyPoints:["温补肾阳、化气行水。","为肾阳虚消渴的治法。","男子消渴多肾阳虚。"]},
+  {id:314, name:"五苓散(金匮消渴)", category:"金匮要略-消渴小便不利淋病", composition:[{drug:"泽泻",dose:"一两六铢"},{drug:"猪苓",dose:"十八铢"},{drug:"茯苓",dose:"十八铢"},{drug:"白术",dose:"十八铢"},{drug:"桂枝",dose:"半两"}], method:"为末，白饮服方寸匕，日三服。", original:"脉浮，小便不利，微热消渴者，宜利小便、发汗，五苓散主之。（消渴小便不利淋病篇）", keyPoints:["化气利水。","为蓄水消渴的治法。"]},
+  {id:315, name:"文蛤散", category:"金匮要略-消渴小便不利淋病", composition:[{drug:"文蛤",dose:"五两"}], method:"为散，以沸汤五合，和服方寸匕。", original:"渴欲饮水不止者，文蛤散主之。（消渴小便不利淋病篇）", keyPoints:["清热润燥、生津止渴。","文蛤咸寒、清热生津止渴。","为渴欲饮水不止的治法。"]},
+  {id:316, name:"瓜蒌瞿麦丸", category:"金匮要略-消渴小便不利淋病", composition:[{drug:"瓜蒌根",dose:"二两"},{drug:"茯苓",dose:"三两"},{drug:"薯蓣",dose:"三两"},{drug:"附子",dose:"一枚（炮）"},{drug:"瞿麦",dose:"一两"}], method:"为末，炼蜜丸梧子大，饮服三丸，日三服。不知，增至七八丸，以小便利、腹中温为知。", original:"小便不利者，有水气，其人苦渴，瓜蒌瞿麦丸主之。（消渴小便不利淋病篇）", keyPoints:["润燥生津、温阳利水。","瓜蒌根薯蓣生津润燥，瞿麦茯苓利水，附子温阳。","为上燥下寒、小便不利的治法。"]},
+  {id:317, name:"蒲灰散", category:"金匮要略-消渴小便不利淋病", composition:[{drug:"蒲灰",dose:"七分"},{drug:"滑石",dose:"三分"}], method:"为散，饮服方寸匕，日三服。", original:"小便不利，蒲灰散主之；滑石白鱼散、茯苓戎盐汤并主之。（消渴小便不利淋病篇）", keyPoints:["清热利湿、凉血消瘀。","蒲灰（蒲黄粉）凉血消瘀，滑石清热利湿。","为湿热小便不利的治法。","临床用于淋证。"]},
+  {id:318, name:"滑石白鱼散", category:"金匮要略-消渴小便不利淋病", composition:[{drug:"滑石",dose:"二分"},{drug:"乱发",dose:"二分（烧）"},{drug:"白鱼",dose:"二分"}], method:"为散，饮服方寸匕，日三服。", original:"……滑石白鱼散……并主之。（消渴小便不利淋病篇）", keyPoints:["清热利湿、化瘀通淋。","滑石清热利湿，乱发（血余）化瘀，白鱼通淋。","为湿热瘀血小便不利的治法。"]},
+  {id:319, name:"茯苓戎盐汤", category:"金匮要略-消渴小便不利淋病", composition:[{drug:"茯苓",dose:"半斤"},{drug:"白术",dose:"二两"},{drug:"戎盐",dose:"（弹丸大一枚）"}], method:"先将茯苓、白术煎成，入戎盐再煎，分温三服。", original:"……茯苓戎盐汤并主之。（消渴小便不利淋病篇）", keyPoints:["健脾利湿、软坚通淋。","茯苓白术健脾利湿，戎盐（青盐）软坚通淋。","为脾虚湿盛、小便不利的治法。"]},
+  {id:320, name:"猪苓汤(金匮)", category:"金匮要略-消渴小便不利淋病", composition:[{drug:"猪苓",dose:"（去皮）"},{drug:"茯苓",dose:""},{drug:"泽泻",dose:""},{drug:"滑石",dose:""},{drug:"阿胶",dose:"各一两"}], method:"以水四升，先煮四味，取二升，去滓，内阿胶烊消，温服七合。", original:"脉浮发热，渴欲饮水，小便不利者，猪苓汤主之。（消渴小便不利淋病篇）", keyPoints:["利水清热养阴。","二苓泽泻利水，滑石清热，阿胶养阴。","为水热互结伤阴的治法。"]},
+  {id:321, name:"越婢汤", category:"金匮要略-水气病", composition:[{drug:"麻黄",dose:"六两"},{drug:"石膏",dose:"半斤"},{drug:"生姜",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"大枣",dose:"十五枚"}], method:"以水六升，先煮麻黄，去上沫，内诸药，煮取三升，分温三服。恶风者加附子一枚，炮。", original:"风水，一身悉肿，脉浮不渴，无大热者，越婢汤主之。（水气病篇）", keyPoints:["发汗利水、清泄郁热。","麻黄发汗利水，石膏清郁热，姜枣草和中。","为风水一身悉肿的治法。"]},
+  {id:322, name:"防己茯苓汤", category:"金匮要略-水气病", composition:[{drug:"防己",dose:"三两"},{drug:"黄芪",dose:"三两"},{drug:"桂枝",dose:"三两"},{drug:"茯苓",dose:"六两"},{drug:"甘草",dose:"二两"}], method:"以水六升，煮取二升，分温三服。", original:"皮水为病，四肢肿，水气在皮肤中，四肢聂聂动者，防己茯苓汤主之。（水气病篇）", keyPoints:["益气通阳、利水消肿。","防己茯苓利水，桂枝通阳，黄芪益气，甘草调和。","为皮水四肢肿的治法。"]},
+  {id:323, name:"甘草麻黄汤", category:"金匮要略-水气病", composition:[{drug:"甘草",dose:"二两"},{drug:"麻黄",dose:"四两"}], method:"以水五升，先煮麻黄，去上沫，内甘草，煮取三升，温服一升，重覆汗出，不汗，再服。慎风寒。", original:"里水，越婢加术汤主之；甘草麻黄汤亦主之。（水气病篇）", keyPoints:["发汗解表、利水消肿。","麻黄发汗利水，甘草调和。","为皮水里水的治法。","重覆汗出、不汗再服。"]},
+  {id:324, name:"杏子汤", category:"金匮要略-水气病", composition:[{drug:"杏仁",dose:""},{drug:"麻黄",dose:""},{drug:"石膏",dose:""},{drug:"甘草",dose:""}], method:"（方未见）", original:"……浮者宜杏子汤。（水气病篇）", keyPoints:["宣肺发汗、利水消肿。","为风水浮脉的治法。","方未见、或为麻杏石甘汤。"]},
+  {id:325, name:"黄芪芍桂苦酒汤", category:"金匮要略-水气病", composition:[{drug:"黄芪",dose:"五两"},{drug:"芍药",dose:"三两"},{drug:"桂枝",dose:"三两"}], method:"以苦酒一升，水七升，相和，煮取三升，温服一升，当心烦，服至六七日乃解。若心烦不止者，以苦酒阻故也。", original:"黄汗之病，两胫自冷，假令发热，此属历节。食已汗出，又身常暮卧盗汗出者，此劳气也。若汗出已反发热者，久久其身必甲错；发热不止者，必生恶疮。若身重，汗出已辄轻者，久久必身目闰，闰即胸中痛，又从腰以上必汗出，下无汗，腰髋弛痛，如有物在皮中状，剧者不能食，身疼重，烦躁，小便不利，此为黄汗，桂枝加黄芪汤主之。（水气病篇）", keyPoints:["益气固表、调和营卫。","黄芪益气固表，桂枝芍药调和营卫，苦酒（醋）引药入经。","为黄汗的治法。"]},
+  {id:326, name:"桂枝加黄芪汤", category:"金匮要略-水气病", composition:[{drug:"桂枝",dose:"三两"},{drug:"芍药",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"生姜",dose:"三两"},{drug:"大枣",dose:"十二枚"},{drug:"黄芪",dose:"二两"}], method:"以水八升，煮取三升，温服一升，须臾饮热稀粥一升余，以助药力，温覆取微汗；若不汗，更服。", original:"……黄汗，桂枝加黄芪汤主之。（水气病篇）", keyPoints:["调和营卫、益气固表。","桂枝汤调和营卫，加黄芪益气固表。","为黄汗、营卫不和的治法。"]},
+  {id:327, name:"桂枝去芍药加麻黄细辛附子汤", category:"金匮要略-水气病", composition:[{drug:"桂枝",dose:"三两"},{drug:"生姜",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"大枣",dose:"十二枚"},{drug:"麻黄",dose:"二两"},{drug:"细辛",dose:"二两"},{drug:"附子",dose:"一枚（炮）"}], method:"以水七升，煮麻黄，去上沫，内诸药，煮取二升，分温三服。当汗出，如虫行皮中，即愈。", original:"气分，心下坚，大如盘，边如旋杯，水饮所作，桂枝去芍药加麻黄细辛附子汤主之。（水气病篇）", keyPoints:["温阳散寒、通阳化气。","桂枝去芍药加麻黄细辛附子，温阳散寒、通阳。","为气分病、心下坚满的治法。"]},
+  {id:328, name:"枳术汤", category:"金匮要略-水气病", composition:[{drug:"枳实",dose:"七枚"},{drug:"白术",dose:"二两"}], method:"以水五升，煮取三升，分温三服，腹中软即当散也。", original:"心下坚，大如盘，边如旋盘，水饮所作，枳术汤主之。（水气病篇）", keyPoints:["行气消痞、健脾利水。","枳实行气消痞，白术健脾利水。","为气分病、心下坚满轻证的治法。","与上方区别：此偏气滞、方偏阳虚。"]},
+  {id:329, name:"蒲灰散(水气)", category:"金匮要略-水气病", composition:[{drug:"蒲灰",dose:"七分"},{drug:"滑石",dose:"三分"}], method:"为散，饮服方寸匕，日三服。", original:"厥而皮水者，蒲灰散主之。（水气病篇）", keyPoints:["清热利湿、凉血消肿。","为皮水厥冷的治法。"]},
+  {id:330, name:"附方：海藻丸", category:"金匮要略-水气病", composition:[{drug:"（不详）"}], method:"（方未见）", original:"《外台》海藻丸：治妇人。（水气病篇附方）", keyPoints:["软坚散结、利水消肿。","为水气病的辅佐方。"]}
+,
+  {id:331, name:"茵陈蒿汤", category:"金匮要略-黄疸病", composition:[{drug:"茵陈蒿",dose:"六两"},{drug:"栀子",dose:"十四枚"},{drug:"大黄",dose:"二两"}], method:"以水一斗，先煮茵陈，减六升，内二味，煮取三升，去滓，分温三服。", original:"谷疸之为病，寒热不食，食即头眩，心胸不安，久久发黄为谷疸，茵陈蒿汤主之。（黄疸病篇）", keyPoints:["清热利湿、退黄消疸。","茵陈清热利湿退黄，栀子清热利三焦，大黄泻热退黄。","为湿热黄疸的主方，尤适用于谷疸。","尿黄、腹微满为湿热蕴结之征。"]},
+  {id:332, name:"硝石矾石散", category:"金匮要略-黄疸病", composition:[{drug:"硝石",dose:"等分"},{drug:"矾石",dose:"等分"}], method:"为散，大麦粥汁和服方寸匕，日三服。", original:"黄家日晡所发热，而反恶寒，此为女劳得之；膀胱急，少腹满，身尽黄，额上黑，足下热，因作黑疸，硝石矾石散主之。（黄疸病篇）", keyPoints:["消瘀化湿、通利二便。","硝石消瘀散结，矾石燥湿退黄。","为女劳疸（黑疸）的治法。","大便必黑为瘀血内结之征。"]},
+  {id:333, name:"栀子大黄汤", category:"金匮要略-黄疸病", composition:[{drug:"栀子",dose:"十四枚"},{drug:"大黄",dose:"一两"},{drug:"枳实",dose:"五枚"},{drug:"香豉",dose:"一升"}], method:"以水六升，煮取二升，分温三服。", original:"酒疸下之，久久为黑疸，目青面黑，心中如啖蒜齑状，大便正黑，皮肤爪之不仁，其脉浮弱，虽黑微黄，故知之。（黄疸病篇附方）", keyPoints:["清热利湿、泻下退黄。","栀子清热利三焦，大黄泻热，枳实破滞，香豉和中。","为酒疸误下转为黑疸的治法。","心中啖蒜状为热毒上扰。"]},
+  {id:334, name:"猪膏发煎", category:"金匮要略-黄疸病", composition:[{drug:"猪膏",dose:"半斤"},{drug:"乱发",dose:"如鸡子大三枚"}], method:"上二味，和膏中煎之，发消药成，分再服。", original:"诸黄，猪膏发煎主之。（黄疸病篇）", keyPoints:["润燥消瘀、养血退黄。","猪膏润燥养血，乱发消瘀通便。","为燥结血瘀黄疸的治法。","尤适用于大便干结者。"]},
+  {id:335, name:"茵陈五苓散", category:"金匮要略-黄疸病", composition:[{drug:"茵陈蒿末",dose:"十分"},{drug:"五苓散末",dose:"五分"}], method:"上二味和，先食饮服方寸匕，日三服。", original:"黄疸病，茵陈五苓散主之。（黄疸病篇）", keyPoints:["清热利湿、分消黄疸。","茵陈清热利湿退黄，五苓散化气利水。","为湿重热轻黄疸的治法。","小便不利、腹胀为适用指征。"]},
+  {id:336, name:"大黄硝石汤", category:"金匮要略-黄疸病", composition:[{drug:"大黄",dose:"四两"},{drug:"黄柏",dose:"四两"},{drug:"硝石",dose:"四两"},{drug:"栀子",dose:"十五枚"}], method:"以水六升，煮取二升，去滓，内硝石，更煮取一升，顿服。", original:"黄疸腹满，小便不利而赤，自汗出，此为表和里实，当下之，宜大黄硝石汤。（黄疸病篇）", keyPoints:["泻热通腑、清热退黄。","大黄泻热通腑，硝石软坚散结，黄柏栀子清热燥湿。","为里热壅盛黄疸的治法，症见腹满、便秘、尿赤、自汗。","脉象沉实为当下之征。"]},
+  {id:337, name:"小半夏汤", category:"金匮要略-黄疸病", composition:[{drug:"半夏",dose:"一升"},{drug:"生姜",dose:"半斤"}], method:"以水七升，煮取一升半，分温再服。", original:"黄疸病，小便色不变，欲自利，腹满而喘，不可除热，热除必哕。哕者，小半夏汤主之。（黄疸病篇）", keyPoints:["和胃降逆、温化寒饮。","半夏降逆和胃，生姜温中止呕。","为黄疸误下伤胃、寒饮内停而哕的治法。","此证为寒哕，非热哕。"]},
+  {id:338, name:"柴胡汤", category:"金匮要略-黄疸病", composition:[{drug:"柴胡",dose:"半斤"},{drug:"黄芩",dose:"三两"},{drug:"人参",dose:"三两"},{drug:"甘草",dose:"三两"},{drug:"半夏",dose:"半升"},{drug:"生姜",dose:"三两"},{drug:"大枣",dose:"十二枚"}], method:"以水一斗二升，煮取六升，去滓，再煎取三升，温服一升，日三服。", original:"诸病黄家，但利其小便。假令脉浮，当以汗解之，宜桂枝加黄芪汤主之。又：诸黄，腹痛而呕者，宜柴胡汤。（黄疸病篇）", keyPoints:["和解少阳、扶正祛邪。","小柴胡汤疏解少阳，和胃止呕。","为黄疸兼少阳腹痛、呕吐的治法。","病在少阳，寒热往来，腹痛而呕。"]},
+  {id:339, name:"小建中汤", category:"金匮要略-黄疸病", composition:[{drug:"桂枝",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"芍药",dose:"六两"},{drug:"生姜",dose:"三两"},{drug:"胶饴",dose:"一升"},{drug:"大枣",dose:"十二枚"}], method:"以水七升，煮取三升，去滓，内胶饴，更上微火消解，温服一升，日三服。", original:"男子黄，小便自利，当与虚劳小建中汤。（黄疸病篇）", keyPoints:["建中补虚、调养气血。","小建中汤甘温建中、缓急止痛。","为虚劳萎黄、小便自利的治法。","此为虚证黄疸，非湿热黄疸。"]},
+  {id:340, name:"桂枝加黄芪汤", category:"金匮要略-黄疸病", composition:[{drug:"桂枝",dose:"三两"},{drug:"芍药",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"生姜",dose:"三两"},{drug:"大枣",dose:"十二枚"},{drug:"黄芪",dose:"二两"}], method:"以水八升，煮取三升，温服一升，须臾饮热稀粥一升余，以助药力，温覆取微汗。", original:"诸病黄家，但利其小便。假令脉浮，当以汗解之，宜桂枝加黄芪汤主之。（黄疸病篇）", keyPoints:["调和营卫、益气固表。","桂枝汤调和营卫，加黄芪益气固表。","为黄疸表虚、脉浮、宜汗的治法。","此为黄疸兼表虚之证。"]},
+  {id:341, name:"桂枝救逆汤", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"桂枝",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"生姜",dose:"三两"},{drug:"牡蛎",dose:"五两"},{drug:"龙骨",dose:"四两"},{drug:"蜀漆",dose:"三两"},{drug:"大枣",dose:"十二枚"}], method:"以水一斗二升，先煮蜀漆，减二升，内诸药，煮取三升，去滓，温服一升。", original:"火邪者，桂枝去芍药加蜀漆牡蛎龙骨救逆汤主之。（惊悸吐衄下血篇）", keyPoints:["温阳复脉、镇惊安神。","桂枝去芍药加蜀漆牡蛎龙骨，温阳镇惊。","为火邪劫阴、惊狂不安的治法。","惊狂、卧起不安为主症。"]},
+  {id:342, name:"半夏麻黄丸", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"半夏",dose:"等分"},{drug:"麻黄",dose:"等分"}], method:"上二味，末之，炼蜜和丸如小豆大，饮服三丸，日三服。", original:"心下悸者，半夏麻黄丸主之。（惊悸吐衄下血篇）", keyPoints:["化饮降逆、通阳定悸。","半夏化痰饮，麻黄通阳散结。","为水饮内停、心下悸的治法。","心下悸而非心悸，病因水饮。"]},
+  {id:343, name:"柏叶汤", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"柏叶",dose:"三两"},{drug:"干姜",dose:"三两"},{drug:"艾叶",dose:"三把"}], method:"以水五升，取马通汁一升，合煮取一升，分温再服。", original:"吐血不止者，柏叶汤主之。（惊悸吐衄下血篇）", keyPoints:["温经止血、引血归经。","柏叶止血，干姜温经，艾叶温经止血。","为中气虚寒、血不归经之吐血的治法。","血色暗淡、面色萎黄为虚寒吐血特征。"]},
+  {id:344, name:"黄土汤", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"甘草",dose:"三两"},{drug:"干地黄",dose:"三两"},{drug:"白术",dose:"三两"},{drug:"附子",dose:"三两（炮）"},{drug:"阿胶",dose:"三两"},{drug:"黄芩",dose:"三两"},{drug:"灶心黄土",dose:"半斤"}], method:"以水八升，煮取二升，分温二服。", original:"下血，先便后血，此远血也，黄土汤主之。（惊悸吐衄下血篇）", keyPoints:["温阳健脾、养血止血。","灶心黄土温中止血，附子白术温阳健脾，阿胶地黄养血。","为脾阳虚寒、统摄无权之下血的治法。","血色紫暗、腹痛喜温为特征。"]},
+  {id:345, name:"泻心汤", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"大黄",dose:"二两"},{drug:"黄连",dose:"一两"},{drug:"黄芩",dose:"一两"}], method:"以水三升，煮取一升，顿服之。", original:"心气不足，吐血、衄血，泻心汤主之。（惊悸吐衄下血篇）", keyPoints:["清热泻火、凉血止血。","大黄泻热降逆，黄连黄芩清热泻火。","为心火亢盛、迫血妄行之吐衄的治法。","血色鲜红、面红目赤、烦躁为实热特征。"]},
+  {id:346, name:"赤小豆当归散", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"赤小豆",dose:"三升（浸，令芽出）"},{drug:"当归",dose:"三两"}], method:"杵为散，浆水服方寸匕，日三服。", original:"下血，先血后便，此近血也，赤小豆当归散主之。（惊悸吐衄下血篇）", keyPoints:["清热利湿、活血止血。","赤小豆利湿清热排脓，当归活血祛瘀。","为湿热下注、大肠出血（近血）的治法。","先血后便，血色鲜红。"]},
+  {id:347, name:"酸枣仁汤", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"酸枣仁",dose:"二升"},{drug:"知母",dose:"二两"},{drug:"茯苓",dose:"二两"},{drug:"川芎",dose:"一两"},{drug:"甘草",dose:"一两"}], method:"以水八升，煮酸枣仁得六升，内诸药，煮取三升，分温三服。", original:"虚劳虚烦不得眠，酸枣仁汤主之。（惊悸吐衄下血篇附方）", keyPoints:["养血安神、清热除烦。","酸枣仁养血安神，川芎知母调肝清热。","为肝血不足、虚烦不眠的治法。","虚烦失眠、心悸盗汗为特征。"]},
+  {id:348, name:"甘草干姜汤", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"甘草",dose:"四两（炙）"},{drug:"干姜",dose:"二两"}], method:"以水三升，煮取一升半，去滓，分温再服。", original:"肺痿吐涎沫而不咳者，其人不渴，必遗尿，小便数。所以然者，以上虚不能制下故也。此为肺中冷，必眩，多涎唾，甘草干姜汤以温之。（惊悸吐衄下血篇）", keyPoints:["温肺散寒、复阳摄津。","甘草干姜汤温肺散寒，复阳气。","为肺中虚冷、涎沫多的治法。","遗尿、小便数、头眩为肺冷不能制下。"]},
+  {id:349, name:"小建中汤", category:"金匮要略-惊悸吐衄下血", composition:[{drug:"桂枝",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"芍药",dose:"六两"},{drug:"生姜",dose:"三两"},{drug:"胶饴",dose:"一升"},{drug:"大枣",dose:"十二枚"}], method:"以水七升，煮取三升，去滓，内胶饴，更上微火消解，温服一升，日三服。", original:"虚劳里急、悸、衄、腹中痛，梦失精，四肢酸疼，手足烦热，咽干口燥，小建中汤主之。（惊悸吐衄下血篇附方）", keyPoints:["建中补虚、调养气血。","小建中汤甘温建中、缓急止痛。","为虚劳阴阳两虚的治法。","悸、衄、腹中痛、虚烦为阴阳两虚特征。"]},
+  {id:350, name:"吴茱萸汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"吴茱萸",dose:"一升"},{drug:"人参",dose:"三两"},{drug:"生姜",dose:"六两"},{drug:"大枣",dose:"十二枚"}], method:"以水五升，煮取二升，温服七合，日三服。", original:"呕而胸满者，吴茱萸汤主之。（呕吐哕下利病篇）", keyPoints:["温中散寒、降逆止呕。","吴茱萸温中散寒、降逆止呕，人参大枣补虚，生姜和胃。","为肝胃虚寒、浊阴上逆之呕吐的治法。","干呕吐涎沫、头痛为肝寒上逆特征。"]},
+  {id:351, name:"四逆汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"附子",dose:"一枚（生用）"},{drug:"干姜",dose:"一两半"},{drug:"甘草",dose:"二两（炙）"}], method:"以水三升，煮取一升二合，去滓，分温再服。", original:"呕而脉弱，小便复利，身有微热，见厥者，难治，四逆汤主之。（呕吐哕下利病篇）", keyPoints:["回阳救逆、温中散寒。","附子温肾回阳，干姜温中散寒，甘草缓急调和。","为阳衰阴盛、呕吐肢厥的治法。","脉弱、厥冷为阳气衰微之征。"]},
+  {id:352, name:"小柴胡汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"柴胡",dose:"半斤"},{drug:"黄芩",dose:"三两"},{drug:"人参",dose:"三两"},{drug:"甘草",dose:"三两"},{drug:"半夏",dose:"半升"},{drug:"生姜",dose:"三两"},{drug:"大枣",dose:"十二枚"}], method:"以水一斗二升，煮取六升，去滓，再煎取三升，温服一升，日三服。", original:"呕而发热者，小柴胡汤主之。（呕吐哕下利病篇）", keyPoints:["和解少阳、调达枢机。","小柴胡汤疏解少阳，和胃止呕。","为少阳邪热迫胃之呕吐的治法。","呕而发热、口苦咽干为少阳证。"]},
+  {id:353, name:"大半夏汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"半夏",dose:"二升"},{drug:"人参",dose:"三两"},{drug:"白蜜",dose:"一升"}], method:"以水一斗二升，和蜜扬之二百四十遍，煮药取二升半，温服一升，余分再服。", original:"胃反呕吐者，大半夏汤主之。（呕吐哕下利病篇）", keyPoints:["和胃降逆、补虚润燥。","半夏降逆止呕，人参白蜜补虚润燥。","为脾胃虚寒、胃反呕吐的治法。","朝食暮吐、暮食朝吐为胃反特征。"]},
+  {id:354, name:"茯苓泽泻汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"茯苓",dose:"半斤"},{drug:"泽泻",dose:"四两"},{drug:"甘草",dose:"二两"},{drug:"桂枝",dose:"二两"},{drug:"白术",dose:"三两"},{drug:"生姜",dose:"四两"}], method:"以水一斗，煮取二升，内泽泻，再煮取二升半，温服八合，日三服。", original:"胃反，吐而渴欲饮水者，茯苓泽泻汤主之。（呕吐哕下利病篇）", keyPoints:["化气利水、和胃止渴。","茯苓泽泻利水渗湿，桂枝化气，生姜和胃。","为水饮内停、胃反口渴的治法。","吐而渴欲饮水为饮停下焦、气化不利。"]},
+  {id:355, name:"半夏泻心汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"半夏",dose:"半升"},{drug:"黄芩",dose:"三两"},{drug:"干姜",dose:"三两"},{drug:"人参",dose:"三两"},{drug:"黄连",dose:"一两"},{drug:"大枣",dose:"十二枚"},{drug:"甘草",dose:"三两（炙）"}], method:"以水一斗，煮取六升，去滓，再煮取三升，温服一升，日三服。", original:"呕而肠鸣，心下痞者，半夏泻心汤主之。（呕吐哕下利病篇）", keyPoints:["和中降逆、开结消痞。","半夏降逆和胃，芩连清热，干姜人参枣草调中。","为寒热错杂、呕而肠鸣心下痞的治法。","心下痞满、呕逆肠鸣为特征。"]},
+  {id:356, name:"黄芩加半夏生姜汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"黄芩",dose:"三两"},{drug:"甘草",dose:"二两（炙）"},{drug:"芍药",dose:"二两"},{drug:"半夏",dose:"半升"},{drug:"生姜",dose:"三两"},{drug:"大枣",dose:"十二枚"}], method:"以水一斗，煮取三升，去滓，温服一升，日再夜一服。", original:"干呕而利者，黄芩加半夏生姜汤主之。（呕吐哕下利病篇）", keyPoints:["清热止利、和胃降逆。","黄芩汤清热止利，半夏生姜和胃降逆。","为热利兼干呕的治法。","干呕与下利并见，热在胃肠。"]},
+  {id:357, name:"小半夏汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"半夏",dose:"一升"},{drug:"生姜",dose:"半斤"}], method:"以水七升，煮取一升半，分温再服。", original:"诸呕吐，谷不得下者，小半夏汤主之。（呕吐哕下利病篇）", keyPoints:["和胃降逆、化痰止呕。","半夏降逆止呕，生姜温胃散寒。","为痰饮呕吐、谷不得下的治法。","呕吐痰涎、苔白腻为痰饮特征。"]},
+  {id:358, name:"猪苓散", category:"金匮要略-呕吐哕下利", composition:[{drug:"猪苓",dose:"等分"},{drug:"茯苓",dose:"等分"},{drug:"白术",dose:"等分"}], method:"杵为散，饮服方寸匕，日三服。", original:"呕吐而病在膈上，后思水者，解，急与之。思水者，猪苓散主之。（呕吐哕下利病篇）", keyPoints:["健脾利水、清热生津。","猪苓茯苓利水，白术健脾。","为吐后思水、胃热未清的治法。","呕吐后思水，胃中余热未清。"]},
+  {id:359, name:"通脉四逆汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"附子",dose:"大者一枚（生用）"},{drug:"干姜",dose:"三两"},{drug:"甘草",dose:"二两（炙）"}], method:"以水三升，煮取一升二合，去滓，分温再服。", original:"下利清谷，里寒外热，汗出而厥者，通脉四逆汤主之。（呕吐哕下利病篇）", keyPoints:["回阳通脉、散寒救逆。","附子干姜温肾回阳，甘草缓急。","为阴盛格阳、下利清谷的治法。","里寒外热、汗出肢厥为格阳证。"]},
+  {id:360, name:"诃黎勒散", category:"金匮要略-呕吐哕下利", composition:[{drug:"诃黎勒",dose:"十枚（煨）"}], method:"为散，粥饮和，顿服。", original:"气利，诃黎勒散主之。（呕吐哕下利病篇）", keyPoints:["涩肠固脱、下气消胀。","诃黎勒涩肠固脱、下气消胀。","为气利（下利滑脱，气滞腹胀）的治法。","下利不止、矢气频作为气利特征。"]},
+  {id:361, name:"白头翁汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"白头翁",dose:"二两"},{drug:"黄连",dose:"三两"},{drug:"黄柏",dose:"三两"},{drug:"秦皮",dose:"三两"}], method:"以水七升，煮取二升，去滓，温服一升。不愈，更服。", original:"热利下重者，白头翁汤主之。（呕吐哕下利病篇）", keyPoints:["清热燥湿、凉血止痢。","白头翁清热凉血止痢，黄连黄柏秦皮清热燥湿。","为湿热下利、里急后重的治法。","下利脓血、肛门灼热为热痢特征。"]},
+  {id:362, name:"桃花汤", category:"金匮要略-呕吐哕下利", composition:[{drug:"赤石脂",dose:"一斤（一半全用，一半筛末）"},{drug:"干姜",dose:"一两"},{drug:"粳米",dose:"一升"}], method:"以水七升，煮米令熟，去滓，温服七合，内赤石脂末方寸匕，日三服。若一服愈，余勿服。", original:"下利便脓血者，桃花汤主之。（呕吐哕下利病篇）", keyPoints:["温中涩肠、固脱止痢。","赤石脂涩肠固脱，干姜温中散寒，粳米补虚。","为脾肾阳虚、下利脓血的治法。","下利稀薄、脓血暗滞、腹痛喜温为虚寒痢特征。"]},
+  {id:363, name:"乌梅丸", category:"金匮要略-呕吐哕下利", composition:[{drug:"乌梅",dose:"三百枚"},{drug:"细辛",dose:"六两"},{drug:"附子",dose:"六两（炮）"},{drug:"黄连",dose:"一斤"},{drug:"黄柏",dose:"六两"},{drug:"人参",dose:"六两"},{drug:"当归",dose:"四两"},{drug:"桂枝",dose:"六两"},{drug:"干姜",dose:"十两"},{drug:"川椒",dose:"四两"}], method:"上十味，异捣筛，合治之，以苦酒渍乌梅一宿，去核，蒸之五斗米下，饭熟捣成泥，和药令相得，内臼中，与蜜杵二千下，丸如梧桐子大，先食饮服十丸，日三服。", original:"蛔厥者，乌梅丸主之。（呕吐哕下利病篇）", keyPoints:["安蛔止痛、温脏补虚。","乌梅安蛔止痛，川椒细辛辛温杀虫，黄连黄柏苦寒下蛔。","为蛔厥（蛔虫内扰）的治法。","烦闷呕吐、肢厥腹痛为蛔厥特征。"]},
+  {id:364, name:"薏苡附子败酱散", category:"金匮要略-疮痈肠痈浸淫", composition:[{drug:"薏苡仁",dose:"十分"},{drug:"附子",dose:"二分"},{drug:"败酱草",dose:"五分"}], method:"杵为散，取方寸匕，以水二升，煎减半，顿服。小便当下。", original:"肠痈之为病，其身甲错，腹皮急，按之濡，如肿状，腹无积聚，身无热，脉数，此为肠内有痈脓，薏苡附子败酱散主之。（疮痈肠痈篇）", keyPoints:["排脓消痈、温阳散结。","薏苡仁排脓消肿，败酱草清热排脓，附子温阳散结。","为肠痈脓已成、身甲错的治法。","腹皮急、按之濡、如肿状为肠痈特征。"]},
+  {id:365, name:"大黄牡丹汤", category:"金匮要略-疮痈肠痈浸淫", composition:[{drug:"大黄",dose:"四两"},{drug:"牡丹",dose:"一两"},{drug:"桃仁",dose:"五十个"},{drug:"瓜子",dose:"半升"},{drug:"芒硝",dose:"三合"}], method:"以水六升，煮取一升，去滓，内芒硝，再煎沸，顿服之。有脓当下；如无脓，当下血。", original:"肠痈者，少腹肿痞，按之即痛如淋，小便自调，时时发热，自汗出，复恶寒。其脉迟紧者，脓未成，可下之，当有血。脉洪数者，脓已成，不可下也。大黄牡丹汤主之。（疮痈肠痈篇）", keyPoints:["泻热破瘀、散结消痈。","大黄芒硝泻热通腑，丹皮桃仁活血化瘀，瓜子排脓。","为肠痈未成脓的治法，症见少腹肿痞、按痛、发热恶寒。","脉迟紧为脓未成，脉洪数为脓已成。"]},
+  {id:366, name:"王不留行散", category:"金匮要略-疮痈肠痈浸淫", composition:[{drug:"王不留行",dose:"十分"},{drug:"蒴藋细叶",dose:"十分"},{drug:"桑东南根",dose:"十分"},{drug:"黄芩",dose:"二分"},{drug:"芍药",dose:"二分"},{drug:"厚朴",dose:"二分"},{drug:"甘草",dose:"十八分"},{drug:"干姜",dose:"二分"},{drug:"川椒",dose:"三分"}], method:"上九味，桑根皮以上三味烧灰存性，勿令灰过，各别杵筛，合治之为散，服方寸匕。小疮即粉之，大疮但服之。", original:"病金疮，王不留行散主之。（疮痈肠痈篇）", keyPoints:["活血止血、续筋接骨。","王不留行活血通经，蒴藋桑根接骨续筋，川椒厚朴行气止痛。","为金疮（刀斧伤）出血不止的治法。","小伤外敷，大伤内服。"]},
+  {id:367, name:"排脓散", category:"金匮要略-疮痈肠痈浸淫", composition:[{drug:"枳实",dose:"十六枚"},{drug:"芍药",dose:"六分"},{drug:"桔梗",dose:"二分"}], method:"上三味，杵为散，取鸡子黄一枚，以药散与鸡黄相等，揉和令相得，饮和服之，日一服。", original:"排脓散方（附于肠痈方后）。（疮痈肠痈篇）", keyPoints:["排脓消痈、行气活血。","枳实破气散结，芍药活血，桔梗排脓。","为痈脓已成、宜排脓的治法。","可与薏苡附子败酱散交替使用。"]},
+  {id:368, name:"排脓汤", category:"金匮要略-疮痈肠痈浸淫", composition:[{drug:"甘草",dose:"二两"},{drug:"桔梗",dose:"一两"},{drug:"生姜",dose:"一两"},{drug:"大枣",dose:"十枚"}], method:"以水三升，煮取一升，温服五合，日再服。", original:"排脓汤方（附于肠痈方后）。（疮痈肠痈篇）", keyPoints:["排脓解毒、调和气血。","甘草解毒，桔梗排脓，姜枣调和气血。","为痈脓在肺胃的治法。","尤适用于肺痈、胃痈。"]},
+  {id:369, name:"黄连粉", category:"金匮要略-疮痈肠痈浸淫", composition:[{drug:"黄连",dose:"十分"},{drug:"甘草",dose:"十分"}], method:"（方未见，或为黄连一味研粉外用）", original:"浸淫疮，从口起流向四肢者可治，从四肢流来入口者不可治。浸淫疮，黄连粉主之。（疮痈肠痈篇）", keyPoints:["清热燥湿、解毒止痒。","黄连清热燥湿解毒。","为浸淫疮（湿疹）的治法。","外用黄连粉涂擦患处。"]},
+  {id:370, name:"鸡屎白散", category:"金匮要略-趺蹶手指臂肿", composition:[{drug:"鸡屎白",dose:"（取白者）"}], method:"为散，取方寸匕，以水六合，和温服。", original:"转筋之为病，其人臂脚直，脉上下行，微弦。转筋入腹者，鸡屎白散主之。（蛔虫篇）", keyPoints:["清热祛湿、舒筋活络。","鸡屎白清热祛湿、舒筋活络。","为转筋（腓肠肌痉挛）的治法。","脉上下行、微弦为转筋特征。"]},
+  {id:371, name:"蜘蛛散", category:"金匮要略-趺蹶手指臂肿", composition:[{drug:"蜘蛛",dose:"十四枚（熬焦）"},{drug:"桂枝",dose:"半两"}], method:"上二味，为散，取八分一匕，饮和服，日再服。蜜丸亦可。", original:"阴狐疝气者，偏有小大，时时上下，蜘蛛散主之。（蛔虫篇）", keyPoints:["散结通络、化气止痛。","蜘蛛散结通络，桂枝化气止痛。","为阴狐疝（腹股沟斜疝）的治法。","时上时下、偏有大小为狐疝特征。"]},
+  {id:372, name:"甘草粉蜜汤", category:"金匮要略-趺蹶手指臂肿", composition:[{drug:"甘草",dose:"二两"},{drug:"米粉",dose:"一两"},{drug:"白蜜",dose:"四两"}], method:"以水三升，先煮甘草，取二升，去滓，内粉蜜，搅令和，煎如薄粥，温服一升。", original:"蛔虫之为病，令人吐涎，心痛发作有时，毒药不止，甘草粉蜜汤主之。（蛔虫篇）", keyPoints:["安蛔缓急、和中补虚。","甘草白蜜甘缓安蛔，米粉补虚和中。","为蛔虫病用过毒药杀虫后仍痛不止的治法。","吐涎、心痛、发作有时为蛔虫特征。"]},
+  {id:373, name:"桂枝茯苓丸", category:"金匮要略-妇人妊娠", composition:[{drug:"桂枝",dose:"等分"},{drug:"茯苓",dose:"等分"},{drug:"牡丹",dose:"等分"},{drug:"桃仁",dose:"等分"},{drug:"芍药",dose:"等分"}], method:"上五味，末之，炼蜜和丸如兔屎大，每日食前服一丸。不知，加至三丸。", original:"妇人宿有癥病，经断未及三月，而得漏下不止，胎动在脐上者，为癥痼害。妊娠六月动者，前三月经水利时，胎也。下血者，后断三月衃也。所以血不止者，其癥不去故也，当下其癥，桂枝茯苓丸主之。（妇人妊娠篇）", keyPoints:["活血化瘀、消癥散结。","桂枝温通，茯苓健脾，桃仁丹皮活血，芍药养血。","为妊娠有癥病、下血不止的治法。","下其癥而不伤胎，为消癥保胎之法。"]},
+  {id:374, name:"附子汤", category:"金匮要略-妇人妊娠", composition:[{drug:"附子",dose:"二枚（炮）"},{drug:"茯苓",dose:"三两"},{drug:"人参",dose:"二两"},{drug:"白术",dose:"四两"},{drug:"芍药",dose:"三两"}], method:"以水八升，煮取三升，去滓，温服一升，日三服。", original:"妇人怀妊六七月，脉弦发热，其胎愈胀，腹痛恶寒者，少腹如扇，所以然者，子藏开放故也，当以附子汤温其藏。（妇人妊娠篇）", keyPoints:["温经散寒、暖宫安胎。","附子温肾散寒，白术茯苓健脾，芍药人参养血。","为妊娠阳虚寒盛、腹痛恶寒的治法。","脉弦、胎胀、腹痛恶寒为阳虚宫寒特征。"]},
+  {id:375, name:"芎归胶艾汤", category:"金匮要略-妇人妊娠", composition:[{drug:"川芎",dose:"二两"},{drug:"阿胶",dose:"二两"},{drug:"甘草",dose:"二两"},{drug:"艾叶",dose:"三两"},{drug:"当归",dose:"三两"},{drug:"芍药",dose:"四两"},{drug:"干地黄",dose:"六两"}], method:"以水五升，清酒三升，合煮取三升，去滓，内胶令消尽，温服一升，日三服。不瘥，更作。", original:"妇人有漏下者，有半产后因续下血都不绝者，有妊娠下血者，假令妊娠腹中痛，为胞阻，胶艾汤主之。（妇人妊娠篇）", keyPoints:["养血止血、调经安胎。","阿胶地黄养血止血，艾叶温经止血，川芎当归芍药活血调经。","为妇人冲任虚寒、下血不止的治法。","漏下、半产下血、妊娠腹痛下血均可用。"]},
+  {id:376, name:"当归芍药散", category:"金匮要略-妇人妊娠", composition:[{drug:"当归",dose:"三两"},{drug:"芍药",dose:"一斤"},{drug:"川芎",dose:"半斤"},{drug:"茯苓",dose:"四两"},{drug:"白术",dose:"四两"},{drug:"泽泻",dose:"半斤"}], method:"上六味，杵为散，取方寸匕，酒和，日三服。", original:"妇人怀妊，腹中疞痛，当归芍药散主之。（妇人妊娠篇）", keyPoints:["养血疏肝、健脾利湿。","当归川芎养血疏肝，芍药缓急止痛，茯苓白术泽泻健脾利湿。","为妊娠肝脾不调、腹痛的治法。","腹中拘急、绵绵作痛为肝血不足、脾虚湿困。"]},
+  {id:377, name:"干姜人参半夏丸", category:"金匮要略-妇人妊娠", composition:[{drug:"干姜",dose:"一两"},{drug:"人参",dose:"一两半"},{drug:"半夏",dose:"二两"}], method:"上三味，末之，以生姜汁糊为丸，如梧桐子大，饮服十丸，日三服。", original:"妊娠呕吐不止，干姜人参半夏丸主之。（妇人妊娠篇）", keyPoints:["温中降逆、和胃止呕。","干姜温中散寒，人参补虚，半夏降逆和胃。","为妊娠虚寒呕吐不止的治法。","呕吐清涎、口淡不渴为脾胃虚寒。"]},
+  {id:378, name:"当归贝母苦参丸", category:"金匮要略-妇人妊娠", composition:[{drug:"当归",dose:"四两"},{drug:"贝母",dose:"四两"},{drug:"苦参",dose:"四两"}], method:"上三味，末之，炼蜜和丸如小豆大，饮服三丸，加至十丸。", original:"妊娠小便难，饮食如故，当归贝母苦参丸主之。（妇人妊娠篇）", keyPoints:["养血润燥、清热通淋。","当归养血润燥，贝母清热散结，苦参清热燥湿通淋。","为妊娠血虚燥热、小便难的治法。","小便难但饮食如故，病在下焦。"]},
+  {id:379, name:"葵子茯苓散", category:"金匮要略-妇人妊娠", composition:[{drug:"葵子",dose:"一斤"},{drug:"茯苓",dose:"三两"}], method:"杵为散，饮服方寸匕，日三服，小便利则愈。", original:"妊娠有水气，身重小便不利，洒淅恶寒，起则头眩，葵子茯苓散主之。（妇人妊娠篇）", keyPoints:["利水渗湿、通阳消肿。","葵子滑利通窍，茯苓利水渗湿。","为妊娠水气、身重小便不利的治法。","身重恶寒、起则头眩为水气浸渍。"]},
+  {id:380, name:"当归散", category:"金匮要略-妇人妊娠", composition:[{drug:"当归",dose:"一斤"},{drug:"川芎",dose:"一斤"},{drug:"芍药",dose:"一斤"},{drug:"黄芩",dose:"一斤"},{drug:"白术",dose:"半斤"}], method:"上五味，杵为散，酒饮服方寸匕，日再服。妊娠常服即易产，胎无苦疾，产后百病悉主之。", original:"妇人妊娠，宜常服当归散。（妇人妊娠篇）", keyPoints:["养血清热、健脾安胎。","当归川芎芍药养血柔肝，黄芩清热安胎，白术健脾。","为妊娠常服之养胎方。","妊娠期可常服此方养血清热。"]},
+  {id:381, name:"白术散", category:"金匮要略-妇人妊娠", composition:[{drug:"白术",dose:"四分"},{drug:"川芎",dose:"四分"},{drug:"蜀椒",dose:"三分"},{drug:"牡蛎",dose:"二分"}], method:"上四味，杵为散，酒服一钱匕，日三服，夜一服。但苦痛，加芍药；心下毒痛，倍加川芎。", original:"妊娠养胎，白术散主之。（妇人妊娠篇）", keyPoints:["温中健脾、养血安胎。","白术健脾，川芎养血，蜀椒温中，牡蛎安胎。","为妊娠养胎之温中方。","适于脾胃虚寒、血虚之妊娠。"]},
+  {id:382, name:"小柴胡汤", category:"金匮要略-妇人产后", composition:[{drug:"柴胡",dose:"半斤"},{drug:"黄芩",dose:"三两"},{drug:"人参",dose:"三两"},{drug:"甘草",dose:"三两"},{drug:"半夏",dose:"半升"},{drug:"生姜",dose:"三两"},{drug:"大枣",dose:"十二枚"}], method:"以水一斗二升，煮取六升，去滓，再煎取三升，温服一升，日三服。", original:"产妇郁冒，其脉微弱，呕不能食，大便反坚，但头汗出。所以然者，血虚而厥，厥而必冒。冒家欲解，必大汗出。大便坚，呕不能食，小柴胡汤主之。（妇人产后篇）", keyPoints:["和解少阳、扶正达邪。","小柴胡汤疏解少阳，扶正祛邪。","为产后郁冒（血虚厥逆）的治法。","脉微弱、呕不能食、头汗出为产后血虚阳厥。"]},
+  {id:383, name:"大承气汤", category:"金匮要略-妇人产后", composition:[{drug:"大黄",dose:"四两（酒洗）"},{drug:"厚朴",dose:"半斤"},{drug:"枳实",dose:"五枚"},{drug:"芒硝",dose:"三合"}], method:"以水一斗，先煮二物，取五升，去滓，内大黄，煮取二升，去滓，内芒硝，更上微火煮令沸，分温再服。", original:"病解能食，七八日更发热者，此为胃实，大承气汤主之。（妇人产后篇）", keyPoints:["峻下热结。","大黄泻热通腑，芒硝软坚，枳实厚朴行气破滞。","为产后胃实发热的治法。","病解能食、七八日后复发热为胃家实。"]},
+  {id:384, name:"当归生姜羊肉汤", category:"金匮要略-妇人产后", composition:[{drug:"当归",dose:"三两"},{drug:"生姜",dose:"五两"},{drug:"羊肉",dose:"一斤"}], method:"上三味，以水八升，煮取三升，温服七合，日三服。", original:"产后腹中疞痛，当归生姜羊肉汤主之，并治腹中寒疝，虚劳不足。（妇人产后篇）", keyPoints:["温中补虚、散寒止痛。","当归活血养血，生姜温中散寒，羊肉温补虚损。","为产后血虚寒凝、腹痛的治法。","腹中拘急、绵绵作痛、喜温喜按为特征。"]},
+  {id:385, name:"下瘀血汤", category:"金匮要略-妇人产后", composition:[{drug:"大黄",dose:"二两"},{drug:"桃仁",dose:"二十枚"},{drug:"蟅虫",dose:"二十枚（熬，去足）"}], method:"上三味，末之，炼蜜和为四丸，以酒一升，煎一丸，取八合，顿服之，新血下如豚肝。", original:"产妇腹痛，法当以枳实芍药散，假令不愈者，此为腹中有干血着脐下，宜下瘀血汤主之。（妇人产后篇）", keyPoints:["破血逐瘀、下瘀止血。","大黄桃仁活血化瘀，蟅虫破血逐瘀。","为产后瘀血内停、着脐下的治法。","新血下如豚肝为瘀血下行之征。"]},
+  {id:386, name:"竹叶汤", category:"金匮要略-妇人产后", composition:[{drug:"竹叶",dose:"一把"},{drug:"葛根",dose:"三两"},{drug:"防风",dose:"一两"},{drug:"桔梗",dose:"一两"},{drug:"桂枝",dose:"一两"},{drug:"人参",dose:"一两"},{drug:"甘草",dose:"一两"},{drug:"附子",dose:"一枚（炮）"},{drug:"大枣",dose:"十五枚"},{drug:"生姜",dose:"五两"}], method:"以水一斗，煮取二升半，分温三服，温覆使汗出。", original:"产后中风，发热，面正赤，喘而头痛，竹叶汤主之。（妇人产后篇）", keyPoints:["扶正祛邪、疏风清热。","竹叶葛根防风疏风清热，桂枝人参附子扶正温阳。","为产后中风、正虚邪实的治法。","发热面赤、喘而头痛为产后虚中夹风。"]},
+  {id:387, name:"竹皮大丸", category:"金匮要略-妇人产后", composition:[{drug:"生竹茹",dose:"二分"},{drug:"石膏",dose:"二分"},{drug:"桂枝",dose:"一分"},{drug:"甘草",dose:"七分"},{drug:"白薇",dose:"一分"}], method:"上五味，末之，枣肉和丸弹子大，以饮服一丸，日三夜二服。", original:"妇人乳中虚，烦乱呕逆，安中益气，竹皮大丸主之。（妇人产后篇）", keyPoints:["清热降逆、安中益气。","竹茹清热止呕，石膏清热，桂枝平冲，甘草白薇益气清热。","为产后虚热烦乱、呕逆的治法。","烦乱呕逆、虚热内生为产后虚热证。"]},
+  {id:388, name:"白头翁加甘草阿胶汤", category:"金匮要略-妇人产后", composition:[{drug:"白头翁",dose:"二两"},{drug:"黄连",dose:"三两"},{drug:"黄柏",dose:"三两"},{drug:"秦皮",dose:"三两"},{drug:"甘草",dose:"二两"},{drug:"阿胶",dose:"二两"}], method:"上六味，以水七升，煮取二升半，内胶令消尽，分温三服。", original:"产后下利虚极，白头翁加甘草阿胶汤主之。（妇人产后篇）", keyPoints:["清热燥湿、养血止血。","白头翁汤清热止痢，加甘草阿胶养血补虚。","为产后热利伤阴、气血两虚的治法。","产后下利、气血两虚、阴伤为特征。"]},
+  {id:389, name:"半夏厚朴汤", category:"金匮要略-妇人杂病", composition:[{drug:"半夏",dose:"一升"},{drug:"厚朴",dose:"三两"},{drug:"生姜",dose:"五两"},{drug:"干苏叶",dose:"二两"},{drug:"茯苓",dose:"四两"}], method:"以水七升，煮取四升，分温四服，日三夜一服。", original:"妇人咽中如有炙脔，半夏厚朴汤主之。（妇人杂病篇）", keyPoints:["疏肝解郁、降逆化痰。","半夏厚朴生姜降逆化痰，茯苓健脾，苏叶疏肝。","为梅核气（咽中如有炙脔）的治法。","咽中异物感、咯之不出、吞之不下为特征。"]},
+  {id:390, name:"甘麦大枣汤", category:"金匮要略-妇人杂病", composition:[{drug:"甘草",dose:"三两"},{drug:"小麦",dose:"一升"},{drug:"大枣",dose:"十枚"}], method:"以水六升，煮取三升，温分三服。", original:"妇人脏躁，喜悲伤欲哭，像如神灵所作，数欠伸，甘麦大枣汤主之。（妇人杂病篇）", keyPoints:["养心安神、甘缓和中。","小麦养心除烦，甘草大枣甘缓和中。","为脏躁（精神恍惚、悲伤欲哭）的治法。","喜悲伤欲哭、数欠伸为脏躁特征。"]},
+  {id:391, name:"温经汤", category:"金匮要略-妇人杂病", composition:[{drug:"吴茱萸",dose:"三两"},{drug:"当归",dose:"二两"},{drug:"川芎",dose:"二两"},{drug:"芍药",dose:"二两"},{drug:"人参",dose:"二两"},{drug:"桂枝",dose:"二两"},{drug:"阿胶",dose:"二两"},{drug:"牡丹皮",dose:"二两"},{drug:"生姜",dose:"二两"},{drug:"甘草",dose:"二两"},{drug:"半夏",dose:"半升"},{drug:"麦门冬",dose:"一升"}], method:"以水一斗，煮取三升，分温三服。", original:"问曰：妇人年五十所，病下利数十日不止，暮即发热，少腹里急，腹满，手掌烦热，唇口干燥，何也？师曰：此病属带下。何以故？曾经半产，瘀血在少腹不去。当以温经汤主之。（妇人杂病篇）", keyPoints:["温经散寒、养血祛瘀。","吴茱萸桂枝温经散寒，当归川芎芍药阿胶养血，丹皮活血，麦冬半夏润燥。","为冲任虚寒、瘀血内停之带下病的治法。","下利数十日、暮发热、唇口干燥为瘀血在少腹。"]},
+  {id:392, name:"土瓜根散", category:"金匮要略-妇人杂病", composition:[{drug:"土瓜根",dose:"三分"},{drug:"芍药",dose:"三分"},{drug:"桂枝",dose:"三分"},{drug:"蟅虫",dose:"三分"}], method:"上四味，杵为散，酒服方寸匕，日三服。", original:"带下经水不利，少腹满痛，经一月再见者，土瓜根散主之。（妇人杂病篇）", keyPoints:["活血通经、散瘀止痛。","土瓜根清热通经，桂枝芍药活血，蟅虫破瘀。","为瘀血内阻、月经不利的治法。","少腹满痛、经水不利或一月再见为瘀血。"]},
+  {id:393, name:"大黄甘遂汤", category:"金匮要略-妇人杂病", composition:[{drug:"大黄",dose:"四两"},{drug:"甘遂",dose:"二两"},{drug:"阿胶",dose:"二两"}], method:"以水三升，煮取一升，顿服之，其血当下。", original:"妇人少腹满如敦状，小便微难而不渴，生后者，此为水与血俱结在血室也，大黄甘遂汤主之。（妇人杂病篇）", keyPoints:["攻瘀逐水。","大黄攻瘀，甘遂逐水，阿胶养血扶正。","为产后水血俱结血室的治法。","少腹满如敦状、小便微难为水血俱结。"]},
+  {id:394, name:"抵当汤", category:"金匮要略-妇人杂病", composition:[{drug:"水蛭",dose:"三十个（熬）"},{drug:"虻虫",dose:"三十个（熬，去翅足）"},{drug:"桃仁",dose:"二十个（去皮尖）"},{drug:"大黄",dose:"三两（酒浸）"}], method:"上四味，为末，以水五升，煮取三升，去滓，温服一升。", original:"妇人经水不利下，抵当汤主之。（妇人杂病篇）", keyPoints:["破血逐瘀、通经下血。","水蛭虻虫破血逐瘀，桃仁大黄活血通经。","为瘀血内阻、经闭不行的治法。","经水不利下、少腹硬满为瘀血重证。"]},
+  {id:395, name:"矾石丸", category:"金匮要略-妇人杂病", composition:[{drug:"矾石",dose:"三分（烧）"},{drug:"杏仁",dose:"一分"}], method:"上二味，末之，炼蜜和丸枣核大，内脏中，剧者再内之。", original:"妇人经水闭不利，脏坚癖不止，中有干血，下白物，矾石丸主之。（妇人杂病篇）", keyPoints:["燥湿止带、化瘀敛疮。","矾石燥湿止带，杏仁润燥。","为妇人带下、脏坚癖（下腹部肿块）的治法。","内有干血、外见白带为特征。"]},
+  {id:396, name:"蛇床子散", category:"金匮要略-妇人杂病", composition:[{drug:"蛇床子",dose:"（研末）"}], method:"为末，以白粉少许，和合相得，如枣大，绵裹内之，自然温。", original:"妇人阴寒，温阴中坐药，蛇床子散主之。（妇人杂病篇）", keyPoints:["温阳散寒、燥湿止痒。","蛇床子温肾散寒、燥湿杀虫。","为妇人阴寒、阴痒的坐药。","外用纳阴中，温阳散寒止痒。"]},
+  {id:397, name:"狼牙汤", category:"金匮要略-妇人杂病", composition:[{drug:"狼牙",dose:"三两"}], method:"以水四升，煮取五合，用绵缠箸如茧，浸汤沥阴中，日四遍。", original:"妇人阴中蚀疮烂者，狼牙汤洗之。（妇人杂病篇）", keyPoints:["清热燥湿、解毒杀虫。","狼牙清热燥湿、解毒杀虫。","为妇人阴疮（外阴溃疡）的外洗方。","阴中蚀疮、溃烂为湿热下注。"]},
+  {id:398, name:"膏发煎", category:"金匮要略-妇人杂病", composition:[{drug:"猪膏",dose:"半斤"},{drug:"乱发",dose:"如鸡子大三枚"}], method:"上二味，煎之，发消药成，分再服。", original:"胃气下泄，阴吹而正喧，此谷气之实也，膏发煎主之。（妇人杂病篇）", keyPoints:["润燥消瘀。","猪膏润燥，乱发消瘀。","为阴吹（矢气从阴中出）的治法。","阴吹而正喧、大便干结为谷气实。"]},
+  {id:399, name:"红蓝花酒", category:"金匮要略-妇人杂病", composition:[{drug:"红蓝花",dose:"一两"}], method:"上一味，以酒一大升，煎减半，顿服一半，未止再服。", original:"妇人六十二种风，及腹中血气刺痛，红蓝花酒主之。（妇人杂病篇）", keyPoints:["活血止痛、祛风通络。","红蓝花（红花）活血祛瘀止痛。","为妇人血风、血气刺痛的治法。","腹中刺痛、游走不定为血风。"]}
+
+];
+
+const LIUJING_ORDER = ['太阳病', '阳明病', '少阳病', '太阴病', '少阴病', '厥阴病'];
+const JINKUI_CATS = ["金匮要略-痉湿暍病", "金匮要略-百合狐惑阴阳毒病", "金匮要略-疟病", "金匮要略-中风历节", "金匮要略-血痹虚劳", "金匮要略-肺痿肺痈咳嗽上气", "金匮要略-奔豚气", "金匮要略-胸痹心痛短气", "金匮要略-腹满寒疝宿食", "金匮要略-五脏风寒积聚", "金匮要略-痰饮咳嗽", "金匮要略-消渴小便不利淋病", "金匮要略-水气病", "金匮要略-黄疸病", "金匮要略-惊悸吐衄下血", "金匮要略-呕吐哕下利", "金匮要略-疮痈肠痈浸淫", "金匮要略-趺蹶手指臂肿", "金匮要略-妇人妊娠", "金匮要略-妇人产后", "金匮要略-妇人杂病"];
+const OTHER_CATS = ['霍乱', '劳复', '阴阳易'];
+
+// 侧边栏30大分类（与FORMULAS数据一一对应）
+const SIDEBAR_CATS = [
+    '太阳病', '阳明病', '少阳病', '太阴病', '少阴病', '厥阴病',
+    '霍乱', '劳复', '阴阳易',
+    '金匮要略-痉湿暍病', '金匮要略-百合狐惑阴阳毒病', '金匮要略-疟病',
+    '金匮要略-中风历节', '金匮要略-血痹虚劳', '金匮要略-肺痿肺痈咳嗽上气',
+    '金匮要略-奔豚气', '金匮要略-胸痹心痛短气', '金匮要略-腹满寒疝宿食',
+    '金匮要略-五脏风寒积聚', '金匮要略-痰饮咳嗽', '金匮要略-消渴小便不利淋病',
+    '金匮要略-水气病', '金匮要略-黄疸病', '金匮要略-惊悸吐衄下血',
+    '金匮要略-呕吐哕下利', '金匮要略-疮痈肠痈浸淫', '金匮要略-趺蹶手指臂肿',
+    '金匮要略-妇人妊娠', '金匮要略-妇人产后', '金匮要略-妇人杂病'
+];
+
+const $ = function(s) { return document.querySelector(s); };
+
+const state = { sidebarKeyword: "", openCats: { '太阳病': true } };
+
+function escHtml(s) {
+    if (s == null) return '';
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function renderList() {
+    const list = FORMULAS;
+    $('#statsBar').innerHTML = '共 <strong>' + FORMULAS.length + '</strong> 首方';
+
+    // 按分类分组
+    const grouped = {};
+    for (let i = 0; i < list.length; i++) {
+        const f = list[i];
+        if (!grouped[f.category]) grouped[f.category] = [];
+        grouped[f.category].push(f);
+    }
+
+    // 按六经顺序排列
+    const orderedCats = [...LIUJING_ORDER, ...JINKUI_CATS, ...OTHER_CATS].filter(c => grouped[c]);
+    for (const c in grouped) {
+        if (orderedCats.indexOf(c) === -1) orderedCats.push(c);
+    }
+
+    let html = '';
+    if (list.length === 0) {
+        html = '<div class="no-match">未找到匹配的方剂，试试其他关键词。</div>';
+    } else {
+        for (let ci = 0; ci < orderedCats.length; ci++) {
+            const cat = orderedCats[ci];
+            const items = grouped[cat].sort(function(a, b) { return a.id - b.id; });
+            html += '<div class="section-title">' + cat + '<span class="section-subtitle">（' + items.length + '首）</span></div>';
+            html += '<div class="formula-list">';
+            for (let i = 0; i < items.length; i++) {
+                const f = items[i];
+                const drugs = f.composition.slice(0, 4).map(function(x) { return x.drug; }).join('、');
+                const more = f.composition.length > 4 ? ' 等' + f.composition.length + '味' : '';
+                html +=
+                    '<div class="formula-item" data-id="' + f.id + '">' +
+                    '<span class="formula-num">#' + f.id + '</span>' +
+                    '<div class="formula-name">' + escHtml(f.name) + '</div>' +
+                    '<div class="formula-composition">' + escHtml(drugs + more) + '</div>' +
+                    '</div>';
+            }
+            html += '</div>';
+        }
+    }
+
+    $('#mainList').innerHTML = html;
+    const items = document.querySelectorAll('.formula-item');
+    for (let j = 0; j < items.length; j++) {
+        items[j].addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'), 10);
+            showDetail(id);
+        });
+    }
+}
+
+function showDetail(id) {
+    let f = null;
+    for (let i = 0; i < FORMULAS.length; i++) {
+        if (FORMULAS[i].id === id) { f = FORMULAS[i]; break; }
+    }
+    if (!f) return;
+
+    let comps = '';
+    for (let i = 0; i < f.composition.length; i++) {
+        const c = f.composition[i];
+        comps += '<li><span class="drug-name">' + escHtml(c.drug) + '</span><span class="drug-dose">' + escHtml(c.dose || '—') + '</span></li>';
+    }
+    let points = '';
+    for (let j = 0; j < f.keyPoints.length; j++) {
+        points += '<div class="point-item">' + escHtml(f.keyPoints[j]) + '</div>';
+    }
+
+    const detailsHtml =
+        '<div class="formula-details">' +
+        '<button class="close-btn" id="closeDetail">✕ 关闭</button>' +
+        '<div class="detail-header">' +
+        '<div class="detail-id">第 ' + f.id + ' 方 · 伤寒论</div>' +
+        '<h2 class="detail-title">' + escHtml(f.name) + '</h2>' +
+        '<span class="detail-cat">' + escHtml(f.category) + '</span>' +
+        '</div>' +
+        '<div class="detail-section">' +
+        '<div class="detail-section-title">药物组成</div>' +
+        '<ul class="drug-list">' + comps + '</ul>' +
+        '</div>' +
+        '<div class="detail-section">' +
+        '<div class="detail-section-title">煎服方法</div>' +
+        '<div class="detail-content">' + escHtml(f.method || '原文未详') + '</div>' +
+        '</div>' +
+        '<div class="detail-section">' +
+        '<div class="detail-section-title">伤寒原文</div>' +
+        '<div class="detail-content">' + escHtml(f.original || '—') + '</div>' +
+        '</div>' +
+        '<div class="detail-section">' +
+        '<div class="detail-section-title">倪海厦讲解要点</div>' +
+        points +
+        '</div>' +
+        '</div>';
+
+    const container = $('#detailsContainer');
+    container.innerHTML = detailsHtml;
+    container.classList.remove('hidden');
+    $('#closeDetail').addEventListener('click', function() {
+        container.innerHTML = '';
+        container.classList.add('hidden');
+    });
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function bind() {
+    $('#sidebarSearch').addEventListener('input', function(e) {
+        state.sidebarKeyword = e.target.value;
+        renderSidebar();
+    });
+}
+
+function getSidebarFormulas() {
+    const k = state.sidebarKeyword.trim().toLowerCase();
+    return FORMULAS.filter(function(f) {
+        if (!k) return true;
+        let drugs = '';
+        for (let i = 0; i < f.composition.length; i++) drugs += f.composition[i].drug + ' ';
+        const hay = (f.name + ' ' + drugs + ' ' + f.keyPoints.join(' ') + ' ' + f.original + ' ' + f.category).toLowerCase();
+        return hay.indexOf(k) !== -1;
+    });
+}
+
+function renderSidebar() {
+    const list = getSidebarFormulas();
+    const grouped = {};
+    for (let i = 0; i < SIDEBAR_CATS.length; i++) grouped[SIDEBAR_CATS[i]] = [];
+    for (let i = 0; i < list.length; i++) {
+        const f = list[i];
+        grouped[f.category].push(f);
+    }
+
+    let html = '';
+    for (let i = 0; i < SIDEBAR_CATS.length; i++) {
+        const cat = SIDEBAR_CATS[i];
+        const items = grouped[cat].sort(function(a, b) { return a.id - b.id; });
+        if (state.sidebarKeyword && items.length === 0) continue;
+        const isOpen = state.sidebarKeyword ? true : !!state.openCats[cat];
+        html += '<div class="cat-group' + (isOpen ? ' open' : '') + '" data-cat="' + escHtml(cat) + '">';
+        html += '<div class="cat-title" data-toggle="' + escHtml(cat) + '">';
+        html += '<span>' + escHtml(cat) + '<span class="cat-count">（' + items.length + '）</span></span>';
+        html += '<span class="cat-arrow">▶</span>';
+        html += '</div>';
+        html += '<ul class="cat-items">';
+        for (let j = 0; j < items.length; j++) {
+            const f = items[j];
+            html += '<li class="cat-item" data-id="' + f.id + '">';
+            html += '<span class="item-id">#' + f.id + '</span>';
+            html += '<span>' + escHtml(f.name) + '</span>';
+            html += '</li>';
+        }
+        html += '</ul></div>';
+    }
+    if (!html) html = '<div class="no-match" style="padding:20px;font-size:13px;">无匹配方剂</div>';
+    $('#sidebarBody').innerHTML = html;
+
+    const titles = document.querySelectorAll('#sidebarBody .cat-title');
+    for (let i = 0; i < titles.length; i++) {
+        titles[i].addEventListener('click', function() {
+            const cat = this.getAttribute('data-toggle');
+            state.openCats[cat] = !state.openCats[cat];
+            renderSidebar();
+        });
+    }
+    const items = document.querySelectorAll('#sidebarBody .cat-item');
+    for (let j = 0; j < items.length; j++) {
+        items[j].addEventListener('click', function(e) {
+            e.stopPropagation();
+            const id = parseInt(this.getAttribute('data-id'), 10);
+            // 在右侧主区域显示详情
+            showDetail(id);
+        });
+    }
+}
+
+function init() {
+    bind();
+    renderList();
+    renderSidebar();
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
