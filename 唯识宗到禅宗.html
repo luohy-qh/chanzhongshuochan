@@ -101,13 +101,6 @@ p {
     text-indent: 2em;
     line-height: 1.95;
 }
-@media (max-width: 720px) {
-    .header h1 { font-size: 24px; letter-spacing: 3px; }
-    .section-title { font-size: 22px; }
-    .section-subtitle { font-size: 17px; }
-    p { font-size: 15px; }
-    .home-link { font-size: 14px; padding: 6px 12px; }
-}
 
 /* Sidebar navigation */
 .sidebar {
@@ -165,8 +158,127 @@ p {
 .section-title {
     scroll-margin-top: 140px;
 }
+
+/* Mobile FAB (floating action button) */
+.mobile-fab {
+    display: none;
+    position: fixed;
+    right: 16px;
+    bottom: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #8b2c1d;
+    color: #fdfaf2;
+    border: none;
+    font-size: 22px;
+    box-shadow: 0 4px 12px rgba(60, 40, 10, 0.3);
+    z-index: 90;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    transition: transform 0.2s, background 0.2s;
+}
+.mobile-fab:active {
+    transform: scale(0.92);
+    background: #6b1f12;
+}
+
+/* Mobile drawer overlay */
+.mobile-drawer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 95;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.mobile-drawer.open {
+    display: block;
+    opacity: 1;
+}
+.mobile-drawer-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 78%;
+    max-width: 320px;
+    height: 100%;
+    background: linear-gradient(180deg, #fdfaf2 0%, #f4ede0 100%);
+    border-right: 2px solid #8b2c1d;
+    transform: translateX(-100%);
+    transition: transform 0.25s;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.mobile-drawer.open .mobile-drawer-panel {
+    transform: translateX(0);
+}
+.mobile-drawer-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: linear-gradient(180deg, #fdfaf2 0%, #f4ede0 100%);
+    border-bottom: 1px solid #d4c4a8;
+    z-index: 1;
+}
+.mobile-drawer-title {
+    font-size: 15px;
+    color: #6b1f12;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.mobile-drawer-close {
+    background: none;
+    border: 1px solid #8b2c1d;
+    color: #6b1f12;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+    font-family: inherit;
+}
+.mobile-drawer-close:active {
+    background: #8b2c1d;
+    color: #fdfaf2;
+}
+.mobile-drawer .chapter-list li a {
+    font-size: 14px;
+    padding: 11px 18px;
+}
+
 @media (max-width: 1080px) {
     .sidebar { display: none; }
+    .mobile-fab { display: flex; }
+}
+
+@media (max-width: 720px) {
+    .header { padding: 14px 16px; }
+    .header h1 { font-size: 22px; letter-spacing: 3px; margin-bottom: 4px; }
+    .header p { font-size: 12px; letter-spacing: 1px; }
+    .section-title { font-size: 20px; padding: 14px 0 8px; margin: 30px 0 14px; letter-spacing: 2px; }
+    .section-subtitle { font-size: 16px; padding: 5px 0 5px 12px; margin: 22px 0 10px; }
+    .section-subsubtitle { font-size: 15px; padding: 3px 0 3px 10px; margin: 16px 0 8px; }
+    p { font-size: 15px; line-height: 1.85; }
+    .container { padding: 16px 14px 80px; }
+    .section-title { scroll-margin-top: 100px; }
+    .home-link { font-size: 13px; padding: 5px 10px; left: 12px; }
+}
+
+@media (max-width: 420px) {
+    .header h1 { font-size: 19px; letter-spacing: 2px; }
+    .header p { font-size: 11px; }
+    .home-link { font-size: 12px; padding: 4px 8px; }
+    .section-title { font-size: 18px; }
+    p { font-size: 14.5px; text-indent: 1.5em; }
+    .container { padding: 12px 10px 80px; }
 }
 
 
@@ -177,6 +289,41 @@ p {
     <a href="index.html" class="home-link">首页</a>
     <h1>唯识宗到禅宗</h1>
     <p><strong>唯识</strong> · <strong>般若</strong> · 禅 · <strong>转识成智</strong> · <strong>明心见性</strong></p>
+</div>
+
+<!-- Mobile floating action button + drawer -->
+<button class="mobile-fab" id="mobileFab" aria-label="打开目录">☰</button>
+<div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-panel">
+        <div class="mobile-drawer-header">
+            <span class="mobile-drawer-title">目录导航</span>
+            <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="关闭">✕</button>
+        </div>
+        <ul class="chapter-list" id="mobileChapterList">
+            <li><a href="#chapter1">一、唯识宗的主要观点</a></li>
+            <li><a href="#chapter2">二、进一步解释"阿赖耶识"或"种子"</a></li>
+            <li><a href="#chapter3">三、"转识成智"的具体过程</a></li>
+            <li><a href="#chapter4">四、当第六识的妄想停止</a></li>
+            <li><a href="#chapter5">五、唯识宗是通向禅宗的一条路径吗</a></li>
+            <li><a href="#chapter6">六、众生的佛性都一样吗</a></li>
+            <li><a href="#chapter7">七、自然流露的无条件的行动</a></li>
+            <li><a href="#chapter8">八、开悟后还需要度众生吗</a></li>
+            <li><a href="#chapter9">九、能穿一切衣服的自己</a></li>
+            <li><a href="#chapter10">十、佛性是佛法最深的奥义吗</a></li>
+            <li><a href="#chapter11">十一、解释坛经：三身四智</a></li>
+            <li><a href="#chapter12">十二、唯识宗的主要理论</a></li>
+            <li><a href="#chapter13">十三、种子六义的果俱有</a></li>
+            <li><a href="#chapter14">十四、恶业种子一直存在吗</a></li>
+            <li><a href="#chapter15">十五、证悟空性后可以继续做坏事吗</a></li>
+            <li><a href="#chapter16">十六、五蕴：色受想行识</a></li>
+            <li><a href="#chapter17">十七、我世界中的其他人</a></li>
+            <li><a href="#chapter18">十八、他心通与平等性智</a></li>
+            <li><a href="#chapter19">十九、前世业缘与今生的亲人仇人</a></li>
+            <li><a href="#chapter20">二十、详细逐句解释心经</a></li>
+            <li><a href="#chapter21">二一、心经与唯识宗、禅宗</a></li>
+            <li><a href="#chapter22">二二、五八六七果因转</a></li>
+        </ul>
+    </div>
 </div>
 <aside class="sidebar">
     <div class="sidebar-title">目录导航</div>
@@ -1148,7 +1295,38 @@ p {
                 const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 window.scrollTo({top: y, behavior: 'smooth'});
             }
+            // Close mobile drawer if open
+            const drawer = document.getElementById('mobileDrawer');
+            if (drawer && drawer.classList.contains('open')) {
+                drawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
         });
+    });
+})();
+
+// Mobile drawer logic
+(function() {
+    const fab = document.getElementById('mobileFab');
+    const drawer = document.getElementById('mobileDrawer');
+    const closeBtn = document.getElementById('mobileDrawerClose');
+    if (!fab || !drawer) return;
+
+    function openDrawer() {
+        drawer.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    fab.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    drawer.addEventListener('click', function(e) {
+        if (e.target === drawer) closeDrawer();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeDrawer();
     });
 })();
 </script>
