@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>《论语》详解7 - 学而与闻道</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #F7F5EB;
@@ -44,7 +47,7 @@
         }
 
         body {
-            font-family: 'Songti SC', 'Source Han Serif SC', 'Noto Serif SC', 'STSong', 'SimSun', '宋体', serif;
+            font-family: 'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.9;
@@ -11331,55 +11334,24 @@
         const sections = document.querySelectorAll('.chapter-section');
         const navLinks = document.querySelectorAll('.sidebar-nav a[href^="#"]');
 
-        let sectionOffsets = [];
-        let activeNavId = null;
-
-        function measureSections() {
-            sectionOffsets = Array.prototype.map.call(sections, section => ({
-                id: section.getAttribute('id'),
-                top: section.offsetTop
-            }));
-        }
-
         function updateActiveNav() {
-            const y = window.scrollY;
             let current = '';
-            for (let i = 0; i < sectionOffsets.length; i++) {
-                if (y >= sectionOffsets[i].top - 150) {
-                    current = sectionOffsets[i].id;
-                } else {
-                    break;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
                 }
-            }
-            if (current === activeNavId) return;
-            activeNavId = current;
+            });
+
             navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
             });
         }
 
-        let navTicking = false;
-        window.addEventListener('scroll', function() {
-            if (navTicking) return;
-            navTicking = true;
-            requestAnimationFrame(function() {
-                updateActiveNav();
-                navTicking = false;
-            });
-        }, { passive: true });
-
-        window.addEventListener('resize', function() {
-            measureSections();
-            updateActiveNav();
-        });
-
-        window.addEventListener('load', function() {
-            measureSections();
-            updateActiveNav();
-        });
-
-        measureSections();
-        updateActiveNav();
+        window.addEventListener('scroll', updateActiveNav);
 
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
